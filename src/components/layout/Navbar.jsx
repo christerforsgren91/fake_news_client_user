@@ -5,19 +5,7 @@ const Navbar = () => {
   const panes = [
     {
       menuItem: 'Home',
-    },
-    {
-      menuItem: 'About',
-    },
-    {
-      menuItem: 'Search',
-    },
-    {
-      menuItem: 'Log In',
-    },
-    {
-      menuItem: 'Language',
-    },
+    }
   ];
   return (
     <>
@@ -27,7 +15,7 @@ const Navbar = () => {
           panes={panes}
         />
       </Segment>
-      <Header data-cy='header' as='h1' textAlign='center'>
+      <Header id='fakenews' data-cy='header' as='h1' textAlign='center'>
       FAKE<span id='question'>?</span>NEWS
       </Header>
     </>

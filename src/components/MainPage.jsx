@@ -1,27 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Header } from 'semantic-ui-react';
+import { Header } from 'semantic-ui-react';
 import axios from 'axios';
 import ArticleCard from './ArticleCard';
+import BreakingNews from './layout/BreakingNews';
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
-  const [errorMessage, serErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const fetchArticles = async () => {
     try {
       const response = await axios.get('/articles/');
       setArticles(response.data.articles);
-      serErrorMessage('');
-      
+      setErrorMessage('');
     } catch (error) {
-      debugger
       if (error.response.status === 500) {
-        
-        serErrorMessage(
+        setErrorMessage(
           'Servers are currently not responding, Pleas try again later'
         );
       } else {
-        serErrorMessage(error.message);
+        setErrorMessage(error.message);
       }
     }
   };
@@ -29,7 +27,9 @@ const Articles = () => {
     fetchArticles();
   }, []);
 
-  let articleList = articles.map((article, i) => {
+  let firstArticle = articles[0];
+
+  let articleList = articles.slice(1).map((article, i) => {
     return <ArticleCard article={article} i={i} />;
   });
 
@@ -40,7 +40,10 @@ const Articles = () => {
           {errorMessage}
         </Header>
       )}
-      <Grid data-cy='article-container'>{articleList}</Grid>
+      <BreakingNews firstArticle={firstArticle} />
+      <div id='card-container' data-cy='articles-container'>
+        {articleList}
+      </div>
     </>
   );
 };
