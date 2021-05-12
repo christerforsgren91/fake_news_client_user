@@ -4,5 +4,13 @@
 }
 #question {
   color: rgb(245, 189, 23);
- font-size: 50px;
+  font-size: 50px;
+}
+
+.footer {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: rgb(19, 18, 17);
+  width: 100%;
+  text-align: center;
 }

@@ -1,5 +1,5 @@
 describe('Visitor can see main page', () => {
-  describe('Success', () => {
+  describe('success', () => {
     beforeEach(() => {
       cy.intercept('GET', 'https://fake-newzzzz.herokuapp.com/api/articles', {
         fixture: 'articles.json',
