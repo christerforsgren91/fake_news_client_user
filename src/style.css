@@ -2,3 +2,7 @@
   background-color: rgba(238, 191, 51, 0.863);
   border-radius: 0;
 }
+#question {
+  color: rgb(245, 189, 23);
+ font-size: 50px;
+}
