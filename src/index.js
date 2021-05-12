@@ -9,9 +9,7 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://fake-newzzzz.herokuapp.com/api'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <App />,
   document.getElementById('root')
 );
 
