@@ -1,6 +1,9 @@
 describe('Visitor can see main page', () => {
   describe('Success', () => {
     beforeEach(() => {
+      cy.intercept('GET', 'https://fake-newzzzz.herokuapp.com/api/articles', {
+        fixture: 'articles.json',
+      });
       cy.visit('/');
     });
     it('displays main page layout', () => {
