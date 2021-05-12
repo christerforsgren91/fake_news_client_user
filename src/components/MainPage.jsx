@@ -8,21 +8,20 @@ const Articles = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   
-  useEffect(() => {
-    const fetchArticles = async () => {
-      debugger;
-      try {
-        const response = await axios.get('/articles/');
-        setArticles(response.data.articles);
-        setErrorMessage('');
-      } catch (error) {
-        if (error.status === 500) {
-          setErrorMessage(
-            'Servers are currently not responding, Pleas try again later'
-            );
-        }
+  const fetchArticles = async () => {
+    try {
+      const response = await axios.get('/articles/');
+      setArticles(response.data.articles);
+      setErrorMessage('');
+    } catch (error) {
+      if (error.status === 500) {
+        setErrorMessage(
+          'Servers are currently not responding, Pleas try again later'
+          );
       }
-    };
+    }
+  };
+  useEffect(() => {
     fetchArticles();
   }, []);
 
@@ -32,7 +31,7 @@ const Articles = () => {
 
   return (
     <>
-      <Grid>
+      <Grid data-cy='article-container'>
         {articleList}
       </Grid>
     </>
