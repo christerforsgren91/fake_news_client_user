@@ -6,6 +6,7 @@ describe('Visitor can see main page', () => {
     it('displays main page layout', () => {
       cy.get('[data-cy=navbar]').should('exist');
       cy.get('[data-cy=header]').should('exist');
+      cy.get('[data-cy=breaking-news]').should('exist');
       cy.get('[data-cy=category-container]')
         .children()
         .should('have.length', 5);

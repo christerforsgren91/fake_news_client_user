@@ -21,7 +21,7 @@ const Navbar = () => {
   ];
   return (
     <>
-      <Segment id='navbar' fluid inverted size='massive'>
+      <Segment data-cy='navbar' id='navbar' fluid inverted size='massive'>
         <Tab
           menu={{ secondary: true, pointing: true, fluid: true }}
           panes={panes}

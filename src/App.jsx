@@ -1,10 +1,12 @@
 import React from 'react';
+import BreakingNews from './components/layout/BreakingNews';
 import Navbar from './components/layout/Navbar';
 
 const App = () => {
   return (
     <>
-      <Navbar data-cy='navbar' />
+      <Navbar  />
+      <BreakingNews  />
     </>
   );
 };
