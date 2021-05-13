@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from 'semantic-ui-react';
-import axios from 'axios';
+import Articles from '../modules/Articles';
 import ArticleCard from './ArticleCard';
 import BreakingNews from './layout/BreakingNews';
 
-const Articles = () => {
+const MainPage = () => {
   const [articles, setArticles] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
 
   const fetchArticles = async () => {
     try {
-      const response = await axios.get('/articles/');
-      setArticles(response.data.articles);
+      const response = await Articles.get()
+      setArticles(response);
       setErrorMessage('');
     } catch (error) {
       if (error.response.status === 500) {
@@ -27,8 +27,6 @@ const Articles = () => {
     fetchArticles();
   }, []);
 
-  let firstArticle = articles[0];
-
   let articleList = articles.slice(1).map((article, i) => {
     return <ArticleCard article={article} i={i} />;
   });
@@ -40,7 +38,7 @@ const Articles = () => {
           {errorMessage}
         </Header>
       )}
-      <BreakingNews firstArticle={firstArticle} />
+      <BreakingNews firstArticle={articles[0]} />
       <div id='card-container' data-cy='articles-container'>
         {articleList}
       </div>
@@ -48,4 +46,4 @@ const Articles = () => {
   );
 };
 
-export default Articles;
+export default MainPage;
