@@ -15,6 +15,21 @@ const Articles = {
       }
     }
   },
+
+  async show(id) {
+    try {
+      const response = await axios.get(`/articles/${id}`);
+      setArticle(response.data.articles);
+    } catch (error) {
+      if (error.response.status === 500) {
+        setErrorMessage(
+          'Servers are currently not responding, Pleas try again later'
+        );
+      } else {
+        setErrorMessage(error.message);
+      }
+    }
+  },
 };
 
 export default Articles;
