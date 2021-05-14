@@ -5,13 +5,19 @@ import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css';
 import axios from 'axios';
 import './style.css';
-import { Router } from "react-router-dom";
+import { Provider } from 'react-redux';
+import store from './state/store/configureStore';
+import { BrowserRouter as Router } from 'react-router-dom'
 
 axios.defaults.baseURL = 'https://fake-newzzzz.herokuapp.com/api';
 
+
 ReactDOM.render(
   <Router>
-    <App />
+    <Provider store={store}>
+       <App />
+    </Provider>
+   
   </Router>,
   document.getElementById('root')
 );

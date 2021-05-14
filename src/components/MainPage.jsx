@@ -3,14 +3,14 @@ import { Header } from 'semantic-ui-react';
 import Articles from '../modules/Articles';
 import ArticleCard from './ArticleCard';
 import BreakingNews from './layout/BreakingNews';
-import { Router, Switch } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const MainPage = () => {
   const [articles, setArticles] = useState([]);
-  const [errorMessage, setErrorMessage] = useState('');
+  const {error, message} = useSelector((state) => state);
 
   useEffect(() => {
-    Articles.index(setArticles, setErrorMessage);
+    Articles.index(setArticles);
   }, []);
 
   let articleList = articles.slice(1).map((article, index) => {
@@ -18,19 +18,19 @@ const MainPage = () => {
   });
 
   return (
-    <Router>
-      {errorMessage && (
+    <>
+
+      {error && (
         <Header data-cy='error-message' color='red'>
-          {errorMessage}
+          {message}
         </Header>
       )}
       <BreakingNews firstArticle={articles[0]} />
-      <Switch>
-        <div id='articles-container' data-cy='articles-container'>
-          {articleList}
-        </div>
-      </Switch>
-    </Router>
+
+      <div id='articles-container' data-cy='articles-container'>
+        {articleList}
+      </div>
+    </>
   );
 };
 
