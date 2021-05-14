@@ -20,7 +20,7 @@ body {
   margin: 50px 300px 50px;
 }
 
-#card-container {
+#articles-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;

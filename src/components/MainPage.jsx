@@ -24,7 +24,7 @@ const MainPage = () => {
         </Header>
       )}
       <BreakingNews firstArticle={articles[0]} />
-      <div id='card-container' data-cy='articles-container'>
+      <div id='articles-container' data-cy='articles-container'>
         {articleList}
       </div>
     </>
