@@ -1,0 +1,40 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Something",
+      "teaser": "Something more",
+      "date": "2021-05-12"
+    },
+    {
+      "id": 2,
+      "title": "Sup",
+      "teaser": "something",
+      "date": "2021-05-12"
+    },
+    {
+      "id": 3,
+      "title": "Halo",
+      "teaser": "something",
+      "date": "2021-05-12"
+    },
+    {
+      "id": 4,
+      "title": "Something",
+      "teaser": "Something more",
+      "date": "2021-05-12"
+    },
+    {
+      "id": 5,
+      "title": "Sup",
+      "teaser": "something",
+      "date": "2021-05-12"
+    },
+    {
+      "id": 6,
+      "title": "Halo",
+      "teaser": "something",
+      "date": "2021-05-12"
+    }
+  ]
+}

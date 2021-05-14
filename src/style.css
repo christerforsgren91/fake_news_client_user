@@ -1,0 +1,71 @@
+body {
+  background-color: #111518;
+}
+
+#navbar {
+  background-color: rgba(238, 191, 51, 0.863);
+  border-radius: 0;
+}
+
+#fakenews{
+  color: rgba(218, 217, 216, 0.863);
+}
+
+#question {
+  color: rgb(255, 200, 35);
+  font-size: 50px;
+}
+
+#category-container {
+  margin: 50px 300px 50px;
+}
+
+#articles-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 0 100px 20px;
+}
+
+#footer {
+  position: flex;
+  bottom: 0;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: rgb(19, 18, 17);
+  width: 100vw;
+  text-align: center;
+}
+
+.footer-content {
+  color: white;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.breaking-news{
+  margin: 20px 80px;
+  display: flex;
+  height: 30rem;
+  background-color: #202325;
+  border-radius: 20px;
+}
+
+.breaking-img{
+  object-fit: cover;
+}
+
+.breaking-content{
+  color: aliceblue;
+  padding: 40px;
+}
+
+.card-container{
+  margin: 100px
+}
+
+h3{
+  text-align: center;
+}
