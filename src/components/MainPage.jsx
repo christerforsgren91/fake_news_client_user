@@ -8,23 +8,8 @@ const MainPage = () => {
   const [articles, setArticles] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const fetchArticles = async () => {
-    try {
-      const response = await Articles.get()
-      setArticles(response);
-      setErrorMessage('');
-    } catch (error) {
-      if (error.response.status === 500) {
-        setErrorMessage(
-          'Servers are currently not responding, Pleas try again later'
-        );
-      } else {
-        setErrorMessage(error.message);
-      }
-    }
-  };
   useEffect(() => {
-    fetchArticles();
+    Articles.get(setArticles, setErrorMessage)
   }, []);
 
   let articleList = articles.slice(1).map((article, i) => {
