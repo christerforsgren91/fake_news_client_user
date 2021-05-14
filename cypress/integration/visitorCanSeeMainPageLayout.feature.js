@@ -1,4 +1,4 @@
-describe('Visitor can see main page', () => {
+describe('Displays the main page with a list of article', () => {
   describe('success', () => {
     beforeEach(() => {
       cy.intercept('GET', 'https://fake-newzzzz.herokuapp.com/api/articles', {

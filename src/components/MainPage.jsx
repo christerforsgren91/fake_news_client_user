@@ -9,20 +9,20 @@ const MainPage = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    Articles.get(setArticles, setErrorMessage)
+    Articles.index(setArticles, setErrorMessage)
   }, []);
 
-  let articleList = articles.slice(1).map((article, i) => {
-    return <ArticleCard article={article} i={i} />;
+  let articleList = articles.slice(1).map((article, index) => {
+    return <ArticleCard article={article} index={index} />;
   });
 
   return (
     <>
-      {errorMessage && (
+      {errorMessage && 
         <Header data-cy='error-message' color='red'>
           {errorMessage}
         </Header>
-      )}
+      }
       <BreakingNews firstArticle={articles[0]} />
       <div id='articles-container' data-cy='articles-container'>
         {articleList}

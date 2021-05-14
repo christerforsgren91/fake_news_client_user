@@ -1,7 +1,7 @@
 import React from 'react';
 
-const BreakingNews = ({ firstArticle }) => {
-  if (firstArticle) {
+const BreakingNews = ({ firstArticle: article }) => {
+  if (article) {
     return (
         <div className='breaking-news' data-cy='breaking-news' placeholder>
           <img
@@ -11,9 +11,9 @@ const BreakingNews = ({ firstArticle }) => {
             alt=''
           />
           <div className='breaking-content'>
-            <h2 data-cy='breaking-title' >{firstArticle.title}</h2>
-            <h4 data-cy='breaking-teaser' >{firstArticle.teaser}</h4>
-            <p data-cy='breaking-date' >{firstArticle.date}</p>
+            <h2 data-cy='breaking-title' >{article.title}</h2>
+            <h4 data-cy='breaking-teaser' >{article.teaser}</h4>
+            <p data-cy='breaking-date' >{article.date}</p>
           </div>
         </div>
     );

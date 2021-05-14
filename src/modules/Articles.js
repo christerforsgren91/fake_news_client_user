@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const Articles = {
-  async get(setArticles, setErrorMessage) {
+  async index(setArticles, setErrorMessage) {
     try {
       const response = await axios.get('/articles/');
       setArticles(response.data.articles);
