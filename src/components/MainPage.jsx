@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Header } from 'semantic-ui-react';
 import Articles from '../modules/Articles';
 import ArticleCard from './ArticleCard';
@@ -6,11 +6,10 @@ import BreakingNews from './layout/BreakingNews';
 import { useSelector } from 'react-redux';
 
 const MainPage = () => {
-  const [articles, setArticles] = useState([]);
-  const {error, message} = useSelector((state) => state);
+  const { error, message, articles } = useSelector((state) => state);
 
   useEffect(() => {
-    Articles.index(setArticles);
+    Articles.index();
   }, []);
 
   let articleList = articles.slice(1).map((article, index) => {
@@ -19,7 +18,6 @@ const MainPage = () => {
 
   return (
     <>
-
       {error && (
         <Header data-cy='error-message' color='red'>
           {message}
