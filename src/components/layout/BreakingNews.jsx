@@ -3,7 +3,6 @@ import React from 'react';
 const BreakingNews = ({ firstArticle }) => {
   if (firstArticle) {
     return (
-      <div>
         <div className='breaking-news' data-cy='breaking-news' placeholder>
           <img
           data-cy='breaking-img'
@@ -17,7 +16,6 @@ const BreakingNews = ({ firstArticle }) => {
             <p data-cy='breaking-date' >{firstArticle.date}</p>
           </div>
         </div>
-      </div>
     );
   }
   return '';
