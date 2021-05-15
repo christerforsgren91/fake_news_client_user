@@ -1,22 +1,27 @@
 import axios from 'axios';
-import { Redirect } from 'react-router';
+import { Redirect, Router } from 'react-router-dom';
 import store from '../state/store/configureStore';
 
 const Articles = {
   async index() {
     try {
       const response = await axios.get('/articles/');
-      store.dispatch({type: 'SET_ARTICLES', payload: response.data.articles});
+      store.dispatch({ type: 'SET_ARTICLES', payload: response.data.articles });
     } catch (error) {
       errorHandler(error);
     }
   },
 
   async show(event) {
+    let id = event.currentTarget.id;
+
     try {
-      const response = await axios.get(`/articles/${event}`);
-      store.dispatch({type: 'SHOW_ARTICLE', payload:response.data.articles.id});
-      return <Redirect to='/article/'/>
+      const response = await axios.get(`/articles/${id}`);
+      store.dispatch({
+        type: 'SHOW_ARTICLE',
+        payload: response.data.articles,
+      });
+      return <Redirect to={`/article/${id}`} />;
     } catch (error) {
       errorHandler(error);
     }

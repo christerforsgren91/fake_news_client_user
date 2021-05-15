@@ -7,19 +7,13 @@ import { useSelector } from 'react-redux';
 
 const MainPage = () => {
   const { error, message, articles } = useSelector((state) => state);
-  const showArticle = (event) => {
-    debugger
-    event.preventDefault()
-    Articles.show(event)
-  }
-  
 
   useEffect(() => {
     Articles.index();
   }, []);
 
   let articleList = articles.slice(1).map((article, index) => {
-    return <ArticleCard article={article} index={index} />;
+    return <ArticleCard article={article} key={index} />;
   });
 
   return (
@@ -31,7 +25,7 @@ const MainPage = () => {
       )}
       <BreakingNews firstArticle={articles[0]} />
 
-      <div id='articles-container' data-cy='articles-container' >
+      <div id='articles-container' data-cy='articles-container'>
         {articleList}
       </div>
     </>

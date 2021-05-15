@@ -14,7 +14,7 @@ const rootReducer = (state, action) => {
       case 'SHOW_ARTICLE':
         return {
           ...state,
-          articles: action.payload,
+          article: action.payload,
         }
 
     default:

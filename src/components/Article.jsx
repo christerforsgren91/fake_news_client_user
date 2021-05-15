@@ -5,11 +5,7 @@ import Navbar from './layout/Navbar'
 import Footer from './layout/Footer'
 
 const Article = () => {
-const {articles} = useSelector((state) => state)
-
-  useEffect(() => {
-    Articles.show()
-  },[])
+const {article} = useSelector((state) => state)
 
 
 
@@ -17,7 +13,7 @@ const {articles} = useSelector((state) => state)
     <>
       <Navbar/>
       <h1>Boom</h1>
-      <h2>{articles.title}</h2>
+      <h2>{article.title}</h2>
       <Footer/>
     </>
   )
