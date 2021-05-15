@@ -14,14 +14,12 @@ const Articles = {
 
   async show(event) {
     let id = event.currentTarget.id;
-
     try {
       const response = await axios.get(`/articles/${id}`);
       store.dispatch({
         type: 'SHOW_ARTICLE',
-        payload: response.data.articles,
+        payload: response.data.article,
       });
-      return <Redirect to={`/article/${id}`} />;
     } catch (error) {
       errorHandler(error);
     }
