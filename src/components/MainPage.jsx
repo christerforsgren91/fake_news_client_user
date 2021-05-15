@@ -14,7 +14,7 @@ const MainPage = () => {
   }, []);
 
   let articleList = articles.slice(1).map((article, index) => {
-    return <ArticleCard article={article} key={index} />;
+    return <ArticleCard article={article} index={index} key={index} />;
   });
 
   return (

@@ -1,6 +1,7 @@
 const initialState = {
   error: false,
-  articles: []
+  articles: [],
+  article: []
 }
 
 export default initialState

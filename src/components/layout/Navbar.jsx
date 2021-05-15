@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <>
       <Segment data-cy='navbar' id='navbar' fluid inverted size='huge'>
-        <Tab
+        <Tab data-cy='home-tab'
           menu={{ secondary: true, pointing: true, fluid: true }}
           panes={panes}
         />
