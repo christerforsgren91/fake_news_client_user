@@ -12,10 +12,8 @@ const Articles = {
   },
 
   async show(id) {
-    debugger;
     try {
       const response = await axios.get(`/articles/${id}`);
-      debugger;
       store.dispatch({
         type: 'SHOW_ARTICLE',
         payload: response.data.article,
