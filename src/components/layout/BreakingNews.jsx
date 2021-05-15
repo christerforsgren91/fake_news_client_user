@@ -13,7 +13,7 @@ const BreakingNews = ({ firstArticle: article }) => {
           data-cy='breaking-img'
           className='breaking-img'
           src='https://images.unsplash.com/photo-1487758608033-7780b34680ac?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3589&q=80'
-          alt=''
+          alt='Breaking news attachment'
         />
         <div className='breaking-content'>
           <h2 className='breaking-title' data-cy='breaking-title'>
