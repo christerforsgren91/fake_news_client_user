@@ -127,6 +127,7 @@ body {
 }
 
 .article-title {
+  text-transform: uppercase;
   color: #fce42d;
 }
 
