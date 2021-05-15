@@ -5,7 +5,7 @@ const Footer = () => {
     <div data-cy='footer' id='footer'>
       <p className='footer-content'>
         “The majority of frogs in most areas of the United States are now gay,”{' '}
-        <span className='italic'>-Jones said</span>
+        <span className='italic'>-Alex Jones</span>
       </p>
     </div>
   );

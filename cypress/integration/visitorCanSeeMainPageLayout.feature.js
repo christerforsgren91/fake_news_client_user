@@ -1,7 +1,7 @@
 describe('Displays the main page with a list of article', () => {
   describe('success', () => {
     beforeEach(() => {
-      cy.intercept('GET', 'https://fake-newzzzz.herokuapp.com/api/articles', {
+      cy.intercept('GET', 'https://fake-newzzzzz.herokuapp.com/api/articles', {
         fixture: 'articles.json',
       });
       cy.visit('/');
@@ -27,7 +27,7 @@ describe('Displays the main page with a list of article', () => {
   });
   describe('unsuccessfully', () => {
     before(() => {
-      cy.intercept('GET', 'https://fake-newzzzz.herokuapp.com/api/articles', {
+      cy.intercept('GET', 'https://fake-newzzzzz.herokuapp.com/api/articles', {
         statusCode: 500,
         error: '500 Internal Server Error',
       });
@@ -36,7 +36,7 @@ describe('Displays the main page with a list of article', () => {
     it('is expected to show error message 500', () => {
       cy.get('[data-cy=error-message]').should(
         'contain',
-        'Servers are currently not responding, Pleas try again later'
+        'Servers are currently not responding, Please try again later'
       );
     });
   });

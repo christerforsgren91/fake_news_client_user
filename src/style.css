@@ -1,19 +1,25 @@
+h3 {
+  text-align: center;
+}
+
 body {
   background-color: #111518;
 }
 
 #navbar {
-  background-color: rgba(238, 191, 51, 0.863);
+  background-color: #fce42d;
   border-radius: 0;
 }
 
-#fakenews{
+#fakenews {
+  font-size: 4rem;
   color: rgba(218, 217, 216, 0.863);
 }
 
 #question {
-  color: rgb(255, 200, 35);
-  font-size: 50px;
+  font-size: 6rem;
+  color: #fce42d;
+  text-decoration: underline #d41717;
 }
 
 #category-container {
@@ -45,27 +51,96 @@ body {
   font-style: italic;
 }
 
-.breaking-news{
+.breaking-news {
   margin: 20px 80px;
   display: flex;
   height: 30rem;
   background-color: #202325;
   border-radius: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.breaking-img{
+.breaking-img {
   object-fit: cover;
 }
 
-.breaking-content{
-  color: aliceblue;
+.breaking-content {
+  color: rgba(218, 217, 216, 0.863);
   padding: 40px;
 }
 
-.card-container{
-  margin: 100px
+.breaking-title {
+  text-transform: uppercase;
+  color: #fce42d;
 }
 
-h3{
+.breaking-date {
+  color: rgba(148, 148, 148, 0.863);
+}
+
+.card-container {
+  background-color: #202325;
+  max-width: 400px;
+  overflow-wrap: normal;
+  display: inline-flex;
+  align-self: auto;
+  align-content: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 5px;
+}
+
+.card-image {
+  display: flex;
+  object-fit: cover;
+  height: 200px;
+  width: 400px;
+}
+
+.card-content {
   text-align: center;
+  color: rgba(218, 217, 216, 0.863);
+  padding: 20px;
+  text-decoration: none;
+  text-overflow: clip;
+}
+
+.card-header {
+  color: #fce42d;
+  text-transform: uppercase;
+}
+
+.card-date {
+  color: rgba(148, 148, 148, 0.863);
+  position: flex;
+  bottom: 0;
+}
+
+.article-container {
+  background-color: #202325;
+  align-content: center;
+  margin: 100px;
+  padding: 100px 300px 100px 300px;
+  color: rgba(218, 217, 216, 0.863);
+  font-size: 1.5rem;
+}
+
+.article-title {
+  text-transform: uppercase;
+  color: #fce42d;
+}
+
+.article-category {
+  font-size: 1.7rem;
+}
+
+.article-author {
+  text-align: right;
+  font-size: 1rem;
+  color: rgba(218, 217, 216, 0.863);
+}
+
+.article-date {
+  color: rgba(141, 141, 141, 0.863);
 }
