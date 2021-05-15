@@ -7,17 +7,15 @@ import axios from 'axios';
 import './style.css';
 import { Provider } from 'react-redux';
 import store from './state/store/configureStore';
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom';
 
-axios.defaults.baseURL = 'https://fake-newzzzz.herokuapp.com/api';
-
+axios.defaults.baseURL = 'https://fake-newzzzzz.herokuapp.com/api';
 
 ReactDOM.render(
   <Router>
     <Provider store={store}>
-       <App />
+      <App />
     </Provider>
-   
   </Router>,
   document.getElementById('root')
 );

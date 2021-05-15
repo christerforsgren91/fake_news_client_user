@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Redirect } from 'react-router';
 import store from '../state/store/configureStore';
 
 const Articles = {
@@ -11,10 +12,11 @@ const Articles = {
     }
   },
 
-  async show(setArticles, id) {
+  async show(event) {
     try {
-      const response = await axios.get(`/articles/${id}`);
-      setArticles(response.data.articles);
+      const response = await axios.get(`/articles/${event}`);
+      store.dispatch({type: 'SHOW_ARTICLE', payload:response.data.articles.id});
+      return <Redirect to='/article/'/>
     } catch (error) {
       errorHandler(error);
     }
