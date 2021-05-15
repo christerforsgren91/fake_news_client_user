@@ -1,9 +1,10 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 const BreakingNews = ({ firstArticle: article }) => {
   if (article) {
     return (
-        <div className='breaking-news' data-cy='breaking-news' placeholder>
+        <Link to={`/articles/${article.id}`} className='breaking-news' data-cy='breaking-news' placeholder>
           <img
           data-cy='breaking-img'
             className='breaking-img'
@@ -15,7 +16,7 @@ const BreakingNews = ({ firstArticle: article }) => {
             <h4 data-cy='breaking-teaser' >{article.teaser}</h4>
             <p data-cy='breaking-date' >{article.date}</p>
           </div>
-        </div>
+        </Link>
     );
   }
   return '';

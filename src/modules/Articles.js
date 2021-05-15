@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Redirect, Router } from 'react-router-dom';
 import store from '../state/store/configureStore';
 
 const Articles = {
@@ -12,10 +11,11 @@ const Articles = {
     }
   },
 
-  async show(event) {
-    let id = event.currentTarget.id;
+  async show(id) {
+    debugger;
     try {
       const response = await axios.get(`/articles/${id}`);
+      debugger
       store.dispatch({
         type: 'SHOW_ARTICLE',
         payload: response.data.article,
@@ -32,7 +32,7 @@ const errorHandler = (error) => {
   if (error.response.status === 500) {
     store.dispatch({
       type: 'ERROR_MESSAGE',
-      payload: 'Servers are currently not responding, Pleas try again later',
+      payload: 'Servers are currently not responding, Please try again later',
     });
   } else {
     store.dispatch({

@@ -14,7 +14,6 @@ const rootReducer = (state, action) => {
       case 'SHOW_ARTICLE':
         return {
           ...state,
-          newPage: true,
           article: action.payload,
         }
 

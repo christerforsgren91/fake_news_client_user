@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 
 
 const MainPage = () => {
-  const { error, message, articles, newPage } = useSelector((state) => state);
+  const { error, message, articles} = useSelector((state) => state);
 
   useEffect(() => {
     Articles.index();
