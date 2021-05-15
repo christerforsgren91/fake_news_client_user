@@ -6,12 +6,13 @@ const Navbar = () => {
   const panes = [
     {
       menuItem: 'Home',
-    }
+    },
   ];
   return (
     <>
       <Segment data-cy='navbar' id='navbar' fluid inverted size='huge'>
-        <Tab data-cy='home-tab'
+        <Tab
+          data-cy='home-tab'
           menu={{ secondary: true, pointing: true, fluid: true }}
           panes={panes}
           as={Link}
@@ -19,7 +20,7 @@ const Navbar = () => {
         />
       </Segment>
       <Header id='fakenews' data-cy='header' as='h1' textAlign='center'>
-      FAKE<span id='question'>?</span>NEWS
+        FAKE<span id='question'>?</span>NEWS
       </Header>
     </>
   );

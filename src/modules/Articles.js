@@ -15,7 +15,7 @@ const Articles = {
     debugger;
     try {
       const response = await axios.get(`/articles/${id}`);
-      debugger
+      debugger;
       store.dispatch({
         type: 'SHOW_ARTICLE',
         payload: response.data.article,

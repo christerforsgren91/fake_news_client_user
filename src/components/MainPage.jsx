@@ -5,9 +5,8 @@ import ArticleCard from './ArticleCard';
 import BreakingNews from './layout/BreakingNews';
 import { useSelector } from 'react-redux';
 
-
 const MainPage = () => {
-  const { error, message, articles} = useSelector((state) => state);
+  const { error, message, articles } = useSelector((state) => state);
 
   useEffect(() => {
     Articles.index();
@@ -25,9 +24,6 @@ const MainPage = () => {
         </Header>
       )}
       <BreakingNews firstArticle={articles[0]} />
-
-      
-      
 
       <div id='articles-container' data-cy='articles-container'>
         {articleList}

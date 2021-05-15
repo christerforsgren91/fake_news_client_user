@@ -1,7 +1,7 @@
 const initialState = {
   error: false,
   articles: [],
-  article: []
-}
+  article: [],
+};
 
-export default initialState
+export default initialState;

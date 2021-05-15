@@ -25,7 +25,9 @@ const Article = () => {
             {article.body}
           </p>
           <p data-cy='article-author' className='article-author'>
-            {article.author && article.author.first_name+' '+article.author.last_name}:{' '}
+            {article.author &&
+              article.author.first_name + ' ' + article.author.last_name}
+            :{' '}
             <span data-cy='article-date' className='article-date'>
               {article.date}
             </span>

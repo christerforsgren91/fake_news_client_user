@@ -36,7 +36,7 @@ describe('Displays the main page with a list of article', () => {
     it('is expected to show error message 500', () => {
       cy.get('[data-cy=error-message]').should(
         'contain',
-        'Servers are currently not responding, Pleas try again later'
+        'Servers are currently not responding, Please try again later'
       );
     });
   });
