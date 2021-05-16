@@ -79,6 +79,10 @@ body {
   color: rgba(148, 148, 148, 0.863);
 }
 
+.breaking-news:hover {
+  transform: scale(1.01);
+}
+
 .card-container {
   background-color: #202325;
   max-width: 400px;
@@ -89,6 +93,10 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   border-radius: 5px;
+}
+
+.card-container:hover {
+  transform: scale(1.03);
 }
 
 .card-image {
