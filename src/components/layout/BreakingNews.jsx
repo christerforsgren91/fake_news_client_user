@@ -7,8 +7,7 @@ const BreakingNews = ({ firstArticle: article }) => {
       <Link
         to={`/articles/${article.id}`}
         className='breaking-news'
-        data-cy='breaking-news'
-        placeholder>
+        data-cy='breaking-news'>
         <img
           data-cy='breaking-img'
           className='breaking-img'

@@ -12,26 +12,28 @@ const Category = () => {
   useEffect(() => {
     // eslint-disable-next-line
     Articles.index(category);
-  }, []);
+  }, [category]);
 
   let categoryList = articles.map((article, index) => {
     return <ArticleCard article={article} index={index} key={index} />;
   });
 
   return (
-    <div>
-    <CategoryMenu />
+    <>
+      <CategoryMenu />
       <h1 className='category-header' data-cy='category-header'>
         {category}
       </h1>
       {articles[0] ? (
-        categoryList
+        <div id='articles-container'>{categoryList}</div>
       ) : (
-        <p data-cy='error-message' style={{color:"red", textAlign:"center"}}>
+        <p
+          data-cy='error-message'
+          style={{ color: 'red', textAlign: 'center' }}>
           Selected category does not have any articles
         </p>
       )}
-    </div>
+    </>
   );
 };
 

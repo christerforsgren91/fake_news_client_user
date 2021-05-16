@@ -1,10 +1,11 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { Menu, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router';
 
 const CategoryMenu = () => {
-  // let activeItem = 'home';
-  const [activeItem, setActiveItem] = useState('');
+  const { category } = useParams();
+  const [activeItem, setActiveItem] = useState(category);
   const menuItems = [
     'FlatEarth',
     'Aliens',
@@ -18,6 +19,7 @@ const CategoryMenu = () => {
     return menuItems.map((item) => {
       return (
         <Menu.Item
+          key={item}
           onClick={() => {
             setActiveItem(item);
           }}
