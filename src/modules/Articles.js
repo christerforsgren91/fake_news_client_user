@@ -10,6 +10,14 @@ const Articles = {
       errorHandler(error);
     }
   },
+  async indexCategory(category) {
+    try {
+      const response = await axios.get(`/articles/${category}`);
+      store.dispatch({ type: 'SET_ARTICLES', payload: response.data.articles });
+    } catch (error) {
+      errorHandler(error);
+    }
+  },
 
   async show(id) {
     try {
