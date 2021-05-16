@@ -1,6 +1,6 @@
 describe('User is able to navigate to Category page', () => {
   beforeEach(() => {
-    cy.intercept('GET', 'https://fake-newzzzzz.herokuapp.com/api/articles/', {
+    cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles/', {
       fixture: 'articles.json',
     });
     cy.visit('/');
@@ -9,7 +9,7 @@ describe('User is able to navigate to Category page', () => {
     beforeEach(() => {
       cy.intercept(
         'GET',
-        'https://fake-newzzzzz.herokuapp.com/api/articles/?category=**',
+        'https://fakest-newzz.herokuapp.com/api/articles/?category=**',
         {
           fixture: 'categories.json',
         }
@@ -34,7 +34,7 @@ describe('User is able to navigate to Category page', () => {
     beforeEach(() => {
       cy.intercept(
         'GET',
-        'https://fake-newzzzzz.herokuapp.com/api/articles/?category=**',
+        'https://fakest-newzz.herokuapp.com/api/articles/?category=**',
         {
           articles: [],
         }
