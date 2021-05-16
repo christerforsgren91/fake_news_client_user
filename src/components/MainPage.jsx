@@ -20,13 +20,13 @@ const MainPage = () => {
 
   return (
     <>
-      {error && (
-        <Header data-cy='error-message' color='red'>
-          {message}
-        </Header>
+    <CategoryMenu />
+    {error && (
+      <Header data-cy='error-message' color='red'>
+      {message}
+      </Header>
       )}
       <BreakingNews firstArticle={articles[0]} />
-      <CategoryMenu />
 
       <div id='articles-container' data-cy='articles-container'>
         {articleList}

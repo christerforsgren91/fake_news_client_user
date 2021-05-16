@@ -1,10 +1,10 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Menu, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const CategoryMenu = () => {
-  let activeItem = 'home';
-
+  // let activeItem = 'home';
+  const [activeItem, setActiveItem] = useState('');
   const menuItems = [
     'FlatEarth',
     'Aliens',
@@ -18,7 +18,10 @@ const CategoryMenu = () => {
     return menuItems.map((item) => {
       return (
         <Menu.Item
-          style={{color: 'white'}}
+          onClick={() => {
+            setActiveItem(item);
+          }}
+          style={{ color: 'white' }}
           data-cy='category-button'
           name={item}
           active={activeItem === item}
@@ -39,8 +42,8 @@ const CategoryMenu = () => {
         }}
         inverted
         secondary>
-          {renderMenuItems()}
-        </Menu>
+        {renderMenuItems()}
+      </Menu>
     </Segment>
   );
 };

@@ -3,6 +3,7 @@ import Articles from '../modules/Articles';
 import ArticleCard from './ArticleCard';
 import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
+import CategoryMenu from './layout/CategoryMenu';
 
 const Category = () => {
   const { articles } = useSelector((state) => state);
@@ -19,6 +20,7 @@ const Category = () => {
 
   return (
     <div>
+    <CategoryMenu />
       <h1 className='category-header' data-cy='category-header'>
         {category}
       </h1>
