@@ -37,6 +37,7 @@ describe('User is able to navigate to Category page', () => {
       );
     });
     it ('is expected to display error message', () => {
+      cy.get('[data-cy=category-button]').eq(3).click();
       cy.get('[data-cy=error-message]').should('contain', 'Selected category does not have any articles');
     })
   });

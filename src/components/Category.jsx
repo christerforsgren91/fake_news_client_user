@@ -22,7 +22,13 @@ const Category = () => {
       <h1 className='category-header' data-cy='category-header'>
         {category}
       </h1>
-      {categoryList}
+      {articles[0] ? (
+        categoryList
+      ) : (
+        <p data-cy='error-message' style={{color:"red", textAlign:"center"}}>
+          Selected category does not have any articles
+        </p>
+      )}
     </div>
   );
 };
