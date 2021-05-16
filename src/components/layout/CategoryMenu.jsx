@@ -1,49 +1,46 @@
 import React from 'react';
-import { Menu, Segment } from 'semantic-ui-react'
+import { Menu, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const CategoryMenu = () => {
-  let activeItem = 'home'
-  return (
-    <Segment inverted>
-      <Menu inverted secondary>
-        <Menu.Item 
-        name='Flat Earth' 
-        active={activeItem === 'home'} 
-        as={Link} 
-        to= '/category/Flat+Earth'
-        />
+  let activeItem = 'home';
+
+  const menuItems = [
+    'FlatEarth',
+    'Aliens',
+    'Illuminati',
+    'Politics',
+    'Covid',
+    'Hollywood',
+  ];
+
+  const renderMenuItems = () => {
+    return menuItems.map((item) => {
+      return (
         <Menu.Item
-          name='Illuminati'
-          active={activeItem === 'messages'}
+          style={{color: 'white'}}
+          data-cy='category-button'
+          name={item}
+          active={activeItem === item}
           as={Link}
-          to= '/category/Illuminati'
+          to={`/category/${item}`}
         />
-        <Menu.Item 
-        name='Aliens' 
-        active={activeItem === 'friends'} 
-        as={Link} 
-        to= '/category/Aliens'
-        />
-        <Menu.Item 
-        name='Covid' 
-        active={activeItem === 'friends'} 
-        as={Link} 
-        to= '/category/Covid'
-        />
-        <Menu.Item 
-        name='Politics' 
-        active={activeItem === 'friends'} 
-        as={Link} 
-        to= '/category/Politics'
-        />
-        <Menu.Item 
-        name='Hollywood' 
-        active={activeItem === 'friends'} 
-        as={Link} 
-        to= '/category/Hollywood'
-        />
-      </Menu>
+      );
+    });
+  };
+
+  return (
+    <Segment inverted data-cy='category-bar'>
+      <Menu
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          color: 'rgba(252, 251, 250, 1)',
+        }}
+        inverted
+        secondary>
+          {renderMenuItems()}
+        </Menu>
     </Segment>
   );
 };

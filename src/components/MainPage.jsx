@@ -5,12 +5,14 @@ import ArticleCard from './ArticleCard';
 import BreakingNews from './layout/BreakingNews';
 import { useSelector } from 'react-redux';
 import CategoryMenu from './layout/CategoryMenu';
+import store from '../state/store/configureStore';
 
 const MainPage = () => {
   const { error, message, articles } = useSelector((state) => state);
 
   useEffect(() => {
     Articles.index();
+    store.dispatch({type: 'ERROR_RESET'})
   }, []);
 
   let articleList = articles.slice(1).map((article, index) => {

@@ -13,10 +13,11 @@ describe('User is able to navigate to Category page', () => {
 
   it('user is able to navigate to category page', () => {
     cy.get('[data-cy=category-bar]').within(() => {
-      cy.get('[data-cy=category-button]').should('have.length', 5);
-      cy.get('[data-cy=category-button]').first().click();
-      cy.get('[data-cy=category-header]').should('contain', 'Aliens');
-      cy.url().should('contain', 'http://localhost:3001/category');
+      cy.get('[data-cy=category-button]').should('have.length', 6);
+      cy.get('[data-cy=category-button]').eq(4).click();
     });
+      cy.get('[data-cy=category-header]').should('contain', 'Politics');
+      cy.url().should('contain', 'http://localhost:3001/category');
+    
   });
 });

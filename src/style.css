@@ -13,7 +13,7 @@ body {
 
 #fakenews {
   font-size: 4rem;
-  color: rgba(218, 217, 216, 0.863);
+  color: rgba(252, 251, 250, 1);
 }
 
 #question {
@@ -151,4 +151,9 @@ body {
 
 .article-date {
   color: rgba(141, 141, 141, 0.863);
+}
+
+.category-header {
+  color: #fce42d;
+  text-align: center;
 }
