@@ -7,7 +7,7 @@ const CategoryMenu = () => {
   const { category } = useParams();
   const [activeItem, setActiveItem] = useState(category);
   const menuItems = [
-    'FlatEarth',
+    'Science',
     'Aliens',
     'Illuminati',
     'Politics',
