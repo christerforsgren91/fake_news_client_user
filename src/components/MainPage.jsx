@@ -4,6 +4,7 @@ import Articles from '../modules/Articles';
 import ArticleCard from './ArticleCard';
 import BreakingNews from './layout/BreakingNews';
 import { useSelector } from 'react-redux';
+import CategoryMenu from './layout/CategoryMenu';
 
 const MainPage = () => {
   const { error, message, articles } = useSelector((state) => state);
@@ -24,6 +25,7 @@ const MainPage = () => {
         </Header>
       )}
       <BreakingNews firstArticle={articles[0]} />
+      <CategoryMenu />
 
       <div id='articles-container' data-cy='articles-container'>
         {articleList}

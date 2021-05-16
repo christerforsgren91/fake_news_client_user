@@ -4,7 +4,7 @@ import MainPage from './components/MainPage';
 import Footer from './components/layout/Footer';
 import Article from './components/Article';
 import { Switch, Route } from 'react-router';
-import CategoryMenu from './components/layout/CategoryMenu';
+import Category from './components/Category';
 
 const App = () => {
   return (
@@ -17,8 +17,8 @@ const App = () => {
         <Route exact path='/articles/:id'>
           <Article />
         </Route>
-        <Route exact path='/articles/:category' >
-          <CategoryMenu />
+        <Route exact path='/category/:category' >
+          <Category />
         </Route>
       </Switch>
       <Footer />

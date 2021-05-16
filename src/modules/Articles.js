@@ -2,17 +2,15 @@ import axios from 'axios';
 import store from '../state/store/configureStore';
 
 const Articles = {
-  async index() {
+  async index(category) {
     try {
-      const response = await axios.get('/articles/');
-      store.dispatch({ type: 'SET_ARTICLES', payload: response.data.articles });
-    } catch (error) {
-      errorHandler(error);
-    }
-  },
-  async indexCategory(category) {
-    try {
-      const response = await axios.get(`/articles/${category}`);
+      debugger
+      let response;
+      if (category) {
+        response = await axios.get(`/articles/${category}`);
+      } else {
+        response = await axios.get('/articles/');
+      }
       store.dispatch({ type: 'SET_ARTICLES', payload: response.data.articles });
     } catch (error) {
       errorHandler(error);
