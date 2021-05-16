@@ -4,6 +4,7 @@ import MainPage from './components/MainPage';
 import Footer from './components/layout/Footer';
 import Article from './components/Article';
 import { Switch, Route } from 'react-router';
+import Category from './components/Category';
 
 const App = () => {
   return (
@@ -15,6 +16,9 @@ const App = () => {
         </Route>
         <Route exact path='/articles/:id'>
           <Article />
+        </Route>
+        <Route exact path='/category/:category' >
+          <Category />
         </Route>
       </Switch>
       <Footer />

@@ -18,19 +18,19 @@ const Article = () => {
           <h1 data-cy='article-title' className='article-title'>
             {article.title}
           </h1>
-          <p data-cy='article-category' className='article-category'>
-            {article.category}
-          </p>
-          <p data-cy='article-body' className='article-body'>
-            {article.body}
-          </p>
           <p data-cy='article-author' className='article-author'>
             {article.author &&
-              `${article.author.first_name} ${article.author.last_name}`}
+              `Written by: ${article.author.first_name} ${article.author.last_name}`}
             :{' '}
             <span data-cy='article-date' className='article-date'>
               {article.date}
             </span>
+          </p>
+          <p data-cy='article-category' className='article-category'>
+            Category: {article.category}
+          </p>
+          <p data-cy='article-body' className='article-body'>
+            {article.body}
           </p>
         </>
       )}

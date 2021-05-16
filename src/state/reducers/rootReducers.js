@@ -17,6 +17,12 @@ const rootReducer = (state, action) => {
         article: action.payload,
       };
 
+    case 'ERROR_RESET':
+      return {
+        ...state,
+        error: false,
+      };
+
     default:
       return state;
   }

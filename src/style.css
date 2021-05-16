@@ -13,7 +13,9 @@ body {
 
 #fakenews {
   font-size: 4rem;
-  color: rgba(218, 217, 216, 0.863);
+  color: rgba(252, 251, 250, 1);
+  margin: 45px 0;
+  text-align: center;
 }
 
 #question {
@@ -29,17 +31,16 @@ body {
 #articles-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   padding: 0 100px 20px;
 }
 
 #footer {
-  position: flex;
   bottom: 0;
   margin-top: 1rem;
   padding: 1rem;
   background-color: rgb(19, 18, 17);
-  width: 100vw;
+  width: 100%;
   text-align: center;
 }
 
@@ -52,7 +53,7 @@ body {
 }
 
 .breaking-news {
-  margin: 20px 80px;
+  margin: 50px 80px;
   display: flex;
   height: 30rem;
   background-color: #202325;
@@ -79,6 +80,10 @@ body {
   color: rgba(148, 148, 148, 0.863);
 }
 
+.breaking-news:hover {
+  transform: scale(1.01);
+}
+
 .card-container {
   background-color: #202325;
   max-width: 400px;
@@ -89,6 +94,11 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   border-radius: 5px;
+  margin: 10px 25px;
+}
+
+.card-container:hover {
+  transform: scale(1.03);
 }
 
 .card-image {
@@ -127,6 +137,7 @@ body {
 }
 
 .article-title {
+  font-size: 40px;
   text-transform: uppercase;
   color: #fce42d;
 }
@@ -136,11 +147,15 @@ body {
 }
 
 .article-author {
-  text-align: right;
   font-size: 1rem;
   color: rgba(218, 217, 216, 0.863);
 }
 
 .article-date {
   color: rgba(141, 141, 141, 0.863);
+}
+
+.category-header {
+  color: #fce42d;
+  text-align: center;
 }

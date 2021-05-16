@@ -2,9 +2,14 @@ import axios from 'axios';
 import store from '../state/store/configureStore';
 
 const Articles = {
-  async index() {
+  async index(category) {
     try {
-      const response = await axios.get('/articles/');
+      let response;
+      if (category) {
+        response = await axios.get(`/articles/?category=${category}`);
+      } else {
+        response = await axios.get('/articles/');
+      }
       store.dispatch({ type: 'SET_ARTICLES', payload: response.data.articles });
     } catch (error) {
       errorHandler(error);
@@ -31,6 +36,11 @@ const errorHandler = (error) => {
     store.dispatch({
       type: 'ERROR_MESSAGE',
       payload: 'Servers are currently not responding, Please try again later',
+    });
+  } else if (error.response.status === 404) {
+    store.dispatch({
+      type: 'ERROR_MESSAGE',
+      payload: error.response.data.error_message,
     });
   } else {
     store.dispatch({
