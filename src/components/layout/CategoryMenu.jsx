@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, Segment } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
 
@@ -18,35 +18,34 @@ const CategoryMenu = () => {
   const renderMenuItems = () => {
     return menuItems.map((item) => {
       return (
-        <Menu.Item
-          key={item}
-          onClick={() => {
-            setActiveItem(item);
-          }}
-          style={{ color: 'white' }}
-          data-cy='category-button'
-          name={item}
-          active={activeItem === item}
-          as={Link}
-          to={`/category/${item}`}
-        />
+        <div>
+          <Menu.Item
+            key={item}
+            onClick={() => {
+              setActiveItem(item);
+            }}
+            style={{ fontSize: 17 }}
+            data-cy='category-button'
+            name={item}
+            active={activeItem === item}
+            as={Link}
+            to={`/category/${item}`}
+          />
+        </div>
       );
     });
   };
 
   return (
-    <Segment inverted data-cy='category-bar'>
-      <Menu
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          color: 'rgba(252, 251, 250, 1)',
-        }}
-        inverted
-        secondary>
+    <div
+      inverted
+      data-cy='category-bar'
+      compact
+      style={{ width: 'fit-content', margin: 'auto' }}>
+      <Menu inverted secondary>
         {renderMenuItems()}
       </Menu>
-    </Segment>
+    </div>
   );
 };
 

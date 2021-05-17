@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const ArticleCard = ({ article, index }) => {
   return (
-    <div className='card-container' data-cy={`article-card-${index}`}>
+    <div className='card-container box-shadow' data-cy={`article-card-${index}`}>
       <Link to={`/articles/${article.id}`}>
         <div id={article.id} data-cy='article' >
           <img

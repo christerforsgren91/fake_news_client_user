@@ -23,7 +23,7 @@ const Navbar = () => {
       </Segment>
       <Link data-cy='header' to='/'>
         <div id='fakenews'>
-          FAKE<span id='question'>?</span>NEWS
+          FAKE<span id='question'> ? </span>NEWS
         </div>
       </Link>
     </>
