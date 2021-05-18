@@ -18,7 +18,7 @@ const Article = () => {
           <img
             data-cy='article-image'
             src={article.image}
-            alt='article.picture'
+            alt='article.attachment'
             style={{ width: '100%' }}
           />
           <h1 data-cy='article-title' className='article-title'>
