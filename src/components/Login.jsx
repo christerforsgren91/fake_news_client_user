@@ -5,7 +5,7 @@ import { Button, Form, Grid, Segment } from 'semantic-ui-react';
 const Login = () => {
   return (
     <>
-      <Segment placeholder style={{backgroundColor: '#202325'}}>
+      <Segment placeholder style={{backgroundColor: '#202325', height: '35vh'}}>
         <Grid columns={2} textAlign='center'>
           <Grid.Row verticalAlign='middle' />
           <Grid.Column>

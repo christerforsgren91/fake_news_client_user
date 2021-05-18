@@ -6,6 +6,11 @@ body {
   background-color: #111518;
 }
 
+.InputElement {
+  color: white !important;
+  background-color: black;
+}
+
 #navbar {
   background-color: #fce42d;
   border-radius: 0;
