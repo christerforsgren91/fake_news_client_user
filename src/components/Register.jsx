@@ -1,14 +1,24 @@
 import React from 'react';
 import { Button, Grid, Segment, Form } from 'semantic-ui-react';
 import { injectStripe, CardElement } from 'react-stripe-elements';
+import Authentication from '../modules/Authentication';
 
 const Register = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    debugger;
+    Authentication.subscribe(event)
+  };
+
   return (
     <Segment placeholder style={{ backgroundColor: '#202325' }}>
       <Grid columns={3} stackable textAlign='center'>
         <Grid.Row verticalAlign='middle'>
           <Grid.Column centered>
-            <Form size='small' data-cy='registration-form'>
+            <Form
+              size='small'
+              data-cy='registration-form'
+              onSubmit={handleSubmit}>
               <Form.Field>
                 <Form.Input
                   name='email'
