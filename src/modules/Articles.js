@@ -27,6 +27,21 @@ const Articles = {
       errorHandler(error);
     }
   },
+
+  async ratings(rating, id) {
+    let params = {
+      rating: rating,
+      article_id: id,
+    };
+    try {
+      await axios.put('/ratings', params);
+      store.dispatch({
+        type: 'SUCCESS_MESSAGE',
+      })
+    } catch (error) {
+      errorHandler(error);
+    }
+  },
 };
 
 export default Articles;

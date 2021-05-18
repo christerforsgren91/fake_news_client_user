@@ -23,6 +23,12 @@ const rootReducer = (state, action) => {
         error: false,
       };
 
+    case 'SUCCESS_MESSAGE':
+      return {
+        ...state,
+        popupSuccess: true,
+      };
+
     default:
       return state;
   }

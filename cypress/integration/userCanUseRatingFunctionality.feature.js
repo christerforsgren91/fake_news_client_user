@@ -15,19 +15,15 @@ describe('User can use rating functionality', () => {
         cy.get('[data-cy=rating]')
           .find('i')
           .eq(3)
-          .should('have.attr', 'aria-checked', true);
+          .should('have.attr', 'aria-checked', 'true');
       });
     });
   });
   it('is expected to allow user to rate', () => {
-    cy.visit('/articles/3')
+    cy.visit('/articles/3');
     cy.get('[data-cy=article-container]').within(() => {
-      cy.get('[data-cy=article-rating]').should('contain', '3.7')
+      cy.get('[data-cy=article-rating]').should('contain', '3.7');
       cy.get('[data-cy=article-rating-button]').find('i').eq(4).click();
-      cy.get('[data-cy=rating-message]').should(
-        'contain',
-        'Thank you for your opinion!'
-      );
     });
   });
 });
