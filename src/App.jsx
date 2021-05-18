@@ -6,7 +6,8 @@ import Article from './components/Article';
 import { Switch, Route } from 'react-router';
 import Category from './components/Category';
 import Login from './components/Login';
-import Registration from "./components/Register";
+import Registration from './components/Register';
+import { Elements } from 'react-stripe-elements';
 
 const App = () => {
   return (
@@ -19,14 +20,16 @@ const App = () => {
         <Route exact path='/articles/:id'>
           <Article />
         </Route>
-        <Route exact path='/category/:category' >
+        <Route exact path='/category/:category'>
           <Category />
         </Route>
         <Route exact path='/login'>
           <Login />
         </Route>
         <Route exact path='/registration'>
-          <Registration />
+          <Elements>
+            <Registration />
+          </Elements>
         </Route>
       </Switch>
       <Footer />
