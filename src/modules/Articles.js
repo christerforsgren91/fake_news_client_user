@@ -37,7 +37,7 @@ const Articles = {
       await axios.put('/ratings', params);
       store.dispatch({
         type: 'SUCCESS_MESSAGE',
-      })
+      });
     } catch (error) {
       errorHandler(error);
     }

@@ -3,6 +3,9 @@ describe('User can use rating functionality', () => {
     cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles', {
       fixture: 'articles.json',
     });
+    cy.intercept('PUT', 'https://fakest-newzz.herokuapp.com/api/ratings', {
+      statusCode: 200,
+    });
     cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles/3', {
       fixture: 'specificArticle.json',
     });
