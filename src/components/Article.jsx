@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import Articles from '../modules/Articles';
+import { Rating } from "semantic-ui-react";
 
 const Article = () => {
   const { article } = useSelector((state) => state);
@@ -26,6 +27,14 @@ const Article = () => {
               {article.date}
             </span>
           </p>
+          <Rating
+            data-cy="article-rating-button"
+            defaultRating={Math.floor(article.rating)}
+            maxRating={5}
+            icon='star'
+            size='tiny'
+          />
+          <span data-cy='article-rating' style={{fontSize: '1rem'}}>{` ${article.rating}`}</span>
           <p data-cy='article-category' className='article-category'>
             Category: {article.category}
           </p>

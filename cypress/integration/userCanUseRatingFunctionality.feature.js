@@ -15,7 +15,7 @@ describe('User can use rating functionality', () => {
         cy.get('[data-cy=rating]')
           .find('i')
           .eq(3)
-          .should('have.attr', 'aria-checked', true);
+          .should('have.attr', 'aria-checked', 'true');
       });
     });
   });
