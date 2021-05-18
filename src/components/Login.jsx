@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Form, Grid, GridRow, Modal, Segment } from 'semantic-ui-react';
+import { Button, Form, Grid, Segment } from 'semantic-ui-react';
 
 const Login = () => {
   return (
     <>
-      <Segment placeholder inverted>
+      <Segment placeholder style={{backgroundColor: '#202325'}}>
         <Grid columns={2} textAlign='center'>
           <Grid.Row verticalAlign='middle' />
           <Grid.Column>
@@ -28,10 +28,7 @@ const Login = () => {
                   required
                 />
                 <Button.Group>
-                  <Button 
-                  positive
-                  type='submit'
-                  data-cy='login-submit'>
+                  <Button positive type='submit' data-cy='login-submit'>
                     Login
                   </Button>
                   <Button.Or />
@@ -40,8 +37,7 @@ const Login = () => {
                     size='medium'
                     data-cy='registration-button'
                     as={Link}
-                    to='/registration'
-                    >
+                    to='/registration'>
                     Register
                   </Button>
                 </Button.Group>

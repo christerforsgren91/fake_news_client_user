@@ -6,6 +6,7 @@ import Article from './components/Article';
 import { Switch, Route } from 'react-router';
 import Category from './components/Category';
 import Login from './components/Login';
+import Registration from "./components/Register";
 
 const App = () => {
   return (
@@ -23,6 +24,9 @@ const App = () => {
         </Route>
         <Route exact path='/login'>
           <Login />
+        </Route>
+        <Route exact path='/registration'>
+          <Registration />
         </Route>
       </Switch>
       <Footer />
