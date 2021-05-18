@@ -1,29 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Segment, Tab } from 'semantic-ui-react';
+import { Segment, Menu } from 'semantic-ui-react';
 import store from '../../state/store/configureStore';
 
 const Navbar = () => {
-  const panes = [
-    {
-      menuItem: 'Home',
-    },
-  ];
   return (
     <>
       <Segment data-cy='navbar' id='navbar' inverted size='tiny'>
-        <Tab
-          data-cy='home-tab'
-          menu={{ secondary: true, pointing: true }}
-          panes={panes}
-          as={Link}
-          to='/'
-          onClick={() => store.dispatch({ type: 'ERROR_RESET' })}
-        />
+        <Menu
+          pointing
+          secondary
+          stackable
+          size='small'
+          style={{ margin: '0 10%' }}>
+          <Menu.Item
+            name='home'
+            data-cy='home-tab'
+            active
+            as={Link}
+            to='/'
+            onClick={() => store.dispatch({ type: 'ERROR_RESET' })}
+          />
+        </Menu>
       </Segment>
       <Link data-cy='header' to='/'>
         <div id='fakenews'>
-          FAKE<span id='question'>?</span>NEWS
+          FAKE<span id='question'> ? </span>NEWS
         </div>
       </Link>
     </>
