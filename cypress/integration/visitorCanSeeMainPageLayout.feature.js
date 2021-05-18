@@ -8,7 +8,7 @@ describe('Displays the main page with a list of article', () => {
     });
     it('displays main page layout', () => {
       cy.get('[data-cy=navbar]').should('contain', 'Home');
-      cy.get('[data-cy=header]').should('contain', 'FAKE?NEWS');
+      cy.get('[data-cy=header]').should('contain', 'FAKE ? NEWS');
       cy.get('[data-cy=breaking-news]').should('contain', [0]);
       cy.get('[data-cy=breaking-img]').should('exist');
       cy.get('[data-cy=breaking-title]').should('contain', 'Something');
