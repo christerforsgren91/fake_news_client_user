@@ -21,6 +21,13 @@ const Navbar = () => {
             to='/'
             onClick={() => store.dispatch({ type: 'ERROR_RESET' })}
           />
+          <Menu.Item 
+            name='Login'
+            data-cy='login-button'
+            active
+            as={Link}
+            to='/login'
+          />
         </Menu>
       </Segment>
       <Link data-cy='header' to='/'>
