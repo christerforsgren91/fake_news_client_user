@@ -15,6 +15,11 @@ const Article = () => {
     <div data-cy='article-container' className='article-container'>
       {article && (
         <>
+          <img
+            data-cy='article-image'
+            src={article.image}
+            alt='article.picture'
+          />
           <h1 data-cy='article-title' className='article-title'>
             {article.title}
           </h1>
