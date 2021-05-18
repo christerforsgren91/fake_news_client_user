@@ -9,6 +9,7 @@ body {
 #navbar {
   background-color: #fce42d;
   border-radius: 0;
+  height: 55px;
 }
 
 #fakenews {
