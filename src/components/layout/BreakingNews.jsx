@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Rating } from 'semantic-ui-react';
 
 const BreakingNews = ({ firstArticle: article }) => {
   if (article) {
@@ -19,6 +20,14 @@ const BreakingNews = ({ firstArticle: article }) => {
             {article.title}
           </h2>
           <h4 data-cy='breaking-teaser'>{article.teaser}</h4>
+          <Rating
+            data-cy='breaking-rating'
+            defaultRating={Math.floor(article.rating)}
+            maxRating={5}
+            disabled
+            icon='star'
+            size='tiny'
+          />
           <p className='breaking-date' data-cy='breaking-date'>
             {article.date}
           </p>

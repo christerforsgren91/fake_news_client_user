@@ -9,7 +9,7 @@ const Article = () => {
   const { id } = useParams();
 
   const articleRating = (event, { rating, maxRating }) => {
-    Articles.ratings(rating, id)
+    Articles.ratings(rating, id);
   };
 
   useEffect(() => {
@@ -29,16 +29,10 @@ const Article = () => {
           <h1 data-cy='article-title' className='article-title'>
             {article.title}
           </h1>
-          <p data-cy='article-author' className='article-author'>
-            {article.author &&
-              `Written by: ${article.author.first_name} ${article.author.last_name}`}
-            {' '}-{' '}
-            <span data-cy='article-date' className='article-date'>
-              {article.date}
-            </span>
+          <p data-cy='article-category' className='article-category'>
+            Category: {article.category}
           </p>
           <Popup
-            data-cy='rating-message'
             content={
               popupSuccess
                 ? 'Thank you for your opinion!'
@@ -46,6 +40,7 @@ const Article = () => {
             }
             on='Click'
             pinned
+            popper={{id: 'rating-message'}}
             hideOnScroll
             trigger={
               <Rating
@@ -58,13 +53,17 @@ const Article = () => {
               />
             }
           />
-
-          <span
-            data-cy='article-rating'
-            style={{ fontSize: '1rem' }}>{` ${article.rating}`}</span>
-          <p data-cy='article-category' className='article-category'>
-            Category: {article.category}
+          <span data-cy='article-rating' style={{ fontSize: '1rem' }}>
+            {` ${article.rating}`}
+          </span>
+          <p data-cy='article-author' className='article-author'>
+            {article.author &&
+              `Written by: ${article.author.first_name} ${article.author.last_name} - `}
+            <span data-cy='article-date' className='article-date'>
+              {article.date}
+            </span>
           </p>
+
           <p data-cy='article-body' className='article-body'>
             {article.body}
           </p>
