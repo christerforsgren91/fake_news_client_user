@@ -23,6 +23,7 @@ describe('User is able to read full article on article card', () => {
           'include.text',
           'Science gets a lot of respect'
         );
+        cy.get('[data-cy=article-image]').should('have.attr', 'src', 'https://store-images.s-microsoft.com/image/apps.41418.13510798886375925.7fdd10df-25c0-4a5f-90ce-63205d1f83c4.d5a00a77-17c9-433d-a71d-8f68eef63ed6?mode=scale&q=90&h=1080&w=1920');
         cy.get('[data-cy=article-date]').should('contain', '2021-05-13');
         cy.get('[data-cy=article-category]').should('contain', 'Illuminati');
         cy.get('[data-cy=article-author]').should('contain', 'Mr. Fake');

@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 
 const ArticleCard = ({ article, index }) => {
   return (
-    <div className='card-container box-shadow' data-cy={`article-card-${index}`}>
+    <div
+      className='card-container box-shadow'
+      data-cy={`article-card-${index}`}>
       <Link to={`/articles/${article.id}`}>
-        <div id={article.id} data-cy='article' >
+        <div id={article.id} data-cy='article'>
           <img
+            data-cy='image'
             className='card-image'
-            src='https://images.unsplash.com/photo-1487758608033-7780b34680ac?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3589&q=80'
+            src={article.image}
             alt='Article Card attachment'
           />
           <div className='card-content'>
