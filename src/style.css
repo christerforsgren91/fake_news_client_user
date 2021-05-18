@@ -6,9 +6,9 @@ body {
   background-color: #111518;
 }
 
-.InputElement {
+input {
+  background: transparent !important;
   color: white !important;
-  background-color: black;
 }
 
 #navbar {

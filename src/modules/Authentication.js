@@ -8,7 +8,7 @@ const Authentication = {
     //   // Create user
     //   let data;
     //   await axios.post('/auth', params).then((headers) => {
-    //     const stripeResponse = await props.stripe.createToken();
+    //     const stripeResponse = await stripe.createToken();
     //     stripeResponse.token &&
     //       (await axios.post(
     //         '/subscriptions/',
