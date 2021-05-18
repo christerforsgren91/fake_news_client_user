@@ -8,6 +8,7 @@
           "first_name": "Mr.",
           "last_name": "Fake"
       },
-      "category": "Illuminati"
+      "category": "Illuminati",
+      "rating": 3.7
   }
 }
