@@ -6,7 +6,6 @@ import BreakingNews from './layout/BreakingNews';
 import { useSelector } from 'react-redux';
 import CategoryMenu from './layout/CategoryMenu';
 
-
 const MainPage = () => {
   const { error, message, articles } = useSelector((state) => state);
 
@@ -20,11 +19,11 @@ const MainPage = () => {
 
   return (
     <>
-    <CategoryMenu />
-    {error && (
-      <Header data-cy='error-message' color='red'>
-      {message}
-      </Header>
+      <CategoryMenu />
+      {error && (
+        <Header data-cy='error-message' color='red'>
+          {message}
+        </Header>
       )}
       <BreakingNews firstArticle={articles[0]} />
 

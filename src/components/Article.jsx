@@ -15,13 +15,19 @@ const Article = () => {
     <div data-cy='article-container' className='article-container'>
       {article && (
         <>
+          <img
+            data-cy='article-image'
+            src={article.image}
+            alt='article.attachment'
+            style={{ width: '100%' }}
+          />
           <h1 data-cy='article-title' className='article-title'>
             {article.title}
           </h1>
           <p data-cy='article-author' className='article-author'>
             {article.author &&
               `Written by: ${article.author.first_name} ${article.author.last_name}`}
-            :{' '}
+            {' '}-{' '}
             <span data-cy='article-date' className='article-date'>
               {article.date}
             </span>
