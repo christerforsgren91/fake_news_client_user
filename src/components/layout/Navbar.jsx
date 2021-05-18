@@ -21,9 +21,6 @@ const Navbar = () => {
             to='/'
             onClick={() => store.dispatch({ type: 'ERROR_RESET' })}
           />
-          <Menu.Menu position='right'>
-            {/* <Menu.Item name='logout' /> */}
-          </Menu.Menu>
         </Menu>
       </Segment>
       <Link data-cy='header' to='/'>
