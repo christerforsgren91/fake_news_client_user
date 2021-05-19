@@ -43,7 +43,7 @@ const Authentication = {
             });
         })
         .catch((error) => {
-          debugger;
+          errorHandler(error)
         });
     }
     setLoading(false);

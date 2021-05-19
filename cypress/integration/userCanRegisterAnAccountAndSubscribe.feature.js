@@ -78,7 +78,7 @@ describe('User is able to register an account and subscribe', () => {
       cy.wait(1000);
     });
   });
-  describe.only('unsuccessfully with faulty registration info', () => {
+  describe('unsuccessfully with faulty registration info', () => {
     beforeEach(() => {
       cy.intercept('POST', 'https://fakest-newzz.herokuapp.com/api/auth', {
         statusCode: 422,

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Button, Header, Icon, Modal } from 'semantic-ui-react';
+import { Header, Icon, Modal } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 
 const AuthenticationMessage = ({ time }) => {

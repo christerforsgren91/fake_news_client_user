@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux'
 import Navbar from './components/layout/Navbar';
 import MainPage from './components/MainPage';
 import Footer from './components/layout/Footer';
@@ -7,12 +8,16 @@ import { Switch, Route } from 'react-router';
 import Category from './components/Category';
 import Login from './components/Login';
 import Registration from './components/Register';
-import {Elements} from '@stripe/react-stripe-js';
-import {loadStripe} from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import Popup from './components/Popup';
 
-const stripePromise = loadStripe('pk_test_51IovvJL7WvJmM60Hf2OVas98LZcERwohgrfHfsqEpnjGYIenQB6aNPFBPFmxIYf2enlQYKtWdLae7Jgjv1FwLwsE00r9IeAFuD');
+const stripePromise = loadStripe(
+  'pk_test_51IovvJL7WvJmM60Hf2OVas98LZcERwohgrfHfsqEpnjGYIenQB6aNPFBPFmxIYf2enlQYKtWdLae7Jgjv1FwLwsE00r9IeAFuD'
+);
 
 const App = () => {
+  const { error } = useSelector((state) => state);
   return (
     <>
       <Navbar />
@@ -35,6 +40,7 @@ const App = () => {
           </Elements>
         </Route>
       </Switch>
+      {error && <Popup />}
       <Footer />
     </>
   );
