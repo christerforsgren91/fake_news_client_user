@@ -34,7 +34,7 @@ const Articles = {
       article_id: id,
     };
     try {
-      await axios.put('/ratings', params);
+      await axios.post('/ratings', params);
       store.dispatch({
         type: 'SUCCESS_MESSAGE',
       });

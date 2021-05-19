@@ -10,8 +10,8 @@ describe('User can use rating functionality', () => {
   });
   describe('Successfully', () => {
     beforeEach(() => {
-      cy.intercept('PUT', 'https://fakest-newzz.herokuapp.com/api/ratings', {
-        statusCode: 200,
+      cy.intercept('POST', 'https://fakest-newzz.herokuapp.com/api/ratings', {
+        statusCode: 201,
       });
     });
 
@@ -45,7 +45,7 @@ describe('User can use rating functionality', () => {
   });
   describe('Unsuccessfully', () => {
     beforeEach(() => {
-      cy.intercept('PUT', 'https://fakest-newzz.herokuapp.com/api/ratings', {
+      cy.intercept('POST', 'https://fakest-newzz.herokuapp.com/api/ratings', {
         statusCode: 500,
       });
       cy.visit('/articles/3');
