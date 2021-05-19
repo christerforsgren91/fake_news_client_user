@@ -178,7 +178,7 @@ body {
 }
 
 .article-category {
-  font-size: 1.7rem;
+  font-size: 1.1rem;
 }
 
 .article-author {
@@ -193,4 +193,8 @@ body {
 .category-header {
   color: rgba(255, 255, 255, 0.9);
   text-align: center;
+}
+
+.icon {
+  color: rgba(218, 217, 216, 0.863) !important;
 }
