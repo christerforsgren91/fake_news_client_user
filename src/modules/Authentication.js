@@ -2,7 +2,7 @@ import axios from 'axios';
 import store from '../state/store/configureStore';
 
 const Authentication = {
-  async subscribe(event, result) {
+  async subscribe(event, result, setLoading) {
     if (result.token) {
       try {
         axios.post('/auth', createParams(event)).then((headers) => {
@@ -13,14 +13,18 @@ const Authentication = {
               { headers: headers }
             )
             .then((response) => {
-              store.dispatch({ type: 'SET_SUBSCRIBE', payload: response.data.message})
+              store.dispatch({
+                type: 'SET_SUBSCRIBE',
+                payload: response.data.message,
+              });
             });
         });
       } catch (error) {
-        //errorHandler? 
+        //errorHandler?
       }
     } else {
     }
+    setLoading(false)
   },
 };
 

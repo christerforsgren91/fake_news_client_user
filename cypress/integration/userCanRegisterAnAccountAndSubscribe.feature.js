@@ -3,9 +3,7 @@ describe('User is able to register an account and subscribe', () => {
     cy.intercept('POST', 'https://fakest-newzz.herokuapp.com/api/auth', {
       fixture: 'registration.json',
     });
-
     cy.intercept('POST', 'https://api.stripe.com/v1/tokens', { id: '1304124' });
-
     cy.intercept(
       'POST',
       'https://fakest-newzz.herokuapp.com/api/subscriptions',
@@ -60,6 +58,19 @@ describe('User is able to register an account and subscribe', () => {
         });
       });
       cy.get('[data-cy=registration-submit]').click();
+      cy.get('[data-cy=authentication-popup]').within(() => {
+        cy.get('[data-cy=success-message]').should(
+          'contain',
+          'Thank you for subscribing'
+        );
+        cy.get('[data-cy=redirect-message]').should(
+          'contain',
+          'Loading your profile..'
+        );
+      });
+      cy.wait(5000);
+      cy.url('/');
+      cy.wait(1000);
     });
   });
 
