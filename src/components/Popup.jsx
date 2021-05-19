@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Portal, Segment, Header } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
+import store from '../state/store/configureStore';
 
 const Popup = () => {
-  const [open, setOpen] = useState(true);
-  const { error, message } = useSelector((state) => state);
+  const { error, message, open } = useSelector((state) => state);
   return (
-    <Portal closeOnDocumentClick onClose={() => setOpen(false)} open={open}>
+    <Portal closeOnDocumentClick onClose={() => store.dispatch({type: "ERROR_RESET"})} open={open}>
       <Segment
         inverted
         color={error ? 'red' : 'green'}

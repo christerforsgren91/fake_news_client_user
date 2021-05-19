@@ -96,7 +96,7 @@ describe('Only subscribers can use rating functionality', () => {
     });
   });
 
-  describe.only('Unsuccessfully', () => {
+  describe('Unsuccessfully', () => {
     beforeEach(() => {
       cy.intercept(
         'POST',
@@ -108,7 +108,6 @@ describe('Only subscribers can use rating functionality', () => {
       cy.intercept('POST', 'https://fakest-newzz.herokuapp.com/api/ratings', {
         statusCode: 500,
       });
-      cy.visit('/articles/4');
     });
 
     it('is expected to display an error message', () => {

@@ -4,12 +4,14 @@ const rootReducer = (state, action) => {
       return {
         ...state,
         error: true,
+        open: true,
         message: action.payload,
       };
     case 'ERROR_RESET':
       return {
         ...state,
         error: false,
+        open: false,
       };
 
     case 'SET_SUBSCRIBE':
