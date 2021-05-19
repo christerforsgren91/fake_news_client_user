@@ -40,7 +40,7 @@ describe('user is able to login', () => {
         'POST',
         'https://fakest-newzz.herokuapp.com/api/auth/sign_in',
         {
-          statusCode: 404,
+          statusCode: 404, body: {error_message: 'User does not exist, please try again.'}
         }
       );
       cy.visit('/');
@@ -54,7 +54,7 @@ describe('user is able to login', () => {
       });
       cy.get('[data-cy=popup-message]').should(
         'contain',
-        'Servers are currently not responding, Please try again later'
+        'User does not exist, please try again.'
       );
     });
   });

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Login from '../components/Login';
 import store from '../state/store/configureStore';
 import errorHandler from './ErrorHandler';
 
@@ -9,17 +8,19 @@ const Authentication = {
       email: event.target.email.value,
       password: event.target.password.value,
     };
-    try {
-      axios.post('auth/sign_in', params).then((createResponse) => {
+
+    axios
+      .post('auth/sign_in', params)
+      .then((createResponse) => {
         let name = createResponse.data.data.first_name;
         store.dispatch({
           type: 'SET_SUBSCRIBE',
           payload: `Welcome back, ${name}!`,
         });
+      })
+      .catch((error) => {
+        errorHandler(error);
       });
-    } catch (error) {
-      errorHandler(error);
-    }
   },
 
   async subscribe(event, result, setLoading) {

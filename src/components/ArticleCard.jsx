@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Rating } from 'semantic-ui-react';
-import {setRating} from '../modules/Articles'
+import { setRating } from '../modules/Articles';
 
 const ArticleCard = ({ article, index }) => {
   return (
