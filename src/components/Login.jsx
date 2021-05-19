@@ -1,13 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Form, Grid, Segment } from 'semantic-ui-react';
+import { Button, Form, Segment } from 'semantic-ui-react';
+import Authentication from '../modules/Authentication';
+import AuthenticationMessage from './AuthenticationMessage';
 
 const Login = () => {
+  const { subscriber } = useSelector((state) => state);
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    Authentication.login(event);
+  };
   return (
     <>
+      {subscriber && <AuthenticationMessage time={3000} />}
       <Segment placeholder style={{ backgroundColor: '#202325', height: 350 }}>
         <Form
           data-cy='login-form'
+          onSubmit={handleSubmit}
           style={{
             display: 'flex',
             flexDirection: 'column',

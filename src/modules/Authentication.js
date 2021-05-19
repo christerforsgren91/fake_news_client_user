@@ -1,7 +1,12 @@
 import axios from 'axios';
+import Login from '../components/Login';
 import store from '../state/store/configureStore';
 
 const Authentication = {
+  async login(event) {
+
+  },
+
   async subscribe(event, result, setLoading) {
     if (result.token) {
       try {
