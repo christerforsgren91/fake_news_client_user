@@ -92,4 +92,20 @@ describe('User is able to register an account and subscribe', () => {
       );
     });
   });
+
+  describe('unsuccessfully with faulty subcription request', () => {
+    beforeEach(() => {
+      cy.intercept('POST', 'https://fakest-newzz.herokuapp.com/api/subcriptions', {
+        statusCode: 400,
+      });
+    });
+
+    it('is expected to show an error message', () => {
+      cy.get('[data-cy=registration-submit]').click();
+      cy.get('[data-cy=registration-error]').should(
+        'contain',
+        'Payment didn\'t go through, please try again.'
+      );
+    });
+  });
 });
