@@ -4,13 +4,29 @@ import store from '../state/store/configureStore';
 
 const Authentication = {
   async login(event) {
-
+    let params = {
+      email: event.target.email.value,
+      password: event.target.password.value,
+    };
+    try {
+      axios.post('auth/sign_in', params).then((createResponse) => {
+        let name = createResponse.data.data.first_name;
+        store.dispatch({
+          type: 'SET_SUBSCRIBE',
+          payload: `Welcome back, ${name}!`,
+        });
+      });
+    } catch (error) {
+      //error_handler
+    }
   },
 
   async subscribe(event, result, setLoading) {
     if (result.token) {
-      try {
-        axios.post('/auth', createParams(event)).then((createResponse) => {
+      axios
+        .post('/auth', createParams(event))
+        .then((createResponse) => {
+          debugger;
           let name = createResponse.data.data.first_name;
           axios
             .post(
@@ -24,11 +40,10 @@ const Authentication = {
                 payload: `${subscriptionResponse.data.message}, ${name}!`,
               });
             });
+        })
+        .catch((error) => {
+          debugger;
         });
-      } catch (error) {
-        //errorHandler?
-      }
-    } else {
     }
     setLoading(false);
   },
