@@ -28,7 +28,30 @@ const Articles = {
       errorHandler(error);
     }
   },
+
+  async ratings(rating, id) {
+    let params = {
+      rating: rating,
+      article_id: id,
+    };
+    try {
+      await axios.post('/ratings', params);
+      store.dispatch({
+        type: 'SUCCESS_MESSAGE',
+      });
+    } catch (error) {
+      errorHandler(error);
+    }
+  },
 };
 
 export default Articles;
+
+export const setRating = (rating) => {
+  if (rating > 4.8) {
+    return 5
+  } else {
+    return Math.floor(rating)
+  }
+}
 

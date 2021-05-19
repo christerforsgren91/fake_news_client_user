@@ -10,6 +10,13 @@ const errorHandler = (error) => {
             'Servers are currently not responding, Please try again later',
         });
         break;
+        case 400:
+          store.dispatch({
+            type: 'ERROR_MESSAGE',
+            payload:
+              'Payment didn\'t go through, please try again.',
+          });
+          break;
       case 401:
         store.dispatch({
           type: 'ERROR_MESSAGE',

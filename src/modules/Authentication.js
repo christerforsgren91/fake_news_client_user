@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Login from '../components/Login';
 import store from '../state/store/configureStore';
-import errorHandler from './ErrorHandler'
+import errorHandler from './ErrorHandler';
 
 const Authentication = {
   async login(event) {
@@ -18,7 +18,7 @@ const Authentication = {
         });
       });
     } catch (error) {
-      errorHandler(error)
+      errorHandler(error);
     }
   },
 
@@ -27,23 +27,30 @@ const Authentication = {
       axios
         .post('/auth', createParams(event))
         .then((createResponse) => {
-          debugger;
           let name = createResponse.data.data.first_name;
+          let headers = createResponse.headers;
           axios
             .post(
               '/subscriptions/',
               { stripeToken: result.token.id },
-              { headers: createResponse.headers }
+              { headers: headers }
             )
             .then((subscriptionResponse) => {
               store.dispatch({
                 type: 'SET_SUBSCRIBE',
                 payload: `${subscriptionResponse.data.message}, ${name}!`,
               });
+            })
+            .catch((error) => {
+              axios
+                .delete('/auth', { headers: headers })
+                .then((response) => {})
+                .catch((error) => {});
+              errorHandler(error);
             });
         })
         .catch((error) => {
-          errorHandler(error)
+          errorHandler(error);
         });
     }
     setLoading(false);

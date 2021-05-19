@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 const Popup = () => {
   const [open, setOpen] = useState(true);
   const { error, message } = useSelector((state) => state);
-  debugger
   return (
     <Portal closeOnDocumentClick onClose={() => setOpen(false)} open={open}>
       <Segment
