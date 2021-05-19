@@ -3,6 +3,14 @@ describe('User is able to register an account and subscribe', () => {
     cy.intercept('POST', 'https://fakest-newzz.herokuapp.com/api/auth', {
       fixture: 'registration.json',
     });
+
+    cy.intercept('POST', 'https://api.stripe.com/v1/tokens', { id: '1304124' });
+
+    cy.intercept(
+      'POST',
+      'https://fakest-newzz.herokuapp.com/api/subscriptions',
+      { paid: 'true', message: 'Thank you for subscribing' }
+    );
     cy.visit('/');
   });
 
@@ -13,6 +21,8 @@ describe('User is able to register an account and subscribe', () => {
         cy.get('[data-cy=registration-button]').click();
       });
       cy.get('[data-cy=registration-form]').within(() => {
+        cy.get('[data-cy=registration-first-name]').type('Bob');
+        cy.get('[data-cy=registration-last-name]').type('Kramer');
         cy.get('[data-cy=registration-email]').type('user@mail.com');
         cy.get('[data-cy=registration-password]').type('password');
         cy.get('[data-cy=registration-confirmation-password]').type('password');

@@ -3,24 +3,30 @@ import { Button, Segment, Form } from 'semantic-ui-react';
 import Authentication from '../modules/Authentication';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 const Register = () => {
+const {subscriber, message} = useSelector(state => state)
   const stripe = useStripe();
   const elements = useElements();
-  const handleSubmit = (event) => {
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
     if (!stripe || !elements) {
       return;
     }
-    debugger;
-    Authentication.subscribe(event, stripe);
+    const cardElement = elements.getElement(CardElement);
+    stripe.createToken(cardElement).then(function (result) {
+      Authentication.subscribe(event, result);
+    });
   };
 
   return (
     <Segment
       placeholder
       textAlign='center'
-      style={{ backgroundColor: '#202325', height: 350 }}>
+      style={{ backgroundColor: '#202325', height: 400 }}>
       <Form
         data-cy='registration-form'
         onSubmit={handleSubmit}
@@ -30,6 +36,24 @@ const Register = () => {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
+        <div className='box-shadow' style={styles.input}>
+          <input
+            name='firstName'
+            type='text'
+            placeholder='First Name'
+            required
+            data-cy='registration-first-name'
+          />
+        </div>{' '}
+        <div className='box-shadow' style={styles.input}>
+          <input
+            name='lastName'
+            type='text'
+            placeholder='Last Name'
+            required
+            data-cy='registration-last-name'
+          />
+        </div>
         <div className='box-shadow' style={styles.input}>
           <input
             name='email'
@@ -50,7 +74,7 @@ const Register = () => {
         </div>
         <div className='box-shadow' style={styles.input}>
           <input
-            name='password-confirmation'
+            name='passwordConfirmation'
             type='password'
             data-cy='registration-confirmation-password'
             placeholder='Confirm Password'
@@ -71,11 +95,14 @@ const Register = () => {
         </div>
         <div style={{ display: 'flex' }}>
           <Link to='/login'>
-            <Button data-cy='registration-submit' style={styles.button}>
+            <Button data-cy='registration-back' style={styles.button}>
               Back!
             </Button>
           </Link>
-          <Button data-cy='registration-submit' style={styles.button}>
+          <Button
+            type='submit'
+            data-cy='registration-submit'
+            style={styles.button}>
             Register!
           </Button>
         </div>
@@ -92,7 +119,7 @@ const styles = {
     textAlign: 'center',
     color: 'white',
     borderRadius: 5,
-    marginBottom: 20,
+    marginBottom: 15,
   },
   button: {
     margin: '15px 10px 0 10px',

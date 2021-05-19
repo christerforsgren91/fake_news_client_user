@@ -2,24 +2,37 @@ import axios from 'axios';
 import store from '../state/store/configureStore';
 
 const Authentication = {
-  async subscribe(event) {
-    // try {
-    //   let params;
-    //   // Create user
-    //   let data;
-    //   await axios.post('/auth', params).then((headers) => {
-    //     const stripeResponse = await stripe.createToken();
-    //     stripeResponse.token &&
-    //       (await axios.post(
-    //         '/subscriptions/',
-    //         { stripeToken: stripeResponse.token.id },
-    //         { headers: headers }
-    //       ).then((repsonse) => {
-    //         // subscription success??
-    //       }));
-    //   });
-    // } catch (error) {}
+  async subscribe(event, result) {
+    if (result.token) {
+      try {
+        axios.post('/auth', createParams(event)).then((headers) => {
+          axios
+            .post(
+              '/subscriptions/',
+              { stripeToken: result.token.id },
+              { headers: headers }
+            )
+            .then((response) => {
+              store.dispatch({ type: 'SET_SUBSCRIBE', payload: response.data.message})
+            });
+        });
+      } catch (error) {
+        //errorHandler? 
+      }
+    } else {
+    }
   },
 };
 
 export default Authentication;
+
+let createParams = (event) => {
+  return {
+    first_name: event.target.firstName.value,
+    last_name: event.target.lastName.value,
+    source: 'public-system',
+    email: event.target.email.value,
+    password: event.target.password.value,
+    password_confirmation: event.target.passwordConfirmation.value,
+  };
+};

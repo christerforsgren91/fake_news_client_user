@@ -23,6 +23,13 @@ const rootReducer = (state, action) => {
         error: false,
       };
 
+    case 'SET_SUBSCRIBE':
+      return {
+        ...state,
+        message: action.payload,
+        subscriber: true
+      };
+
     default:
       return state;
   }
