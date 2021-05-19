@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Rating } from 'semantic-ui-react';
+import {setRating} from '../modules/Articles'
 
 const ArticleCard = ({ article, index }) => {
   return (
@@ -24,7 +25,7 @@ const ArticleCard = ({ article, index }) => {
             </p>
             <Rating
               data-cy='rating'
-              defaultRating={Math.floor(article.rating)}
+              defaultRating={setRating(article.rating)}
               maxRating={5}
               disabled
               icon='star'

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Rating } from 'semantic-ui-react';
+import { setRating } from '../../modules/Articles';
 
 const BreakingNews = ({ firstArticle: article }) => {
   if (article) {
@@ -22,7 +23,7 @@ const BreakingNews = ({ firstArticle: article }) => {
           <h4 data-cy='breaking-teaser'>{article.teaser}</h4>
           <Rating
             data-cy='breaking-rating'
-            defaultRating={Math.floor(article.rating)}
+            defaultRating={setRating(article.rating)}
             maxRating={5}
             disabled
             icon='star'

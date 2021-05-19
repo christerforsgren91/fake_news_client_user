@@ -46,6 +46,14 @@ const Articles = {
 
 export default Articles;
 
+export const setRating = (rating) => {
+  if (rating > 4.8) {
+    return 5
+  } else {
+    return Math.floor(rating)
+  }
+}
+
 const errorHandler = (error) => {
   if (error.response.status === 500) {
     store.dispatch({

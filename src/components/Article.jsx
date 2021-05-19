@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import Articles from '../modules/Articles';
+import Articles, { setRating } from '../modules/Articles';
 import { Popup, Rating } from 'semantic-ui-react';
 
 const Article = () => {
@@ -40,13 +40,13 @@ const Article = () => {
             }
             on='Click'
             pinned
-            popper={{id: 'rating-message'}}
+            popper={{ id: 'rating-message' }}
             hideOnScroll
             trigger={
               <Rating
                 onRate={articleRating}
                 data-cy='article-rating-button'
-                defaultRating={Math.floor(article.rating)}
+                defaultRating={setRating(article.rating)}
                 maxRating={5}
                 icon='star'
                 size='tiny'
