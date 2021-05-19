@@ -20,6 +20,14 @@ const rootReducer = (state, action) => {
         message: action.payload,
         subscriber: true,
       };
+
+    case 'LOG_OUT':
+      return {
+        ...state,
+        message: action.payload,
+        subscriber: false,
+      };
+      
     case 'SET_ARTICLES':
       return {
         ...state,

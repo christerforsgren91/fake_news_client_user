@@ -12,7 +12,6 @@ describe('User is able to logout after being logged in', () => {
       'https://fakest-newzz.herokuapp.com/api/auth/sign_out',
       {
         statusCode: 200,
-        body: { message: 'See you again soon!' },
       }
     );
     cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles/', {
@@ -24,7 +23,6 @@ describe('User is able to logout after being logged in', () => {
 
     cy.visit('/');
     cy.get('[data-cy=login-button]').click();
-    cy.url('/login');
     cy.get('[data-cy=login-form]').within(() => {
       cy.get('[data-cy=login-email]').type('user@mail.com');
       cy.get('[data-cy=login-password]').type('password');
@@ -36,9 +34,12 @@ describe('User is able to logout after being logged in', () => {
   it('is expected to log the user out', () => {
     cy.get('[data-cy=logout-button]').click();
     cy.get('[data-cy=logout-message]').should('contain', 'See you again soon!');
+    cy.get('[data-cy=login-button]').should('be.visible')
+    cy.get('[data-cy=logout-button]').should('not.be.visible')
   });
 
   it('is expected that the user can no longer rate articles', () => {
+    cy.get('[data-cy=logout-button]').click();
     cy.get('[data-cy=article-card-1]').click();
     cy.get('[data-cy=article-rating-button]').find('i').eq(4).click();
     cy.get('#rating-message').should(

@@ -23,6 +23,18 @@ const Authentication = {
       });
   },
 
+  async logout() {
+    axios.delete('auth/sign_out', { headers: getUserAuthToken() })
+    .then(() => {
+      store.dispatch({
+        type: 'LOG_OUT',
+        payload: 'See you again soon!'
+      })
+    }).catch((error) => {
+      errorHandler(error)
+    })
+  },
+
   async subscribe(event, result, setLoading) {
     if (result.token) {
       axios
@@ -66,4 +78,7 @@ const createParams = (event) => {
     password: event.target.password.value,
     password_confirmation: event.target.passwordConfirmation.value,
   };
+};
+const getUserAuthToken = () => {
+  return JSON.parse(localStorage.getItem('user_data'));
 };
