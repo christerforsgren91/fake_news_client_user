@@ -19,8 +19,7 @@ const errorHandler = (error) => {
       case 401:
         store.dispatch({
           type: 'ERROR_MESSAGE',
-          payload:
-            'Please register an account to do this.',
+          payload: 'Please register an account to do this.',
         });
         break;
       case 422:

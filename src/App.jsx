@@ -1,5 +1,4 @@
-import React from 'react';
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react';
 import Navbar from './components/layout/Navbar';
 import MainPage from './components/MainPage';
 import Footer from './components/layout/Footer';
@@ -11,13 +10,15 @@ import Registration from './components/Register';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import Popup from './components/Popup';
+import Authentication from './modules/Authentication';
 
-const stripePromise = loadStripe(
-  'pk_test_51IovvJL7WvJmM60Hf2OVas98LZcERwohgrfHfsqEpnjGYIenQB6aNPFBPFmxIYf2enlQYKtWdLae7Jgjv1FwLwsE00r9IeAFuD'
-);
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY);
 
 const App = () => {
-  const { error } = useSelector((state) => state);
+  useEffect(() => {
+    Authentication.validateToken();
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -40,7 +41,7 @@ const App = () => {
           </Elements>
         </Route>
       </Switch>
-      {error && <Popup />}
+      <Popup />
       <Footer />
     </>
   );
