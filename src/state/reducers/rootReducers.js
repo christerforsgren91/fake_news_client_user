@@ -6,17 +6,6 @@ const rootReducer = (state, action) => {
         error: true,
         message: action.payload,
       };
-    case 'SET_ARTICLES':
-      return {
-        ...state,
-        articles: action.payload,
-      };
-    case 'SHOW_ARTICLE':
-      return {
-        ...state,
-        article: action.payload,
-      };
-
     case 'ERROR_RESET':
       return {
         ...state,
@@ -28,6 +17,16 @@ const rootReducer = (state, action) => {
         ...state,
         message: action.payload,
         subscriber: true,
+      };
+    case 'SET_ARTICLES':
+      return {
+        ...state,
+        articles: action.payload,
+      };
+    case 'SHOW_ARTICLE':
+      return {
+        ...state,
+        article: action.payload,
       };
 
     default:

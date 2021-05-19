@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Login from '../components/Login';
 import store from '../state/store/configureStore';
+import errorHandler from './ErrorHandler'
 
 const Authentication = {
   async login(event) {
@@ -17,7 +18,7 @@ const Authentication = {
         });
       });
     } catch (error) {
-      //error_handler
+      errorHandler(error)
     }
   },
 

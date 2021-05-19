@@ -48,7 +48,6 @@ describe('User is able to register an account and subscribe', () => {
           .type('12345', { delay: 50 });
       });
     });
-    cy.get('[data-cy=registration-submit]').click();
   });
 
   describe('user is able to register an account', () => {
@@ -63,6 +62,7 @@ describe('User is able to register an account and subscribe', () => {
       });
     });
     it('is expected to show registration form', () => {
+      cy.get('[data-cy=registration-submit]').click();
       cy.get('[data-cy=authentication-popup]').within(() => {
         cy.get('[data-cy=success-message]').should(
           'contain',
@@ -81,17 +81,15 @@ describe('User is able to register an account and subscribe', () => {
   describe.only('unsuccessfully with faulty registration info', () => {
     beforeEach(() => {
       cy.intercept('POST', 'https://fakest-newzz.herokuapp.com/api/auth', {
-        statusCode: 422, fixture: 'unsuccessfulRegistration.json',
+        statusCode: 422,
       });
     });
     it('is expected to show an error message', () => {
+      cy.get('[data-cy=registration-submit]').click();
       cy.get('[data-cy=registration-error]').should(
         'contain',
-        'Something went wrong, please check the information you provided.'
+        'Server is unable to process your request, please try again.'
       );
     });
   });
 });
-
-
-//error.response.data.errors.full_messages.join('. ')
