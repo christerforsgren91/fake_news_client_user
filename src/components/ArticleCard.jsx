@@ -22,7 +22,7 @@ const ArticleCard = ({ article, index }) => {
               {article.teaser}
             </p>
             <p className='card-date' data-cy='created-at'>
-              <p>{article.date}</p>
+              {article.date}
             </p>
           </div>
         </div>

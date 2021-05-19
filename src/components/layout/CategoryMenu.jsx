@@ -18,9 +18,8 @@ const CategoryMenu = () => {
   const renderMenuItems = () => {
     return menuItems.map((item) => {
       return (
-        <div>
+        <div key={item}>
           <Menu.Item
-            key={item}
             onClick={() => {
               setActiveItem(item);
             }}
@@ -38,9 +37,7 @@ const CategoryMenu = () => {
 
   return (
     <div
-      inverted
       data-cy='category-bar'
-      compact
       style={{ width: 'fit-content', margin: 'auto' }}>
       <Menu inverted secondary>
         {renderMenuItems()}

@@ -24,10 +24,11 @@ const rootReducer = (state, action) => {
       };
 
     case 'SET_SUBSCRIBE':
+      debugger;
       return {
         ...state,
         message: action.payload,
-        subscriber: true
+        subscriber: true,
       };
 
     default:

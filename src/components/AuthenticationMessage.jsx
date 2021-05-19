@@ -18,12 +18,9 @@ const AuthenticationMessage = ({ time }) => {
       {redirect ? (
         <Redirect to='/' />
       ) : (
-        <Modal
-          basic
-          open={true}
-          size='small'>
-          <div data-cy='authentication-popup' style={{textAlign: 'center'}}>
-            <Header icon data-cy='success-message' style={{color: 'white'}}>
+        <Modal basic open={true} size='small'>
+          <div data-cy='authentication-popup' style={{ textAlign: 'center' }}>
+            <Header icon data-cy='success-message' style={{ color: 'white' }}>
               <Icon name='circle notched' loading />
               {message}
             </Header>

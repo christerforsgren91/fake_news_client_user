@@ -20,7 +20,6 @@ const Login = () => {
               type='email'
               data-cy='login-email'
               className='box-shadow'
-              fluid
               placeholder='Email'
               required
             />
@@ -31,7 +30,6 @@ const Login = () => {
               type='password'
               data-cy='login-password'
               className='box-shadow'
-              fluid
               placeholder='Password'
               required
             />

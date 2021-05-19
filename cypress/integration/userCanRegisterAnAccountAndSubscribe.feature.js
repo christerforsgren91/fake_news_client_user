@@ -3,6 +3,13 @@ describe('User is able to register an account and subscribe', () => {
     cy.intercept('POST', 'https://fakest-newzz.herokuapp.com/api/auth', {
       fixture: 'registration.json',
     });
+    cy.intercept(
+      'POST',
+      'https://fakest-newzz.herokuapp.com/api/auth/sign_in',
+      {
+        fixture: 'registration.json',
+      }
+    );
     cy.intercept('POST', 'https://api.stripe.com/v1/tokens', { id: '1304124' });
     cy.intercept(
       'POST',
@@ -15,6 +22,7 @@ describe('User is able to register an account and subscribe', () => {
   describe('user is able to register an account', () => {
     it('is expected to show registration form', () => {
       cy.get('[data-cy=login-button]').click();
+      cy.url('/registration');
       cy.get('[data-cy=login-form]').within(() => {
         cy.get('[data-cy=registration-button]').click();
       });
@@ -61,7 +69,7 @@ describe('User is able to register an account and subscribe', () => {
       cy.get('[data-cy=authentication-popup]').within(() => {
         cy.get('[data-cy=success-message]').should(
           'contain',
-          'Thank you for subscribing'
+          'Thank you for subscribing, Bob!'
         );
         cy.get('[data-cy=redirect-message]').should(
           'contain',
@@ -77,11 +85,25 @@ describe('User is able to register an account and subscribe', () => {
   describe('user is able to login', () => {
     it('is expected to show login form', () => {
       cy.get('[data-cy=login-button]').click();
+      cy.url('/login');
       cy.get('[data-cy=login-form]').within(() => {
         cy.get('[data-cy=login-email]').type('user@mail.com');
         cy.get('[data-cy=login-password]').type('password');
         cy.get('[data-cy=login-submit]').click();
       });
+      cy.get('[data-cy=authentication-popup]').within(() => {
+        cy.get('[data-cy=success-message]').should(
+          'contain',
+          'Welcome back, Bob!'
+        );
+        cy.get('[data-cy=redirect-message]').should(
+          'contain',
+          'Loading your profile..'
+        );
+      });
+      cy.wait(5000);
+      cy.url('/');
+      cy.wait(1000);
     });
   });
 });

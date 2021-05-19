@@ -5,17 +5,18 @@ const Authentication = {
   async subscribe(event, result, setLoading) {
     if (result.token) {
       try {
-        axios.post('/auth', createParams(event)).then((headers) => {
+        axios.post('/auth', createParams(event)).then((createResponse) => {
+          let name = createResponse.data.data.first_name;
           axios
             .post(
               '/subscriptions/',
               { stripeToken: result.token.id },
-              { headers: headers }
+              { headers: createResponse.headers }
             )
-            .then((response) => {
+            .then((subscriptionResponse) => {
               store.dispatch({
                 type: 'SET_SUBSCRIBE',
-                payload: response.data.message,
+                payload: `${subscriptionResponse.data.message}, ${name}!`,
               });
             });
         });
@@ -24,7 +25,7 @@ const Authentication = {
       }
     } else {
     }
-    setLoading(false)
+    setLoading(false);
   },
 };
 
