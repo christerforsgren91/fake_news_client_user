@@ -28,13 +28,6 @@ const rootReducer = (state, action) => {
         ...state,
         article: action.payload,
       };
-
-    case 'ERROR_RESET':
-      return {
-        ...state,
-        error: false,
-      };
-
     case 'SUCCESS_MESSAGE':
       return {
         ...state,

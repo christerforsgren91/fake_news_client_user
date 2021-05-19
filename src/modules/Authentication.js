@@ -42,10 +42,6 @@ const Authentication = {
               });
             })
             .catch((error) => {
-              axios
-                .delete('/auth', { headers: headers })
-                .then((response) => {})
-                .catch((error) => {});
               errorHandler(error);
             });
         })
@@ -59,7 +55,7 @@ const Authentication = {
 
 export default Authentication;
 
-let createParams = (event) => {
+const createParams = (event) => {
   return {
     first_name: event.target.firstName.value,
     last_name: event.target.lastName.value,

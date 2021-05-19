@@ -86,7 +86,7 @@ describe('User is able to register an account and subscribe', () => {
     });
     it('is expected to show an error message', () => {
       cy.get('[data-cy=registration-submit]').click();
-      cy.get('[data-cy=registration-error]').should(
+      cy.get('[data-cy=popup-message]').should(
         'contain',
         'Server is unable to process your request, please try again.'
       );
@@ -112,7 +112,7 @@ describe('User is able to register an account and subscribe', () => {
 
     it('is expected to show an error message', () => {
       cy.get('[data-cy=registration-submit]').click();
-      cy.get('[data-cy=registration-error]').should(
+      cy.get('[data-cy=popup-message]').should(
         'contain',
         "Payment didn't go through, please try again."
       );

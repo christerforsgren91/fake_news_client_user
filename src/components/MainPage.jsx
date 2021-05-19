@@ -20,11 +20,7 @@ const MainPage = () => {
   return (
     <>
       <CategoryMenu />
-      {error && (
-        <Header data-cy='error-message' color='red'>
-          {message}
-        </Header>
-      )}
+
       <BreakingNews firstArticle={articles[0]} />
 
       <div id='articles-container' data-cy='articles-container'>

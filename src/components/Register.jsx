@@ -114,7 +114,6 @@ const Register = () => {
           </div>
         </Form>
       </Segment>
-
     </>
   );
 };

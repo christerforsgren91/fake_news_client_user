@@ -18,7 +18,7 @@ const Popup = () => {
           zIndex: 1000,
         }}>
         <Header>{error ? 'Error' : 'Success'}</Header>
-        <p data-cy='registration-error'>{message}</p>
+        <p data-cy='popup-message'>{message}</p>
       </Segment>
     </Portal>
   );
