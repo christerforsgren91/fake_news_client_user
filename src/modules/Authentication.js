@@ -37,6 +37,7 @@ const Authentication = {
               { headers: headers }
             )
             .then((subscriptionResponse) => {
+              localStorage.setItem('user_headers', JSON.stringify(headers));
               store.dispatch({
                 type: 'SET_SUBSCRIBE',
                 payload: `${subscriptionResponse.data.message}, ${name}!`,

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import store from '../state/store/configureStore';
-import errorHandler from './ErrorHandler'
+import errorHandler from './ErrorHandler';
 
 const Articles = {
   async index(category) {
@@ -35,7 +35,7 @@ const Articles = {
       article_id: id,
     };
     try {
-      await axios.post('/ratings', params);
+      await axios.put('/ratings', params, { headers: getUserAuthToken() });
       store.dispatch({
         type: 'SUCCESS_MESSAGE',
       });
@@ -47,11 +47,14 @@ const Articles = {
 
 export default Articles;
 
+const getUserAuthToken = () => {
+  return JSON.parse(localStorage.getItem('user_data'));
+};
+
 export const setRating = (rating) => {
   if (rating > 4.8) {
-    return 5
+    return 5;
   } else {
-    return Math.floor(rating)
+    return Math.floor(rating);
   }
-}
-
+};
