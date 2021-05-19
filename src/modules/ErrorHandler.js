@@ -20,7 +20,7 @@ const errorHandler = (error) => {
         store.dispatch({
           type: 'ERROR_MESSAGE',
           payload:
-            'You are not authorised to do this, contact your system adminstrator',
+            'Please register an account to do this.',
         });
         break;
       case 422:
