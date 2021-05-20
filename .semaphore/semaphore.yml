@@ -14,3 +14,6 @@ blocks:
             - checkout
             - yarn install
             - 'yarn cy:integrate'
+      env_vars:
+        - name: REACT_APP_STRIPE_API_KEY
+          value: pk_test_51IovvJL7WvJmM60Hf2OVas98LZcERwohgrfHfsqEpnjGYIenQB6aNPFBPFmxIYf2enlQYKtWdLae7Jgjv1FwLwsE00r9IeAFuD
