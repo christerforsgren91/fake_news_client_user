@@ -34,6 +34,7 @@ const Authentication = {
           type: 'LOG_OUT',
           payload: 'See you again soon!',
         });
+        localStorage.clear();
       })
       .catch((error) => {
         errorHandler(error);
