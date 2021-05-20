@@ -12,9 +12,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import Popup from './components/Popup';
 
-const stripePromise = loadStripe(
-  'pk_test_51IovvJL7WvJmM60Hf2OVas98LZcERwohgrfHfsqEpnjGYIenQB6aNPFBPFmxIYf2enlQYKtWdLae7Jgjv1FwLwsE00r9IeAFuD'
-);
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY);
 
 const App = () => {
   const { error } = useSelector((state) => state);
