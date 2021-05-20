@@ -12,7 +12,7 @@ const Navbar = () => {
           secondary
           stackable
           size='small'
-          style={{ margin: '0 10%' }}>
+          style={{ margin: '0 20%' }}>
           <Menu.Item
             name='home'
             data-cy='home-tab'
@@ -21,6 +21,15 @@ const Navbar = () => {
             to='/'
             onClick={() => store.dispatch({ type: 'ERROR_RESET' })}
           />
+          <Menu.Menu position='right'>
+            <Menu.Item
+              name='Login'
+              data-cy='login-button'
+              active
+              as={Link}
+              to='/login'
+            />
+          </Menu.Menu>
         </Menu>
       </Segment>
       <Link data-cy='header' to='/'>

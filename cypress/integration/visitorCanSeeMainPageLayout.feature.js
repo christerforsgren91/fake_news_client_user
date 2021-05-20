@@ -34,6 +34,22 @@ describe('Displays the main page with a list of article', () => {
         });
       });
     });
+    it('is expected to display average rating on each article card', () => {
+      cy.get('[data-cy=articles-container]').within(() => {
+        cy.get('[data-cy=article-card-0]').within(() => {
+          cy.get('[data-cy=rating]')
+            .find('i')
+            .eq(3)
+            .should('have.attr', 'aria-checked', 'true');
+        });
+      });
+    });
+    it('is expected to display average rating on breaking news', () => {
+      cy.get('[data-cy=breaking-rating]')
+        .find('i')
+        .eq(4)
+        .should('have.attr', 'aria-checked', 'true');
+    });
   });
   describe('unsuccessfully', () => {
     before(() => {
@@ -44,7 +60,7 @@ describe('Displays the main page with a list of article', () => {
       cy.visit('/');
     });
     it('is expected to show error message 500', () => {
-      cy.get('[data-cy=error-message]').should(
+      cy.get('[data-cy=popup-message]').should(
         'contain',
         'Servers are currently not responding, Please try again later'
       );

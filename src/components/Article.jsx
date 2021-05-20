@@ -5,11 +5,15 @@ import Articles, { setRating } from '../modules/Articles';
 import { Popup, Rating } from 'semantic-ui-react';
 
 const Article = () => {
-  const { article, popupSuccess } = useSelector((state) => state);
+  const { article, popupSuccess, subscriber } = useSelector((state) => state);
   const { id } = useParams();
 
   const articleRating = (event, { rating, maxRating }) => {
-    Articles.ratings(rating, id);
+    if (subscriber) {
+      Articles.ratings(rating, id);
+    } else {
+      return;
+    }
   };
 
   useEffect(() => {
@@ -36,9 +40,11 @@ const Article = () => {
             content={
               popupSuccess
                 ? 'Thank you for your opinion!'
-                : 'Sorry your vote was not registered'
+                : subscriber
+                ? 'Sorry your vote was not registered'
+                : 'You have to subscribe to be able to rate'
             }
-            on='Click'
+            on='click'
             pinned
             popper={{ id: 'rating-message' }}
             hideOnScroll
@@ -53,9 +59,12 @@ const Article = () => {
               />
             }
           />
-          <span data-cy='article-rating' style={{ fontSize: '1rem' }}>
-            {` ${article.rating}`}
-          </span>
+          {article.rating && (
+            <span data-cy='article-rating' style={{ fontSize: '1rem' }}>
+              {` ${article.rating}`}
+            </span>
+          )}
+
           <p data-cy='article-author' className='article-author'>
             {article.author &&
               `Written by: ${article.author.first_name} ${article.author.last_name} - `}

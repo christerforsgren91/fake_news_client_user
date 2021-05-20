@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Header } from 'semantic-ui-react';
 import Articles from '../modules/Articles';
 import ArticleCard from './ArticleCard';
 import BreakingNews from './layout/BreakingNews';
@@ -7,7 +6,7 @@ import { useSelector } from 'react-redux';
 import CategoryMenu from './layout/CategoryMenu';
 
 const MainPage = () => {
-  const { error, message, articles } = useSelector((state) => state);
+  const { articles } = useSelector((state) => state);
 
   useEffect(() => {
     Articles.index();
@@ -20,11 +19,7 @@ const MainPage = () => {
   return (
     <>
       <CategoryMenu />
-      {error && (
-        <Header data-cy='error-message' color='red'>
-          {message}
-        </Header>
-      )}
+
       <BreakingNews firstArticle={articles[0]} />
 
       <div id='articles-container' data-cy='articles-container'>

@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "data": {
+    "id": 1,
+    "first_name": "Bob",
+    "last_name": "Kramer",
+    "email": "bob.kramer@hotmail.com",
+    "provider": "email",
+    "uid": "bob.kramer@hotmail.com",
+    "allow_password_change": false,
+    "role": "subscriber"
+  }
+}

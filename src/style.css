@@ -6,6 +6,11 @@ body {
   background-color: #111518;
 }
 
+input {
+  background: transparent !important;
+  color: white !important;
+}
+
 #navbar {
   background-color: #fce42d;
   border-radius: 0;

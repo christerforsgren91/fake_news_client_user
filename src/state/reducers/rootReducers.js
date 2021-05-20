@@ -4,7 +4,21 @@ const rootReducer = (state, action) => {
       return {
         ...state,
         error: true,
+        open: true,
         message: action.payload,
+      };
+    case 'ERROR_RESET':
+      return {
+        ...state,
+        error: false,
+        open: false,
+      };
+
+    case 'SET_SUBSCRIBE':
+      return {
+        ...state,
+        message: action.payload,
+        subscriber: true,
       };
     case 'SET_ARTICLES':
       return {
@@ -16,13 +30,6 @@ const rootReducer = (state, action) => {
         ...state,
         article: action.payload,
       };
-
-    case 'ERROR_RESET':
-      return {
-        ...state,
-        error: false,
-      };
-
     case 'SUCCESS_MESSAGE':
       return {
         ...state,

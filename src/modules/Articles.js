@@ -1,5 +1,6 @@
 import axios from 'axios';
 import store from '../state/store/configureStore';
+import errorHandler from './ErrorHandler';
 
 const Articles = {
   async index(category) {
@@ -34,7 +35,7 @@ const Articles = {
       article_id: id,
     };
     try {
-      await axios.post('/ratings', params);
+      await axios.put('/ratings', params, { headers: getUserAuthToken() });
       store.dispatch({
         type: 'SUCCESS_MESSAGE',
       });
@@ -46,29 +47,14 @@ const Articles = {
 
 export default Articles;
 
+const getUserAuthToken = () => {
+  return JSON.parse(localStorage.getItem('user_data'));
+};
+
 export const setRating = (rating) => {
   if (rating > 4.8) {
-    return 5
+    return 5;
   } else {
-    return Math.floor(rating)
-  }
-}
-
-const errorHandler = (error) => {
-  if (error.response.status === 500) {
-    store.dispatch({
-      type: 'ERROR_MESSAGE',
-      payload: 'Servers are currently not responding, Please try again later',
-    });
-  } else if (error.response.status === 404) {
-    store.dispatch({
-      type: 'ERROR_MESSAGE',
-      payload: error.response.data.error_message,
-    });
-  } else {
-    store.dispatch({
-      type: 'ERROR_MESSAGE',
-      payload: error.message,
-    });
+    return Math.floor(rating);
   }
 };
