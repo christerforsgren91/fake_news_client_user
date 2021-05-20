@@ -20,7 +20,7 @@ describe('Only subscribers can use rating functionality', () => {
 
   describe('Successfully', () => {
     beforeEach(() => {
-      cy.intercept('PUT', 'https://fakest-newzz.herokuapp.com/api/ratings', {
+      cy.intercept('POST', 'https://fakest-newzz.herokuapp.com/api/ratings', {
         statusCode: 201,
       });
     });
@@ -105,7 +105,7 @@ describe('Only subscribers can use rating functionality', () => {
           fixture: 'registration.json',
         }
       );
-      cy.intercept('PUT', 'https://fakest-newzz.herokuapp.com/api/ratings', {
+      cy.intercept('POST', 'https://fakest-newzz.herokuapp.com/api/ratings', {
         statusCode: 500,
       });
     });
