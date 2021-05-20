@@ -76,7 +76,6 @@ const Authentication = {
     axios
       .get('/auth/validate_token', { headers: getUserAuthToken() })
       .then((response) => {
-        debugger;
         localStorage.setItem('user_headers', JSON.stringify(response.headers));
         store.dispatch({ type: 'AUTHENTICATE' });
       })

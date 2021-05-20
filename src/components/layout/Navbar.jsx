@@ -47,9 +47,6 @@ const Navbar = () => {
           </Menu.Menu>
         </Menu>
       </Segment>
-      <div>
-
-      </div>
       <Link data-cy='header' to='/'>
         <div id='fakenews'>
           FAKE<span id='question'> ? </span>NEWS
