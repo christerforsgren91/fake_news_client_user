@@ -19,6 +19,11 @@ const ArticleCard = ({ article, index }) => {
             : `/articles/${article.id}`
         }>
         <div data-cy='article'>
+          {article.premium && (
+            <Label data-cy='premium-label' style={styles.input}>
+              <Icon name='star' color='yellow' /> Premium
+            </Label>
+          )}
           <img
             data-cy='image'
             className='card-image'
@@ -45,20 +50,20 @@ const ArticleCard = ({ article, index }) => {
             </p>
           </div>
         </div>
-        <Label
-          data-cy='premium-label'
-          style={{
-            backgroundColor: '#333',
-            color: 'white',
-            position: 'absolute',
-            top: 0,
-            zIndex: 2000,
-          }}>
-          <Icon name='star' color='yellow' /> Premium
-        </Label>
       </Link>
     </div>
   );
 };
 
 export default ArticleCard;
+
+const styles = {
+  label: {
+    backgroundColor: '#333',
+    color: 'white',
+    position: 'relative',
+    top: 0,
+    zIndex: 2000,
+    width: '100%',
+  },
+};

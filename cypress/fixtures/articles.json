@@ -20,7 +20,7 @@
     },
     {
       "id": 3,
-      "premium": true,
+      "premium": false,
       "title": "Halo",
       "teaser": "something",
       "date": "2021-05-12",

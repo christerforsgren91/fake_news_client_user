@@ -18,15 +18,9 @@ describe('user can see which articles that are premium', () => {
       cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles/2', {
         fixture: 'specificArticle.json',
       });
-      cy.get('[data-cy=login-button]').click();
-      cy.get('[data-cy=login-form]').within(() => {
-        cy.get('[data-cy=login-email]').type('user@mail.com');
-        cy.get('[data-cy=login-password]').type('password');
-        cy.get('[data-cy=login-submit]').click();
-      });
     });
 
-    it('user can see which articles are premium ', () => {
+    it('is expected to display a premium tag', () => {
       cy.get('[data-cy=article]')
         .first()
         .within(() => {
@@ -34,7 +28,14 @@ describe('user can see which articles that are premium', () => {
         });
     });
 
-    it('subscribed users can reade the article', () => {
+    it('is expected to allow subscribers to read the article', () => {
+      cy.get('[data-cy=login-button]').click();
+      cy.get('[data-cy=login-form]').within(() => {
+        cy.get('[data-cy=login-email]').type('user@mail.com');
+        cy.get('[data-cy=login-password]').type('password');
+        cy.get('[data-cy=login-submit]').click();
+      });
+      cy.wait(1000);
       cy.get('[data-cy=article]').first().click();
       cy.get('[data-cy=article-container]').within(() => {
         cy.get('[data-cy=article-title]').should(
@@ -45,9 +46,13 @@ describe('user can see which articles that are premium', () => {
     });
   });
 
-  // describe('unsuccessfully', () => {
-  //   it("visitor can't reade premium articles", () => {
-  //     cy.get('[data-cy=article-card-1]').click();
-  //   });
-  // });
+  describe('Successfully unsuccessful', () => {
+    beforeEach(() => {
+      cy.visit('/');
+    });
+    it('is expected to send visitors to registration', () => {
+      cy.get('[data-cy=article-card-1]').click();
+    });
+    it('is expected to show an informative message', () => {});
+  });
 });
