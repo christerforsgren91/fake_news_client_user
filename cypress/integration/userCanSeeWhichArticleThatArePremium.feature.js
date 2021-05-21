@@ -49,10 +49,13 @@ describe('user can see which articles that are premium', () => {
   describe('Successfully unsuccessful', () => {
     beforeEach(() => {
       cy.visit('/');
+      cy.get('[data-cy=article-card-0]').click();
     });
     it('is expected to send visitors to registration', () => {
-      cy.get('[data-cy=article-card-1]').click();
+      cy.url().should('include', '/registration')
     });
-    it('is expected to show an informative message', () => {});
+    it('is expected to show an informative message', () => {
+      cy.get('[data-cy=subscribe-message]').should('contain', 'You tried to access a premium article, please subscribe')
+    });
   });
 });

@@ -15,12 +15,12 @@ const ArticleCard = ({ article, index }) => {
           subscriber
             ? `/articles/${article.id}`
             : article.premium
-            ? '/registration'
+            ? { pathname: '/registration', state: { redirected: true }}
             : `/articles/${article.id}`
         }>
         <div data-cy='article'>
           {article.premium && (
-            <Label data-cy='premium-label' style={styles.input}>
+            <Label data-cy='premium-label' style={styles.label}>
               <Icon name='star' color='yellow' /> Premium
             </Label>
           )}

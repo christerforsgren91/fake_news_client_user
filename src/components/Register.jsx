@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Button, Segment, Form } from 'semantic-ui-react';
 import Authentication from '../modules/Authentication';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import AuthenticationMessage from './AuthenticationMessage';
 
 const Register = () => {
   const { subscriber } = useSelector((state) => state);
   const [loading, setLoading] = useState(false);
+  const params = useLocation();
 
   const stripe = useStripe();
   const elements = useElements();
@@ -31,7 +32,13 @@ const Register = () => {
       <Segment
         placeholder
         textAlign='center'
-        style={{ backgroundColor: '#202325', height: 400 }}>
+        style={{ backgroundColor: '#202325', height: 600 }}>
+        {params.state && (
+          <h1 style={{ color: 'yellow' }} data-cy='subscribe-message'>
+            You tried to access a premium article, please subscribe
+          </h1>
+        )}
+
         <Form
           data-cy='registration-form'
           onSubmit={handleSubmit}
