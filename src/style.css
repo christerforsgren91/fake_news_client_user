@@ -12,7 +12,6 @@ input {
 }
 
 #navbar {
-  background-color: #fce42d;
   border-radius: 0;
   height: 55px;
 }
@@ -171,7 +170,7 @@ input {
   background-color: #202325;
   align-content: center;
   margin: 100px;
-  padding: 5%;
+  padding: 5% 15%;
   color: rgba(218, 217, 216, 0.863);
   font-size: 1.5rem;
 }
