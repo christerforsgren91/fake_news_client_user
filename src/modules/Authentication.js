@@ -8,15 +8,33 @@ const Authentication = {
       email: event.target.email.value,
       password: event.target.password.value,
     };
-
     axios
       .post('auth/sign_in', params)
       .then((createResponse) => {
         let name = createResponse.data.data.first_name;
+        localStorage.setItem(
+          'user_headers',
+          JSON.stringify(createResponse.headers)
+        );
         store.dispatch({
-          type: 'SET_SUBSCRIBE',
+          type: 'AUTHENTICATE',
           payload: `Welcome back, ${name}!`,
         });
+      })
+      .catch((error) => {
+        errorHandler(error);
+      });
+  },
+
+  async logout() {
+    axios
+      .delete('auth/sign_out', { headers: getUserAuthToken() })
+      .then(() => {
+        store.dispatch({
+          type: 'LOG_OUT',
+          payload: 'See you again soon!',
+        });
+        localStorage.clear();
       })
       .catch((error) => {
         errorHandler(error);
@@ -39,7 +57,7 @@ const Authentication = {
             .then((subscriptionResponse) => {
               localStorage.setItem('user_headers', JSON.stringify(headers));
               store.dispatch({
-                type: 'SET_SUBSCRIBE',
+                type: 'AUTHENTICATE',
                 payload: `${subscriptionResponse.data.message}, ${name}!`,
               });
             })
@@ -52,6 +70,16 @@ const Authentication = {
         });
     }
     setLoading(false);
+  },
+
+  async validateToken() {
+    axios
+      .get('/auth/validate_token', { headers: getUserAuthToken() })
+      .then((response) => {
+        localStorage.setItem('user_headers', JSON.stringify(response.headers));
+        store.dispatch({ type: 'AUTHENTICATE' });
+      })
+      .catch(() => {});
   },
 };
 
@@ -66,4 +94,7 @@ const createParams = (event) => {
     password: event.target.password.value,
     password_confirmation: event.target.passwordConfirmation.value,
   };
+};
+const getUserAuthToken = () => {
+  return JSON.parse(localStorage.getItem('user_data'));
 };

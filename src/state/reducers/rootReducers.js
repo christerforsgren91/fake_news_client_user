@@ -14,12 +14,21 @@ const rootReducer = (state, action) => {
         open: false,
       };
 
-    case 'SET_SUBSCRIBE':
+    case 'AUTHENTICATE':
       return {
         ...state,
         message: action.payload,
         subscriber: true,
       };
+
+    case 'LOG_OUT':
+      return {
+        ...state,
+        message: action.payload,
+        open: true,
+        subscriber: false,
+      };
+
     case 'SET_ARTICLES':
       return {
         ...state,

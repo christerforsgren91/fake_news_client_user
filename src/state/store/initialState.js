@@ -2,7 +2,8 @@ const initialState = {
   error: false,
   articles: [],
   article: {},
-  subscriber: false
+  subscriber: false,
+  open: false,
 };
 
 export default initialState;

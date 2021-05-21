@@ -35,7 +35,7 @@ const Articles = {
       article_id: id,
     };
     try {
-      await axios.put('/ratings', params, { headers: getUserAuthToken() });
+      await axios.post('/ratings', params, { headers: getUserAuthToken() });
       store.dispatch({
         type: 'SUCCESS_MESSAGE',
       });
