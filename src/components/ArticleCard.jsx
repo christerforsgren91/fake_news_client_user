@@ -30,8 +30,7 @@ const ArticleCard = ({ article, index }) => {
               disabled
               icon='star'
               size='tiny'
-            />
-
+            />            
             <p className='card-date' data-cy='created-at'>
               {article.date}
             </p>
