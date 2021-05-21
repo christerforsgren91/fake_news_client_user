@@ -15,7 +15,7 @@ const Navbar = () => {
           pointing
           secondary
           stackable
-          size='small'
+          size='massive'
           style={{ margin: '0 20%' }}>
           <Menu.Item
             style={styles.item}

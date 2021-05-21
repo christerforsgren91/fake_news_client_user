@@ -15,10 +15,10 @@ const ArticleCard = ({ article, index }) => {
           subscriber
             ? `/articles/${article.id}`
             : article.premium
-            ? { pathname: '/registration', state: { redirected: true }}
+            ? { pathname: '/registration', state: { redirected: true } }
             : `/articles/${article.id}`
         }>
-        <div data-cy='article'>
+        <div data-cy='article' className='card-content-wrapper'>
           {article.premium && (
             <Label data-cy='premium-label' style={styles.label}>
               <Icon name='star' color='yellow' /> Premium
@@ -37,17 +37,19 @@ const ArticleCard = ({ article, index }) => {
             <p className='card-teaser' data-cy='teaser'>
               {article.teaser}
             </p>
-            <Rating
-              data-cy='rating'
-              defaultRating={setRating(article.rating)}
-              maxRating={5}
-              disabled
-              icon='star'
-              size='tiny'
-            />
-            <p className='card-date' data-cy='created-at'>
-              {article.date}
-            </p>
+            <div>
+              <Rating
+                data-cy='rating'
+                defaultRating={setRating(article.rating)}
+                maxRating={5}
+                disabled
+                icon='star'
+                size='tiny'
+              />
+              <p className='card-date' data-cy='created-at'>
+                {article.date}
+              </p>
+            </div>
           </div>
         </div>
       </Link>

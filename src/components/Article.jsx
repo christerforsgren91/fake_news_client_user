@@ -21,18 +21,13 @@ const Article = () => {
   }, [id]);
 
   return (
-    <div data-cy='article-container' className='article-container'>
+    <div data-cy='article-container' className='article-container box-shadow'>
       {article && (
         <>
-          <img
-            data-cy='article-image'
-            src={article.image}
-            alt='article.attachment'
-            style={{ width: '100%' }}
-          />
           <h1 data-cy='article-title' className='article-title'>
             {article.title}
           </h1>
+
           <p data-cy='article-category' className='article-category'>
             Category: {article.category}
           </p>
@@ -72,6 +67,17 @@ const Article = () => {
               {article.date}
             </span>
           </p>
+          <img
+            data-cy='article-image'
+            src={article.image}
+            alt='article.attachment'
+            style={{
+              width: '100%',
+              margin: '50px 0',
+              height: 500,
+              objectFit: 'cover',
+            }}
+          />
 
           <p data-cy='article-body' className='article-body'>
             {article.body}

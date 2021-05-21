@@ -9,7 +9,7 @@ import AuthenticationMessage from './AuthenticationMessage';
 const Register = () => {
   const { subscriber } = useSelector((state) => state);
   const [loading, setLoading] = useState(false);
-  const params = useLocation();
+  const location = useLocation();
 
   const stripe = useStripe();
   const elements = useElements();
@@ -33,7 +33,7 @@ const Register = () => {
         placeholder
         textAlign='center'
         style={{ backgroundColor: '#202325', height: 600 }}>
-        {params.state && (
+        {location.state && (
           <h1 style={{ color: 'yellow' }} data-cy='subscribe-message'>
             You tried to access a premium article, please subscribe
           </h1>
@@ -107,8 +107,10 @@ const Register = () => {
           </div>
           <div style={{ display: 'flex' }}>
             <Link to='/login'>
-              <Button data-cy='registration-back' style={styles.button}>
-                Back!
+              <Button
+                data-cy='registration-back'
+                style={{ margin: '15px 10px 0 10px' }}>
+                Back?
               </Button>
             </Link>
             <Button
@@ -116,7 +118,7 @@ const Register = () => {
               loading={loading ? true : false}
               data-cy='registration-submit'
               style={styles.button}>
-              Register!
+              Register
             </Button>
           </div>
         </Form>
