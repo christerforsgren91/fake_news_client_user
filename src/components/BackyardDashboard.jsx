@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { Button, Table, Segment } from 'semantic-ui-react';
 import BackyardArticles from '../modules/BackyardArticles';
 
+
 const BackyardDashboard = () => {
   const { backyardArticles } = useSelector((state) => state);
 
@@ -41,7 +42,7 @@ const BackyardDashboard = () => {
       <Table.Cell>
         <Link
           data-cy='view-backyard-article-btn'
-          to=??>
+          to={`/backyard/${backyardArticle.id}`}>
           <Button>View</Button>
         </Link>
       </Table.Cell>

@@ -5,6 +5,7 @@ const initialState = {
   article: {},
   subscriber: false,
   open: false,
+  backyardArticle: [],
 };
 
 export default initialState;

@@ -13,6 +13,7 @@ import Registration from './components/Register';
 import BackyardDashboard from './components/BackyardDashboard';
 import Popup from './components/Popup';
 import Authentication from './modules/Authentication';
+import BackyardArticle from './components/layout/BackyardArticle'
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY);
 
@@ -30,6 +31,9 @@ const App = () => {
         </Route>
         <Route exact path='/articles/:id'>
           <Article />
+        </Route>
+        <Route exact path='/backyard/:id' >
+          <BackyardArticle  />
         </Route>
         <Route exact path='/backyard'>
           <BackyardDashboard />

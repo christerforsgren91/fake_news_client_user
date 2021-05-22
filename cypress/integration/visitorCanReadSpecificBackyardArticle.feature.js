@@ -29,7 +29,7 @@ describe('visitor can read specific Articles', () => {
   });
   it('is expected to show specific article', () => {
     cy.get('[data-cy=article-container]').within(() => {
-      cy.get('[data-cy=title]').should('contain', 'something');
+      cy.get('[data-cy=title]').should('contain', 'Something');
       cy.get('[data-cy=body]').should(
         'include.text',
         'Science gets a lot of respect these days.'
