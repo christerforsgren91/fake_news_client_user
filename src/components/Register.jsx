@@ -34,7 +34,9 @@ const Register = () => {
         textAlign='center'
         style={{ backgroundColor: '#202325', height: 600 }}>
         {location.state && (
-          <h1 style={{ color: 'yellow' }} data-cy='subscribe-message'>
+          <h1
+            style={{ marginBottom: 50, color: 'white' }}
+            data-cy='subscribe-message'>
             You tried to access a premium article, please subscribe
           </h1>
         )}
