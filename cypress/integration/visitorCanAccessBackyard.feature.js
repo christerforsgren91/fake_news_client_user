@@ -22,7 +22,7 @@ describe('visitor can access Backyard site', () => {
           );
         },
       });
-      cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/backyard', {
+      cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/backyard/?lat=55.7842&lon=12.4518', {
         fixture: 'backyardArticles.json',
       });
       cy.get('[data-cy=navbar]').within(() => {
