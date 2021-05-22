@@ -213,3 +213,15 @@ input {
 .icon {
   color: rgba(218, 217, 216, 0.863) !important;
 }
+
+.backyard-container {
+  color: white;
+  margin: 20px 30%;
+  background-color: #202325;
+  padding: 25px;
+  border-radius: 3;
+}
+
+.backyard-container h2 {
+  font-size: 20px;
+}
