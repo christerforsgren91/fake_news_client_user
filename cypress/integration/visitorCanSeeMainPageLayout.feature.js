@@ -20,7 +20,6 @@ describe('Displays the main page with a list of article', () => {
       cy.get('[data-cy=breaking-teaser]').should('contain', 'Something more');
       cy.get('[data-cy=breaking-date]').should('contain', '2021-05-12');
       cy.get('[data-cy=articles-container]').should('contain', []);
-      cy.get('[data-cy=footer]').should('exist');
       cy.get('[data-cy=articles-container]').within(() => {
         cy.get('[data-cy=article-card-0]').within(() => {
           cy.get('[data-cy=title]').should('contain', 'Sup');

@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { Button, Table, Segment } from 'semantic-ui-react';
 import BackyardArticles from '../modules/BackyardArticles';
 
-
 const BackyardDashboard = () => {
   const { backyardArticles } = useSelector((state) => state);
 
@@ -54,7 +53,11 @@ const BackyardDashboard = () => {
       <div style={styles.container}>
         <div className='box-shadow' style={styles.articleContainer}>
           <Segment inverted attached='top'>
-            <h2>All Articles</h2>
+            <h2 data-cy='backyard-header'>
+              {backyardArticles[0]
+                ? `Backyard Conspiracies from ${backyardArticles[0].location}`
+                : 'Allow your location!'}
+            </h2>
           </Segment>
           <Table celled padded inverted style={{ overflowY: 'scroll' }}>
             <Table.Header>
