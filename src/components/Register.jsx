@@ -22,8 +22,8 @@ const Register = () => {
       return;
     }
     const cardElement = elements.getElement(CardElement);
-    stripe.createToken(cardElement).then((result) => {
-      Authentication.subscribe(event, result, setLoading, subscriptionPlan);
+    stripe.createToken(cardElement).then((stripeToken) => {
+      Authentication.subscribe(event, stripeToken, setLoading, subscriptionPlan);
     });
   };
 

@@ -41,34 +41,23 @@ const Authentication = {
       });
   },
 
-  async subscribe(event, result, setLoading) {
-    if (result.token) {
-      axios
-        .post('/auth', createParams(event))
-        .then((createResponse) => {
-          let name = createResponse.data.data.first_name;
-          let headers = createResponse.headers;
-          axios
-            .post(
-              '/subscriptions/',
-              { stripeToken: result.token.id },
-              { headers: headers }
-            )
-            .then((subscriptionResponse) => {
-              localStorage.setItem('user_headers', JSON.stringify(headers));
-              store.dispatch({
-                type: 'AUTHENTICATE',
-                payload: `${subscriptionResponse.data.message}, ${name}!`,
-              });
-            })
-            .catch((error) => {
-              errorHandler(error);
-            });
-        })
-        .catch((error) => {
-          errorHandler(error);
+  async subscribe(event, stripeToken, setLoading, subscriptionPlan) {
+    if (stripeToken.token) {
+      try {
+        const response = await axios.post(
+          '/auth',
+          createParams(event, subscriptionPlan, stripeToken)
+        );
+        debugger
+        store.dispatch({
+          type: 'AUTHENTICATE',
+          payload: `${response.data.message}, ${response.data.data.first_name} `
         });
+      } catch (error) {
+        errorHandler(error);
+      }
     }
+
     setLoading(false);
   },
 
@@ -85,13 +74,16 @@ const Authentication = {
 
 export default Authentication;
 
-const createParams = (event) => {
+const createParams = (event, subscriptionPlan, stripeToken) => {
   return {
     first_name: event.target.firstName.value,
     last_name: event.target.lastName.value,
     email: event.target.email.value,
     password: event.target.password.value,
     password_confirmation: event.target.passwordConfirmation.value,
+    role: 'subscriber',
+    plan: subscriptionPlan,
+    stripeToken: stripeToken,
   };
 };
 const getUserAuthToken = () => {
