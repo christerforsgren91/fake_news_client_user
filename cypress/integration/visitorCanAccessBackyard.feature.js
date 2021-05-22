@@ -36,6 +36,7 @@ describe('visitor can access Backyard site', () => {
           cy.get('[data-cy=date]').should('contain', '2021-05-19, 15:10');
           cy.get('[data-cy=author]').should('contain', 'Bob Kramer');
           cy.get('[data-cy=rating]').should('be.visible');
+          cy.get('[data-cy=view-article-btn]').should('be.visible');
         });
     });
   });
