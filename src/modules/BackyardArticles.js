@@ -25,6 +25,17 @@ const BackyardArticles = {
       });
     }
   },
+  async show(id) {
+    try {
+      const response = await axios.get(`/backyard/${id}`);
+      store.dispatch({
+        type: 'SHOW_BACKYARD_ARTICLES',
+        payload: response.data.backyardArticles,
+      });
+    } catch (error) {
+      errorHandler(error);
+    }
+  },
 };
 
 export default BackyardArticles;

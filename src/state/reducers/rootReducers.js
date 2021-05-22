@@ -49,6 +49,11 @@ const rootReducer = (state, action) => {
         ...state,
         popupSuccess: true,
       };
+    case 'SHOW_BACKYARD_ARTICLES':
+      return {
+        ...state,
+        backyardArticles: action.payload,
+      };
 
     default:
       return state;
