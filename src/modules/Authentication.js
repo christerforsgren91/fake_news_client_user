@@ -95,5 +95,5 @@ const createParams = (event) => {
   };
 };
 const getUserAuthToken = () => {
-  return JSON.parse(localStorage.getItem('user_data'));
+  return JSON.parse(localStorage.getItem('user_headers'));
 };
