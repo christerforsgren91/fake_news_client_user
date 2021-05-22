@@ -9,6 +9,7 @@ describe('User is able to register an account and subscribe', () => {
     cy.get('[data-cy=login-form]').within(() => {
       cy.get('[data-cy=registration-button]').click();
     });
+    cy.get('[data-cy=subscription-plan]').first().click();
     cy.get('[data-cy=registration-form]').within(() => {
       cy.get('[data-cy=registration-first-name]').type('Bob');
       cy.get('[data-cy=registration-last-name]').type('Kramer');

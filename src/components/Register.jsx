@@ -22,8 +22,14 @@ const Register = () => {
       return;
     }
     const cardElement = elements.getElement(CardElement);
+    debugger;
     stripe.createToken(cardElement).then((stripeToken) => {
-      Authentication.subscribe(event, stripeToken, setLoading, subscriptionPlan);
+      Authentication.subscribe(
+        event,
+        stripeToken,
+        setLoading,
+        subscriptionPlan
+      );
     });
   };
 
@@ -50,25 +56,34 @@ const Register = () => {
 
   const subscriptionPlanCardList = subscriptionPlans.map((plan, index) => {
     return (
-      <Card>
-        <Card.Content>
-          <Card.Header>{plan.title}</Card.Header>
-          <Card.Description>{plan.info}</Card.Description>
-          <Card.Meta>{plan.price}</Card.Meta>
-          <Button
-            onClick={() => {
-              setSubscriptionPlan(plan.id);
-            }}>
-            Proceed
-          </Button>
-        </Card.Content>
-      </Card>
+      <div
+        onClick={() => {
+          setSubscriptionPlan(plan.id);
+        }}
+        className={
+          index === 1
+            ? 'box-shadow subscription-special'
+            : 'box-shadow subscription-plan'
+        }
+        data-cy='subscription-plan'
+        key={index}>
+        <div className='subscription-header'>
+          <h4>{plan.title}</h4>
+        </div>
+        <div className='subscription-info'>
+          <h2>{plan.price}</h2>
+          <p>{plan.info}</p>
+        </div>
+      </div>
     );
   });
 
   return (
     <>
       {subscriber && <AuthenticationMessage time={5000} />}
+      <h1 style={{ color: 'white', textAlign: 'center' }}>
+        {subscriptionPlan ? 'Fill in your details' : 'Choose a subscription:'}
+      </h1>
       <Segment
         placeholder
         textAlign='center'
@@ -81,7 +96,9 @@ const Register = () => {
           </h1>
         )}
         {!subscriptionPlan && (
-          <Card.Group centered>{subscriptionPlanCardList}</Card.Group>
+          <>
+            <Card.Group centered>{subscriptionPlanCardList}</Card.Group>
+          </>
         )}
 
         {subscriptionPlan && (
@@ -152,13 +169,13 @@ const Register = () => {
               <CardElement options={{ style: { base: { color: 'white' } } }} />
             </div>
             <div style={{ display: 'flex' }}>
-              <Link to='/login'>
-                <Button
-                  data-cy='registration-back'
-                  style={{ margin: '15px 10px 0 10px' }}>
-                  Back?
-                </Button>
-              </Link>
+              <Button
+                onClick={() => setSubscriptionPlan('')}
+                data-cy='registration-back'
+                style={{ margin: '15px 10px 0 10px' }}>
+                Back?
+              </Button>
+
               <Button
                 type='submit'
                 loading={loading ? true : false}

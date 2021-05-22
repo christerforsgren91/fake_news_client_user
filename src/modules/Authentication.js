@@ -42,16 +42,17 @@ const Authentication = {
   },
 
   async subscribe(event, stripeToken, setLoading, subscriptionPlan) {
+    debugger;
     if (stripeToken.token) {
       try {
         const response = await axios.post(
           '/auth',
           createParams(event, subscriptionPlan, stripeToken)
         );
-        debugger
+        debugger;
         store.dispatch({
           type: 'AUTHENTICATE',
-          payload: `${response.data.message}, ${response.data.data.first_name} `
+          payload: `Thank you for subscribing, ${response.data.data.first_name}!`,
         });
       } catch (error) {
         errorHandler(error);
