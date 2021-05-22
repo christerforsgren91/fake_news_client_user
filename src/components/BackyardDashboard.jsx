@@ -8,13 +8,18 @@ const BackyardDashboard = () => {
   const { backyardArticles } = useSelector((state) => state);
 
   const getArticlesBasedOnPosition = () => {
-    navigator.geolocation.getCurrentPosition(position => {
-      BackyardArticles.index(position.coords)
-    })
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        BackyardArticles.index(position.coords);
+      },
+      (error) => {
+        debugger;
+      }
+    );
   };
-  
+
   useEffect(() => {
-    getArticlesBasedOnPosition()
+    getArticlesBasedOnPosition();
   }, []);
 
   const listOfBackyardArticles = backyardArticles.map((backyardArticle) => (

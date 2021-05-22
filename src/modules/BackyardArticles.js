@@ -4,17 +4,25 @@ import errorHandler from './ErrorHandler';
 
 const BackyardArticles = {
   async index(coords) {
-    try {
-      let { latitude, longitude } = coords
-      if ( latitude && longitude ) {
-        let response = await axios.get(`/backyard/?lat=${latitude}&lon=${longitude}`);
+    if (coords) {
+      try {
+        let { latitude, longitude } = coords;
+        let response = await axios.get(
+          `/backyard/?lat=${latitude}&lon=${longitude}`
+        );
         store.dispatch({
           type: 'SET_BACKYARD_ARTICLES',
           payload: response.data.backyardArticles,
         });
+      } catch (error) {
+        debugger;
+        errorHandler(error);
       }
-    } catch (error) {
-      errorHandler(error);
+    } else {
+      store.dispatch({
+        type: 'ERROR_MESSAGE',
+        payload: 'Please allow your location to see the backyard articles.',
+      });
     }
   },
 };

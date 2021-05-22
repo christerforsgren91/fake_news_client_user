@@ -22,9 +22,13 @@ describe('visitor can access Backyard site', () => {
           );
         },
       });
-      cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/backyard/?lat=55.7842&lon=12.4518', {
-        fixture: 'backyardArticles.json',
-      });
+      cy.intercept(
+        'GET',
+        'https://fakest-newzz.herokuapp.com/api/backyard/?lat=55.7842&lon=12.4518',
+        {
+          fixture: 'backyardArticles.json',
+        }
+      );
       cy.get('[data-cy=navbar]').within(() => {
         cy.get('[data-cy=backyard-tab]').click();
       });
@@ -42,15 +46,41 @@ describe('visitor can access Backyard site', () => {
       cy.get('[data-cy=backyard-article]')
         .first()
         .within(() => {
-          cy.get('[data-cy=title]').should(
-            'contain',
-            'Something'
-          );
+          cy.get('[data-cy=title]').should('contain', 'Something');
           cy.get('[data-cy=theme]').should('contain', 'My cat is spying on me');
           cy.get('[data-cy=date]').should('contain', '2021-05-19, 15:10');
           cy.get('[data-cy=author]').should('contain', 'Bob Kramer');
           cy.get('[data-cy=view-backyard-article-btn]').should('be.visible');
         });
+    });
+  });
+
+  describe('Unsuccessfully', () => {
+    beforeEach(() => {
+      cy.visit('/', {
+        onBeforeLoad(window) {
+          const stubLocation = {
+            coords: null,
+          };
+          cy.stub(window.navigator.geolocation, 'getCurrentPosition').callsFake(
+            (callback) => {
+              return callback(stubLocation);
+            }
+          );
+        },
+      });
+      cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/backyard', {
+        fixture: 'backyardArticles.json',
+      });
+      cy.get('[data-cy=navbar]').within(() => {
+        cy.get('[data-cy=backyard-tab]').click();
+      });
+    });
+    it('is expected to show error message', () => {
+      cy.get('[data-cy=popup-message]').should(
+        'contain',
+        'Please allow your location to see the backyard articles.'
+      );
     });
   });
 });
