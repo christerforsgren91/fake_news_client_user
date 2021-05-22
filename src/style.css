@@ -48,19 +48,6 @@ input {
   padding: 0 100px 20px;
 }
 
-#footer {
-  bottom: 0;
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: rgb(19, 18, 17);
-  width: 100%;
-  text-align: center;
-}
-
-.footer-content {
-  color: white;
-}
-
 .italic {
   font-style: italic;
 }

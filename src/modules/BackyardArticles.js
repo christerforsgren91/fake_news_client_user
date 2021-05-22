@@ -15,7 +15,6 @@ const BackyardArticles = {
           payload: response.data.backyardArticles,
         });
       } catch (error) {
-        debugger;
         errorHandler(error);
       }
     } else {
@@ -26,7 +25,6 @@ const BackyardArticles = {
     }
   },
   async show(id) {
-    debugger
     try {
       const response = await axios.get(`/backyard/${id}`);
       store.dispatch({

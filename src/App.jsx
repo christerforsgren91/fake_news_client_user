@@ -5,7 +5,6 @@ import { Switch, Route } from 'react-router';
 
 import Navbar from './components/layout/Navbar';
 import MainPage from './components/MainPage';
-import Footer from './components/layout/Footer';
 import Article from './components/Article';
 import Category from './components/Category';
 import Login from './components/Login';
@@ -13,7 +12,7 @@ import Registration from './components/Register';
 import BackyardDashboard from './components/BackyardDashboard';
 import Popup from './components/Popup';
 import Authentication from './modules/Authentication';
-import BackyardArticle from './components/layout/BackyardArticle'
+import BackyardArticle from './components/layout/BackyardArticle';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY);
 
@@ -32,8 +31,8 @@ const App = () => {
         <Route exact path='/articles/:id'>
           <Article />
         </Route>
-        <Route exact path='/backyard/:id' >
-          <BackyardArticle  />
+        <Route exact path='/backyard/:id'>
+          <BackyardArticle />
         </Route>
         <Route exact path='/backyard'>
           <BackyardDashboard />
@@ -51,7 +50,6 @@ const App = () => {
         </Route>
       </Switch>
       <Popup />
-      <Footer />
     </>
   );
 };
