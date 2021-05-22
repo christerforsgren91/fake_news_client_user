@@ -16,7 +16,7 @@ const Navbar = () => {
           secondary
           stackable
           size='massive'
-          style={{ margin: '0 20%' }}>
+          style={{ margin: '0 15%' }}>
           <Menu.Item
             style={styles.item}
             name='home'

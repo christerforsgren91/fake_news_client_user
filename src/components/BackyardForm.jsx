@@ -23,9 +23,20 @@ const BackyardForm = ({ location }) => {
         onOpen={() => setOpen(true)}
         onClose={() => setOpen(false)}
         open={open}
-        trigger={<Button data-cy='create-backyard-article-btn'>Create</Button>}>
-        <Modal.Header data-cy='header'>Create Backyard Article</Modal.Header>
-        <Form size='medium' onSubmit={(event) => submitBackyard(event)}>
+        trigger={
+          <Button
+            data-cy='create-backyard-article-btn'
+            style={{ backgroundColor: '#fce42d', color: '#333' }}>
+            Write an article
+          </Button>
+        }>
+        <Modal.Header className='backyard-form' data-cy='header'>
+          Create Backyard Article
+        </Modal.Header>
+        <Form
+          size='medium'
+          onSubmit={(event) => submitBackyard(event)}
+          className='backyard-form'>
           <Form.Input
             name='title'
             id='new-backyard-input'
@@ -51,7 +62,10 @@ const BackyardForm = ({ location }) => {
             data-cy='body'
             placeholder='Enter your Text here'
           />
-          <Button type='submit' data-cy='submit'>
+          <Button
+            style={{ backgroundColor: '#fce42d', color: '#333' }}
+            type='submit'
+            data-cy='submit'>
             Submit
           </Button>
         </Form>
