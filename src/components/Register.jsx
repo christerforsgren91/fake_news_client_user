@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Segment, Form } from 'semantic-ui-react';
+import { Button, Segment, Form, Card } from 'semantic-ui-react';
 import Authentication from '../modules/Authentication';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { Link, useLocation } from 'react-router-dom';
@@ -9,6 +9,7 @@ import AuthenticationMessage from './AuthenticationMessage';
 const Register = () => {
   const { subscriber } = useSelector((state) => state);
   const [loading, setLoading] = useState(false);
+  const [subscriptionPlan, setSubscriptionPlan] = useState('');
   const location = useLocation();
 
   const stripe = useStripe();
@@ -22,9 +23,48 @@ const Register = () => {
     }
     const cardElement = elements.getElement(CardElement);
     stripe.createToken(cardElement).then((result) => {
-      Authentication.subscribe(event, result, setLoading);
+      Authentication.subscribe(event, result, setLoading, subscriptionPlan);
     });
   };
+
+  const subscriptionPlans = [
+    {
+      id: 'monthly_subscription',
+      title: 'MONTHLY SUBSCRIPTION',
+      price: '130 SEK / month',
+      info: 'Gain access to premium content and more...',
+    },
+    {
+      id: 'half_year_subscription',
+      title: 'HALF YEAR SUBSCRIPTION',
+      price: '110 SEK / month',
+      info: 'Save 15% by purchasing 6 month subscription',
+    },
+    {
+      id: 'yearly_subscription',
+      title: 'YEARLY SUBSCRIPTION',
+      price: '100 SEK / month',
+      info: 'Save another 10% by purchasing 12 month subscription',
+    },
+  ];
+
+  const subscriptionPlanCardList = subscriptionPlans.map((plan, index) => {
+    return (
+      <Card>
+        <Card.Content>
+          <Card.Header>{plan.title}</Card.Header>
+          <Card.Description>{plan.info}</Card.Description>
+          <Card.Meta>{plan.price}</Card.Meta>
+          <Button
+            onClick={() => {
+              setSubscriptionPlan(plan.id);
+            }}>
+            Proceed
+          </Button>
+        </Card.Content>
+      </Card>
+    );
+  });
 
   return (
     <>
@@ -40,90 +80,95 @@ const Register = () => {
             You tried to access a premium article, please subscribe
           </h1>
         )}
+        {!subscriptionPlan && (
+          <Card.Group centered>{subscriptionPlanCardList}</Card.Group>
+        )}
 
-        <Form
-          data-cy='registration-form'
-          onSubmit={handleSubmit}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <div className='box-shadow' style={styles.input}>
-            <input
-              name='firstName'
-              type='text'
-              placeholder='First Name'
-              required
-              data-cy='registration-first-name'
-            />
-          </div>{' '}
-          <div className='box-shadow' style={styles.input}>
-            <input
-              name='lastName'
-              type='text'
-              placeholder='Last Name'
-              required
-              data-cy='registration-last-name'
-            />
-          </div>
-          <div className='box-shadow' style={styles.input}>
-            <input
-              name='email'
-              type='email'
-              placeholder='Email'
-              required
-              data-cy='registration-email'
-            />
-          </div>
-          <div className='box-shadow' style={styles.input}>
-            <input
-              name='password'
-              type='password'
-              data-cy='registration-password'
-              placeholder='Password'
-              required
-            />
-          </div>
-          <div className='box-shadow' style={styles.input}>
-            <input
-              name='passwordConfirmation'
-              type='password'
-              data-cy='registration-confirmation-password'
-              placeholder='Confirm Password'
-              required
-            />
-          </div>
-          <div
-            data-cy='card-details'
-            className='box-shadow'
+        {subscriptionPlan && (
+          <Form
+            data-cy='registration-form'
+            onSubmit={handleSubmit}
             style={{
-              padding: 15,
-              color: 'white',
-              width: 300,
-              borderRadius: 5,
-              margin: '10px 0',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}>
-            <CardElement options={{ style: { base: { color: 'white' } } }} />
-          </div>
-          <div style={{ display: 'flex' }}>
-            <Link to='/login'>
+            <div className='box-shadow' style={styles.input}>
+              <input
+                name='firstName'
+                type='text'
+                placeholder='First Name'
+                required
+                data-cy='registration-first-name'
+              />
+            </div>{' '}
+            <div className='box-shadow' style={styles.input}>
+              <input
+                name='lastName'
+                type='text'
+                placeholder='Last Name'
+                required
+                data-cy='registration-last-name'
+              />
+            </div>
+            <div className='box-shadow' style={styles.input}>
+              <input
+                name='email'
+                type='email'
+                placeholder='Email'
+                required
+                data-cy='registration-email'
+              />
+            </div>
+            <div className='box-shadow' style={styles.input}>
+              <input
+                name='password'
+                type='password'
+                data-cy='registration-password'
+                placeholder='Password'
+                required
+              />
+            </div>
+            <div className='box-shadow' style={styles.input}>
+              <input
+                name='passwordConfirmation'
+                type='password'
+                data-cy='registration-confirmation-password'
+                placeholder='Confirm Password'
+                required
+              />
+            </div>
+            <div
+              data-cy='card-details'
+              className='box-shadow'
+              style={{
+                padding: 15,
+                color: 'white',
+                width: 300,
+                borderRadius: 5,
+                margin: '10px 0',
+              }}>
+              <CardElement options={{ style: { base: { color: 'white' } } }} />
+            </div>
+            <div style={{ display: 'flex' }}>
+              <Link to='/login'>
+                <Button
+                  data-cy='registration-back'
+                  style={{ margin: '15px 10px 0 10px' }}>
+                  Back?
+                </Button>
+              </Link>
               <Button
-                data-cy='registration-back'
-                style={{ margin: '15px 10px 0 10px' }}>
-                Back?
+                type='submit'
+                loading={loading ? true : false}
+                data-cy='registration-submit'
+                style={styles.button}>
+                Register
               </Button>
-            </Link>
-            <Button
-              type='submit'
-              loading={loading ? true : false}
-              data-cy='registration-submit'
-              style={styles.button}>
-              Register
-            </Button>
-          </div>
-        </Form>
+            </div>
+          </Form>
+        )}
       </Segment>
     </>
   );
