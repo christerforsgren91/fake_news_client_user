@@ -1,10 +1,15 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Button, Table, Rating, Segment } from 'semantic-ui-react';
+import { Button, Table, Segment } from 'semantic-ui-react';
+import BackyardArticles from '../modules/BackyardArticles';
 
 const BackyardDashboard = () => {
   const { backyardArticles } = useSelector((state) => state);
+
+  useEffect(() => {
+    
+  }, []);
 
   const listOfBackyardArticles = backyardArticles.map((backyardArticle) => (
     <Table.Row
@@ -18,33 +23,18 @@ const BackyardDashboard = () => {
         style={{ fontWeight: 'bold' }}>
         {backyardArticle.title}
       </Table.Cell>
-      <Table.Cell data-cy='category' singleLine>
-        {backyardArticle.category}
+      <Table.Cell data-cy='theme' singleLine>
+        {backyardArticle.theme}
       </Table.Cell>
-
-      <Table.Cell data-cy='date'>{backyardArticle.date}</Table.Cell>
       <Table.Cell data-cy='author'>
         {backyardArticle.author
           ? `${backyardArticle.author.first_name} ${backyardArticle.author.last_name}`
           : 'Bob Kramer'}
       </Table.Cell>
-      <Table.Cell>
-        <Rating
-          data-cy='rating'
-          icon='star'
-          size='tiny'
-          defaultRating={
-            backyardArticle.rating
-              ? article.rating
-              : Math.floor(Math.random() * 6)
-          }
-          maxRating={5}
-          disabled
-        />
-      </Table.Cell>
+      <Table.Cell data-cy='date'>{backyardArticle.date}</Table.Cell>
       <Table.Cell>
         <Link
-          data-cy='view-article-btn'
+          data-cy='view-backyard-article-btn'
           to={{ pathname: '/view', state: { id: backyardArticle.id } }}>
           <Button>View</Button>
         </Link>
@@ -63,15 +53,15 @@ const BackyardDashboard = () => {
             <Table.Header>
               <Table.Row textAlign='center'>
                 <Table.HeaderCell singleLine>Title</Table.HeaderCell>
-                <Table.HeaderCell>Categories</Table.HeaderCell>
+                <Table.HeaderCell>Theme</Table.HeaderCell>
+                <Table.HeaderCell>Written by</Table.HeaderCell>
                 <Table.HeaderCell>Updated On</Table.HeaderCell>
-                <Table.HeaderCell>Author</Table.HeaderCell>
-                <Table.HeaderCell>Status</Table.HeaderCell>
-                <Table.HeaderCell>Rating</Table.HeaderCell>
                 <Table.HeaderCell>Action</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-            {backyardArticles[0] && <Table.Body>{listOfBackyardArticles}</Table.Body>}
+            {backyardArticles[0] && (
+              <Table.Body>{listOfBackyardArticles}</Table.Body>
+            )}
           </Table>
         </div>
       </div>
@@ -85,9 +75,7 @@ const styles = {
   container: {
     display: 'flex',
     flexDirection: 'row',
-    marginTop: 100,
-    marginLeft: 350,
-    marginRight: 100,
+    margin: '100px 15%',
   },
   articleContainer: {
     backgroundColor: '#202325',

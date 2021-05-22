@@ -30,12 +30,11 @@ describe('visitor can access Backyard site', () => {
         .within(() => {
           cy.get('[data-cy=title]').should(
             'contain',
-            'Moderna Chief Medical Officer Confirms mRNA Injection For COVID-19 Can Change Your Genetic Code.'
+            'Something'
           );
-          cy.get('[data-cy=category]').should('contain', 'Hollywood');
+          cy.get('[data-cy=theme]').should('contain', 'My cat is spying on me');
           cy.get('[data-cy=date]').should('contain', '2021-05-19, 15:10');
           cy.get('[data-cy=author]').should('contain', 'Bob Kramer');
-          cy.get('[data-cy=rating]').should('be.visible');
           cy.get('[data-cy=view-article-btn]').should('be.visible');
         });
     });
