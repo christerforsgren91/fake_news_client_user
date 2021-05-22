@@ -46,12 +46,12 @@ const Login = () => {
             />
           </div>
           <Button.Group>
-            <Button positive type='submit' data-cy='login-submit'>
+            <Button warning type='submit' data-cy='login-submit'>
               Login
             </Button>
             <Button.Or />
             <Button
-              color='blue'
+              style={{ backgroundColor: '#fce42d' }}
               size='medium'
               data-cy='registration-button'
               as={Link}

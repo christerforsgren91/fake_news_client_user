@@ -15,9 +15,10 @@ const Navbar = () => {
           pointing
           secondary
           stackable
-          size='small'
+          size='massive'
           style={{ margin: '0 20%' }}>
           <Menu.Item
+            style={styles.item}
             name='home'
             data-cy='home-tab'
             active
@@ -28,6 +29,7 @@ const Navbar = () => {
           <Menu.Menu position='right'>
             {subscriber ? (
               <Menu.Item
+                style={styles.item}
                 name='Logout'
                 data-cy='logout-button'
                 active
@@ -37,6 +39,7 @@ const Navbar = () => {
               />
             ) : (
               <Menu.Item
+                style={styles.item}
                 name='Login'
                 data-cy='login-button'
                 active
@@ -57,3 +60,9 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+const styles = {
+  item: {
+    color: 'white',
+  },
+};

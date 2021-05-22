@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Button, Segment, Form } from 'semantic-ui-react';
 import Authentication from '../modules/Authentication';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import AuthenticationMessage from './AuthenticationMessage';
 
 const Register = () => {
   const { subscriber } = useSelector((state) => state);
   const [loading, setLoading] = useState(false);
+  const location = useLocation();
 
   const stripe = useStripe();
   const elements = useElements();
@@ -31,7 +32,15 @@ const Register = () => {
       <Segment
         placeholder
         textAlign='center'
-        style={{ backgroundColor: '#202325', height: 400 }}>
+        style={{ backgroundColor: '#202325', height: 600 }}>
+        {location.state && (
+          <h1
+            style={{ marginBottom: 50, color: 'white' }}
+            data-cy='subscribe-message'>
+            You tried to access a premium article, please subscribe
+          </h1>
+        )}
+
         <Form
           data-cy='registration-form'
           onSubmit={handleSubmit}
@@ -100,8 +109,10 @@ const Register = () => {
           </div>
           <div style={{ display: 'flex' }}>
             <Link to='/login'>
-              <Button data-cy='registration-back' style={styles.button}>
-                Back!
+              <Button
+                data-cy='registration-back'
+                style={{ margin: '15px 10px 0 10px' }}>
+                Back?
               </Button>
             </Link>
             <Button
@@ -109,7 +120,7 @@ const Register = () => {
               loading={loading ? true : false}
               data-cy='registration-submit'
               style={styles.button}>
-              Register!
+              Register
             </Button>
           </div>
         </Form>

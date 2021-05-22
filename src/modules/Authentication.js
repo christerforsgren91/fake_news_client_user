@@ -89,7 +89,6 @@ const createParams = (event) => {
   return {
     first_name: event.target.firstName.value,
     last_name: event.target.lastName.value,
-    source: 'public-system',
     email: event.target.email.value,
     password: event.target.password.value,
     password_confirmation: event.target.passwordConfirmation.value,
