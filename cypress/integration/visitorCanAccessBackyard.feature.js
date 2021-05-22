@@ -3,11 +3,25 @@ describe('visitor can access Backyard site', () => {
     cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles', {
       fixture: 'articles.json',
     });
-    cy.visit('/');
   });
 
   describe('successfully access backyard', () => {
     beforeEach(() => {
+      cy.visit('/', {
+        onBeforeLoad(window) {
+          const stubLocation = {
+            coords: {
+              latitude: 55.7842,
+              longitude: 12.4518,
+            },
+          };
+          cy.stub(window.navigator.geolocation, 'getCurrentPosition').callsFake(
+            (callback) => {
+              return callback(stubLocation);
+            }
+          );
+        },
+      });
       cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/backyard', {
         fixture: 'backyardArticles.json',
       });

@@ -3,8 +3,9 @@ import store from '../state/store/configureStore';
 import errorHandler from './ErrorHandler';
 
 const BackyardArticles = {
-  async index() {
+  async index(coords) {
     try {
+      debugger
       let response = await axios.get('/backyard');
       store.dispatch({
         type: 'SET_BACKYARD_ARTICLES',

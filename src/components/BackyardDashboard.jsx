@@ -7,8 +7,14 @@ import BackyardArticles from '../modules/BackyardArticles';
 const BackyardDashboard = () => {
   const { backyardArticles } = useSelector((state) => state);
 
+  const getArticlesBasedOnPosition = () => {
+    navigator.geolocation.getCurrentPosition(position => {
+      BackyardArticles.index(position.coords)
+    })
+  };
+  
   useEffect(() => {
-    BackyardArticles.index()
+    getArticlesBasedOnPosition()
   }, []);
 
   const listOfBackyardArticles = backyardArticles.map((backyardArticle) => (
