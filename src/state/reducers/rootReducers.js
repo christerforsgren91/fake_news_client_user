@@ -34,6 +34,11 @@ const rootReducer = (state, action) => {
         ...state,
         articles: action.payload,
       };
+    case 'SET_BACKYARD_ARTICLES':
+      return {
+        ...state,
+        backyardArticles: action.payload,
+      };
     case 'SHOW_ARTICLE':
       return {
         ...state,

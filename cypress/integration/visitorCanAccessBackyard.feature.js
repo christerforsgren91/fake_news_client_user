@@ -21,7 +21,7 @@ describe('visitor can access Backyard site', () => {
     });
 
     it('is expected to show the list of articles', () => {
-      cy.get('[data-cy=backyard-article]').should('have.length', 7);
+      cy.get('[data-cy=backyard-article]').should('have.length', 6);
     });
 
     it('is expected to show the first article', () => {
@@ -35,7 +35,7 @@ describe('visitor can access Backyard site', () => {
           cy.get('[data-cy=theme]').should('contain', 'My cat is spying on me');
           cy.get('[data-cy=date]').should('contain', '2021-05-19, 15:10');
           cy.get('[data-cy=author]').should('contain', 'Bob Kramer');
-          cy.get('[data-cy=view-article-btn]').should('be.visible');
+          cy.get('[data-cy=view-backyard-article-btn]').should('be.visible');
         });
     });
   });

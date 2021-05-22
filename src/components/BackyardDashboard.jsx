@@ -8,7 +8,7 @@ const BackyardDashboard = () => {
   const { backyardArticles } = useSelector((state) => state);
 
   useEffect(() => {
-    
+    BackyardArticles.index()
   }, []);
 
   const listOfBackyardArticles = backyardArticles.map((backyardArticle) => (
