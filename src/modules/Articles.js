@@ -48,7 +48,7 @@ const Articles = {
 export default Articles;
 
 const getUserAuthToken = () => {
-  return JSON.parse(localStorage.getItem('user_data'));
+  return JSON.parse(localStorage.getItem('user_headers'));
 };
 
 export const setRating = (rating) => {
