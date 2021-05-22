@@ -38,6 +38,10 @@ describe('visitor can access Backyard site', () => {
       cy.url().should('include', '/backyard');
     });
 
+    it('is expected to display the country', () => {
+      cy.get('[data-cy=backyard-header]').should('contain', 'Backyard Conspiracies from Denmark')
+    })
+
     it('is expected to show the list of articles', () => {
       cy.get('[data-cy=backyard-article]').should('have.length', 6);
     });

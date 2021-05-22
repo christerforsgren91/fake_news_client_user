@@ -8,14 +8,9 @@ const BackyardDashboard = () => {
   const { backyardArticles } = useSelector((state) => state);
 
   const getArticlesBasedOnPosition = () => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        BackyardArticles.index(position.coords);
-      },
-      (error) => {
-        debugger;
-      }
-    );
+    navigator.geolocation.getCurrentPosition((position) => {
+      BackyardArticles.index(position.coords);
+    });
   };
 
   useEffect(() => {
@@ -46,7 +41,7 @@ const BackyardDashboard = () => {
       <Table.Cell>
         <Link
           data-cy='view-backyard-article-btn'
-          to={{ pathname: '/view', state: { id: backyardArticle.id } }}>
+          to=??>
           <Button>View</Button>
         </Link>
       </Table.Cell>
