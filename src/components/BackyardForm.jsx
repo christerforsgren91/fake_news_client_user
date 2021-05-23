@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'semantic-ui-react';
 import store from '../state/store/configureStore';
+import BackyardArticles from '../modules/BackyardArticles'
 
 const BackyardForm = () => {
   const [open, setOpen] = useState(false);
 
   const submitBackyard = (event) => {
+    backyardArticle = {}
     setOpen(false);
+    BackyardArticles.create(backyardArticle)
     store.dispatch({ type: 'SUCCESS_MESSAGE' });
   };
 
@@ -19,26 +22,25 @@ const BackyardForm = () => {
         open={open}
         trigger={<Button data-cy='create-backyard-article-btn'>Create</Button>}>
         <Modal.Header data-cy='header'>Create Backyard Article</Modal.Header>
-        <Form onSubmit={(event) => submitBackyard(event)}>
+        <Form size='medium' onSubmit={(event) => submitBackyard(event)}>
           <Form.Input
-            error={{
-              content: 'Please enter Title',
-              pointing: 'below',
-            }}
+            className='new-backyard-input'
             fluid
+            required
             label='Title'
             placeholder='Title'
-            id='form-input-first-name'
             data-cy='title'
           />
           <Form.Input
-            error='Please enter Theme'
+            className='new-backyard-input'
             fluid
+            required
             label='Theme'
             data-cy='theme'
             placeholder='Theme'
           />
           <Form.TextArea
+            required
             label='Story'
             data-cy='body'
             placeholder='Enter your Text here'

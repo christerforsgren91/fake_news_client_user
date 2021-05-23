@@ -42,7 +42,7 @@ const BackyardDashboard = () => {
       <Table.Cell>
         <Link
           data-cy='view-backyard-article-btn'
-          to={`/backyard/${backyardArticle.id}`}>
+          to={`/backyards/${backyardArticle.id}`}>
           <Button>View</Button>
         </Link>
       </Table.Cell>

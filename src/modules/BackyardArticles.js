@@ -8,7 +8,7 @@ const BackyardArticles = {
       try {
         let { latitude, longitude } = coords;
         let response = await axios.get(
-          `/backyard/?lat=${latitude}&lon=${longitude}`
+          `/backyards/?lat=${latitude}&lon=${longitude}`
         );
         store.dispatch({
           type: 'SET_BACKYARD_ARTICLES',
@@ -26,7 +26,7 @@ const BackyardArticles = {
   },
   async show(id) {
     try {
-      const response = await axios.get(`/backyard/${id}`);
+      const response = await axios.get(`/backyards/${id}`);
       store.dispatch({
         type: 'SHOW_BACKYARD_ARTICLE',
         payload: response.data.backyardArticle,
@@ -35,6 +35,20 @@ const BackyardArticles = {
       errorHandler(error);
     }
   },
+  async create(backyardArticle) {
+    try {
+      params = { backyardArticle: backyardArticle };
+      const response = await axios.post('/backyards', params, {
+        headers: getUserAuthToken(),
+      });
+    } catch (error) {
+      errorHandler(error);
+    }
+  },
 };
 
 export default BackyardArticles;
+
+const getUserAuthToken = () => {
+  return JSON.parse(localStorage.getItem('user_headers'));
+};
