@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Button, Table, Segment } from 'semantic-ui-react';
 import BackyardArticles from '../modules/BackyardArticles';
+import BackyardForm from './BackyardForm';
 
 const BackyardDashboard = () => {
   const { backyardArticles } = useSelector((state) => state);
@@ -58,6 +59,7 @@ const BackyardDashboard = () => {
                 ? `Backyard Conspiracies from ${backyardArticles[0].location}`
                 : 'Allow your location!'}
             </h2>
+            <button data-cy='create-backyard-article-btn'></button>
           </Segment>
           <Table celled padded inverted style={{ overflowY: 'scroll' }}>
             <Table.Header>

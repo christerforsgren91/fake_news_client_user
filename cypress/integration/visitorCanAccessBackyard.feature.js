@@ -24,7 +24,7 @@ describe('visitor can access Backyard site', () => {
       });
       cy.intercept(
         'GET',
-        'https://fakest-newzz.herokuapp.com/api/backyard/?lat=55.7842&lon=12.4518',
+        'https://fakest-newzz.herokuapp.com/api/backyards/?lat=55.7842&lon=12.4518',
         {
           fixture: 'backyard_articles.json',
         }
@@ -73,7 +73,7 @@ describe('visitor can access Backyard site', () => {
           );
         },
       });
-      cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/backyard', {
+      cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/backyards', {
         fixture: 'backyard_articles.json',
       });
       cy.get('[data-cy=navbar]').within(() => {

@@ -18,7 +18,7 @@ describe('subscriber can write backyard articles', () => {
 
     cy.intercept(
       'GET',
-      'https://fakest-newzz.herokuapp.com/api/backyard/?lat=55.7842&lon=12.4518',
+      'https://fakest-newzz.herokuapp.com/api/backyards/?lat=55.7842&lon=12.4518',
       {
         fixture: 'backyard_articles.json',
       }
@@ -43,7 +43,7 @@ describe('subscriber can write backyard articles', () => {
         cy.get('[data-cy=title]').type('My can is hunting me');
         cy.get('[data-cy=theme]').type('My biggest mistake');
         cy.get('[data-cy=body]').type(
-          "My cat was contaced by CIA to hunt me down! I knew that I had to buy those tinfoil hats for cats but didn't do it. Big mistake bros..."
+          "My cat was contacted by CIA to hunt me down! I knew that I had to buy those tinfoil hats for cats but didn't do it. Big mistake bros..."
         );
         cy.get('[data-cy=submit]').click();
       });
@@ -124,7 +124,7 @@ describe('unsuccesfully with no geolocation', () => {
     });
     cy.intercept(
       'GET',
-      'https://fakest-newzz.herokuapp.com/api/backyard/?lat=55.7842&lon=12.4518',
+      'https://fakest-newzz.herokuapp.com/api/backyards/?lat=55.7842&lon=12.4518',
       {
         fixture: 'backyard_articles.json',
       }
