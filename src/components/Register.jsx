@@ -88,7 +88,7 @@ const Register = () => {
       <Segment
         placeholder
         textAlign='center'
-        style={{ backgroundColor: '#202325', height: 600 }}>
+        style={{ backgroundColor: '#111518', height: 500 }}>
         {location.state && (
           <h1
             style={{ marginBottom: 50, color: 'white' }}

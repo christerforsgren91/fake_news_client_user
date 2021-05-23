@@ -94,20 +94,10 @@ describe('User is able to register an account and subscribe', () => {
     });
   });
 
-  describe('unsuccessfully with faulty subcription request', () => {
+  describe.only('unsuccessfully with faulty subcription request', () => {
     beforeEach(() => {
-      cy.intercept(
-        'POST',
-        'https://fakest-newzz.herokuapp.com/api/subscriptions',
-        {
-          statusCode: 400,
-        }
-      );
       cy.intercept('POST', 'https://fakest-newzz.herokuapp.com/api/auth', {
-        fixture: 'registration.json',
-      });
-      cy.intercept('DELETE', 'https://fakest-newzz.herokuapp.com/api/auth', {
-        statusCode: 204,
+        statusCode: 400,
       });
     });
 

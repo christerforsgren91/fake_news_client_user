@@ -15,7 +15,7 @@ const Login = () => {
   return (
     <>
       {subscriber && <AuthenticationMessage time={3000} />}
-      <Segment placeholder style={{ backgroundColor: '#202325', height: 350 }}>
+      <Segment placeholder style={{ backgroundColor: '#111518', height: 350 }}>
         <Form
           data-cy='login-form'
           onSubmit={handleSubmit}
@@ -46,7 +46,7 @@ const Login = () => {
             />
           </div>
           <Button.Group>
-            <Button warning type='submit' data-cy='login-submit'>
+            <Button type='submit' data-cy='login-submit'>
               Login
             </Button>
             <Button.Or />
