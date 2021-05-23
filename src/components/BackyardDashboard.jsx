@@ -59,7 +59,7 @@ const BackyardDashboard = () => {
                 ? `Backyard Conspiracies from ${backyardArticles[0].location}`
                 : 'Allow your location!'}
             </h2>
-            <button data-cy='create-backyard-article-btn'></button>
+            <BackyardForm />
           </Segment>
           <Table celled padded inverted style={{ overflowY: 'scroll' }}>
             <Table.Header>
