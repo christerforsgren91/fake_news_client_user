@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Segment, Form, Card } from 'semantic-ui-react';
 import Authentication from '../modules/Authentication';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import AuthenticationMessage from './AuthenticationMessage';
 
@@ -22,15 +22,16 @@ const Register = () => {
       return;
     }
     const cardElement = elements.getElement(CardElement);
-    debugger;
-    stripe.createToken(cardElement).then((stripeToken) => {
-      Authentication.subscribe(
-        event,
-        stripeToken,
-        setLoading,
-        subscriptionPlan
-      );
-    });
+    stripe
+      .createPaymentMethod({ type: 'card', card: cardElement })
+      .then((stripeDetails) => {
+        Authentication.subscribe(
+          event,
+          stripeDetails,
+          setLoading,
+          subscriptionPlan
+        );
+      });
   };
 
   const subscriptionPlans = [

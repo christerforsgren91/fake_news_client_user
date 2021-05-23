@@ -41,15 +41,14 @@ const Authentication = {
       });
   },
 
-  async subscribe(event, stripeToken, setLoading, subscriptionPlan) {
-    debugger;
-    if (stripeToken.token) {
+  async subscribe(event, stripeDetails, setLoading, subscriptionPlan) {
+    debugger
+    if (stripeDetails) {
       try {
         const response = await axios.post(
-          '/auth',
-          createParams(event, subscriptionPlan, stripeToken)
+          '/auth/',
+          createParams(event, subscriptionPlan, stripeDetails)
         );
-        debugger;
         store.dispatch({
           type: 'AUTHENTICATE',
           payload: `Thank you for subscribing, ${response.data.data.first_name}!`,
@@ -75,7 +74,7 @@ const Authentication = {
 
 export default Authentication;
 
-const createParams = (event, subscriptionPlan, stripeToken) => {
+const createParams = (event, subscriptionPlan, stripeDetails) => {
   return {
     first_name: event.target.firstName.value,
     last_name: event.target.lastName.value,
@@ -84,7 +83,7 @@ const createParams = (event, subscriptionPlan, stripeToken) => {
     password_confirmation: event.target.passwordConfirmation.value,
     role: 'subscriber',
     plan: subscriptionPlan,
-    stripe_details: stripeToken,
+    stripe_details: stripeDetails,
   };
 };
 const getUserAuthToken = () => {
