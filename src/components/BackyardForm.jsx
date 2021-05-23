@@ -7,10 +7,9 @@ const BackyardForm = () => {
   const [open, setOpen] = useState(false);
 
   const submitBackyard = (event) => {
-    backyardArticle = {}
+    const backyardArticle = {}
     setOpen(false);
     BackyardArticles.create(backyardArticle)
-    store.dispatch({ type: 'SUCCESS_MESSAGE' });
   };
 
   return (
@@ -24,7 +23,7 @@ const BackyardForm = () => {
         <Modal.Header data-cy='header'>Create Backyard Article</Modal.Header>
         <Form size='medium' onSubmit={(event) => submitBackyard(event)}>
           <Form.Input
-            className='new-backyard-input'
+            id='new-backyard-input'
             fluid
             required
             label='Title'
@@ -32,7 +31,7 @@ const BackyardForm = () => {
             data-cy='title'
           />
           <Form.Input
-            className='new-backyard-input'
+            id='new-backyard-input'
             fluid
             required
             label='Theme'

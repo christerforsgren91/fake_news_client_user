@@ -44,7 +44,7 @@ const rootReducer = (state, action) => {
         ...state,
         article: action.payload,
       };
-    case 'SUCCESS_MESSAGE':
+    case 'SUCCESS_POPUP':
       return {
         ...state,
         popupSuccess: true,
@@ -54,7 +54,12 @@ const rootReducer = (state, action) => {
         ...state,
         backyardArticle: action.payload,
       };
-
+    case 'SUCCESS_MESSAGE':
+      return {
+        ...state,
+        open: true,
+        message: action.payload,
+      };
     default:
       return state;
   }

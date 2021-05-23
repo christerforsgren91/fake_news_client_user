@@ -37,9 +37,13 @@ const BackyardArticles = {
   },
   async create(backyardArticle) {
     try {
-      params = { backyardArticle: backyardArticle };
-      const response = await axios.post('/backyards', params, {
+      const params = { backyardArticle: backyardArticle };
+      await axios.post('/backyards', params, {
         headers: getUserAuthToken(),
+      });
+      store.dispatch({
+        type: 'SUCCESS_MESSAGE',
+        payload: 'Your backyard article was published!',
       });
     } catch (error) {
       errorHandler(error);
