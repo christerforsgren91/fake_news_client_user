@@ -59,29 +59,28 @@ describe('subscriber can write backyard articles', () => {
   });
 
   describe('unsuccessfully', () => {
-    describe('not a subscriber', () => {
-      beforeEach(() => {
-        cy.visit('/', {
-          onBeforeLoad(window) {
-            const stubLocation = {
-              coords: {
-                latitude: 55.7842,
-                longitude: 12.4518,
-              },
-            };
+    beforeEach(() => {
+      cy.visit('/', {
+        onBeforeLoad(window) {
+          const stubLocation = {
+            coords: {
+              latitude: 55.7842,
+              longitude: 12.4518,
+            },
+          };
 
-            cy.stub(
-              window.navigator.geolocation,
-              'getCurrentPosition'
-            ).callsFake((callback) => {
+          cy.stub(window.navigator.geolocation, 'getCurrentPosition').callsFake(
+            (callback) => {
               return callback(stubLocation);
-            });
-          },
-        });
-        cy.get('[data-cy=navbar]').within(() => {
-          cy.get('[data-cy=backyard-tab]').click();
-        });
+            }
+          );
+        },
       });
+      cy.get('[data-cy=navbar]').within(() => {
+        cy.get('[data-cy=backyard-tab]').click();
+      });
+    });
+    describe('not a subscriber', () => {
       it('is expected not to show create backyard article button', () => {
         cy.get('[data-cy=create-backyard-article-btn]').should('not.exist');
       });
@@ -96,26 +95,6 @@ describe('subscriber can write backyard articles', () => {
             statusCode: 422,
           }
         );
-        cy.visit('/', {
-          onBeforeLoad(window) {
-            const stubLocation = {
-              coords: {
-                latitude: 55.7842,
-                longitude: 12.4518,
-              },
-            };
-
-            cy.stub(
-              window.navigator.geolocation,
-              'getCurrentPosition'
-            ).callsFake((callback) => {
-              return callback(stubLocation);
-            });
-          },
-        });
-        cy.get('[data-cy=navbar]').within(() => {
-          cy.get('[data-cy=backyard-tab]').click();
-        });
         cy.window().its('store').invoke('dispatch', {
           type: 'AUTHENTICATE',
           payload: 'Welcome back Bob!',
@@ -145,7 +124,7 @@ describe('subscriber can write backyard articles', () => {
   });
 });
 
-describe('unsuccesfully with no geolocation', () => {
+describe('unsuccessfully with no geolocation', () => {
   beforeEach(() => {
     cy.visit('/', {
       onBeforeLoad(window) {
@@ -165,7 +144,7 @@ describe('unsuccesfully with no geolocation', () => {
     cy.window().its('store').invoke('dispatch', {
       type: 'AUTHENTICATE',
       payload: 'Welcome back Bob!',
-    })
+    });
   });
 
   it('is expected not to show create backyard article button', () => {
