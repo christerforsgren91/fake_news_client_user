@@ -13,12 +13,12 @@ const BackyardArticles = {
         if (response.data.backyard_articles[0]) {
           store.dispatch({
             type: 'SET_BACKYARD_ARTICLES',
-            payload: response.data.backyard_articles,
+            payload: {articles: response.data.backyard_articles, location: response.data.location},
           });
         } else {
           store.dispatch({
-            type: 'ERROR_MESSAGE',
-            payload: 'There are no articles available in your area',
+            type: 'NO_BACKYARD_ARTICLES',
+            payload: {message: 'There are no articles available in your area', location: response.data.location},
           });
         }
       } catch (error) {

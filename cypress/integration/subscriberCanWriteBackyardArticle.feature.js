@@ -111,7 +111,7 @@ describe('subscriber can write backyard articles', () => {
           cy.get('[data-cy=title]').type('My can is hunting me');
           cy.get('[data-cy=theme]').type('My biggest mistake');
           cy.get('[data-cy=body]').type(
-            "My cat was contaced by CIA to hunt me down! I knew that I had to buy those tinfoil hats for cats but didn't do it. Big mistake bros..."
+            "My cat was contacted by CIA to hunt me down! I knew that I had to buy those tinfoil hats for cats but didn't do it. Big mistake bros..."
           );
           cy.get('[data-cy=submit]').click();
         });
@@ -138,16 +138,20 @@ describe('unsuccessfully with no geolocation', () => {
         );
       },
     });
-    cy.get('[data-cy=navbar]').within(() => {
-      cy.get('[data-cy=backyard-tab]').click();
-    });
     cy.window().its('store').invoke('dispatch', {
       type: 'AUTHENTICATE',
       payload: 'Welcome back Bob!',
+    });
+    cy.get('[data-cy=navbar]').within(() => {
+      cy.get('[data-cy=backyard-tab]').click();
     });
   });
 
   it('is expected not to show create backyard article button', () => {
     cy.get('[data-cy=create-backyard-article-btn]').should('not.exist');
+    cy.get('[data-cy=popup-message]').should(
+      'contain',
+      'Please allow your location to see the backyard articles.'
+    );
   });
 });

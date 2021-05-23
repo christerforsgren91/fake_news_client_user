@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button, Form } from 'semantic-ui-react';
 import BackyardArticles from '../modules/BackyardArticles';
 
-const BackyardForm = (props) => {
+const BackyardForm = ({ location }) => {
   const [open, setOpen] = useState(false);
 
   const submitBackyard = (event) => {
@@ -10,7 +10,7 @@ const BackyardForm = (props) => {
       title: event.target.title.value,
       theme: event.target.theme.value,
       body: event.target.body.value,
-      location: props.location
+      location: location,
     };
     setOpen(false);
     BackyardArticles.create(backyardArticle);
