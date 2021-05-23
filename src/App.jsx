@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import { Switch, Route } from 'react-router';
+
 import Navbar from './components/layout/Navbar';
 import MainPage from './components/MainPage';
-import Footer from './components/layout/Footer';
 import Article from './components/Article';
-import { Switch, Route } from 'react-router';
 import Category from './components/Category';
 import Login from './components/Login';
 import Registration from './components/Register';
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
+import BackyardDashboard from './components/BackyardDashboard';
 import Popup from './components/Popup';
 import Authentication from './modules/Authentication';
+import BackyardArticle from './components/layout/BackyardArticle';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY);
 
@@ -29,6 +31,12 @@ const App = () => {
         <Route exact path='/articles/:id'>
           <Article />
         </Route>
+        <Route exact path='/backyard/:id'>
+          <BackyardArticle />
+        </Route>
+        <Route exact path='/backyard'>
+          <BackyardDashboard />
+        </Route>
         <Route exact path='/category/:category'>
           <Category />
         </Route>
@@ -42,7 +50,6 @@ const App = () => {
         </Route>
       </Switch>
       <Popup />
-      <Footer />
     </>
   );
 };

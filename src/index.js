@@ -14,7 +14,7 @@ axios.defaults.baseURL = 'https://fakest-newzz.herokuapp.com/api';
 ReactDOM.render(
   <Router>
     <Provider store={store}>
-        <App />
+      <App />
     </Provider>
   </Router>,
   document.getElementById('root')

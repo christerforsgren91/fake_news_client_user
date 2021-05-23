@@ -26,6 +26,15 @@ const Navbar = () => {
             to='/'
             onClick={() => store.dispatch({ type: 'ERROR_RESET' })}
           />
+           <Menu.Item
+            style={styles.item}
+            name='backyard'
+            data-cy='backyard-tab'
+            active
+            as={Link}
+            to='/backyard'
+            onClick={() => store.dispatch({ type: 'ERROR_RESET' })}
+          />
           <Menu.Menu position='right'>
             {subscriber ? (
               <Menu.Item

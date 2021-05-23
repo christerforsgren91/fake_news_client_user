@@ -48,19 +48,6 @@ input {
   padding: 0 100px 20px;
 }
 
-#footer {
-  bottom: 0;
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: rgb(19, 18, 17);
-  width: 100%;
-  text-align: center;
-}
-
-.footer-content {
-  color: white;
-}
-
 .italic {
   font-style: italic;
 }
@@ -212,4 +199,16 @@ input {
 
 .icon {
   color: rgba(218, 217, 216, 0.863) !important;
+}
+
+.backyard-container {
+  color: white;
+  margin: 20px 30%;
+  background-color: #202325;
+  padding: 25px;
+  border-radius: 3;
+}
+
+.backyard-container h2 {
+  font-size: 20px;
 }
