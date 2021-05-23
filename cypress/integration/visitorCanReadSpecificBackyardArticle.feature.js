@@ -4,7 +4,7 @@ describe('visitor can read specific Articles', () => {
       'GET',
       'https://fakest-newzz.herokuapp.com/api/backyard/?lat=55.7842&lon=12.4518',
       {
-        fixture: 'backyardArticles.json',
+        fixture: 'backyard_articles.json',
       }
     );
     cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/backyard/1', {
