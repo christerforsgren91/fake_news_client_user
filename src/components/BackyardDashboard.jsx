@@ -65,7 +65,7 @@ const BackyardDashboard = () => {
                 <Table.HeaderCell singleLine>Title</Table.HeaderCell>
                 <Table.HeaderCell>Theme</Table.HeaderCell>
                 <Table.HeaderCell>Written by</Table.HeaderCell>
-                <Table.HeaderCell>Updated On</Table.HeaderCell>
+                <Table.HeaderCell>Created On</Table.HeaderCell>
                 <Table.HeaderCell>Action</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
