@@ -10,10 +10,17 @@ const BackyardArticles = {
         let response = await axios.get(
           `/backyards/?lat=${latitude}&lon=${longitude}`
         );
-        store.dispatch({
-          type: 'SET_BACKYARD_ARTICLES',
-          payload: response.data.backyard_articles,
-        });
+        if (response.data.backyard_articles[0]) {
+          store.dispatch({
+            type: 'SET_BACKYARD_ARTICLES',
+            payload: response.data.backyard_articles,
+          });
+        } else {
+          store.dispatch({
+            type: 'ERROR_MESSAGE',
+            payload: 'There are no articles available in your area',
+          });
+        }
       } catch (error) {
         errorHandler(error);
       }
