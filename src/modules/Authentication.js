@@ -84,7 +84,7 @@ const createParams = (event, subscriptionPlan, stripeToken) => {
     password_confirmation: event.target.passwordConfirmation.value,
     role: 'subscriber',
     plan: subscriptionPlan,
-    stripeToken: stripeToken,
+    stripe_details: stripeToken,
   };
 };
 const getUserAuthToken = () => {
