@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'semantic-ui-react';
-import store from '../state/store/configureStore';
 import BackyardArticles from '../modules/BackyardArticles'
 
 const BackyardForm = () => {

@@ -6,7 +6,7 @@ import BackyardArticles from '../modules/BackyardArticles';
 import BackyardForm from './BackyardForm';
 
 const BackyardDashboard = () => {
-  const { backyardArticles } = useSelector((state) => state);
+  const { backyardArticles, subscriber } = useSelector((state) => state);
 
   const getArticlesBasedOnPosition = () => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -59,7 +59,7 @@ const BackyardDashboard = () => {
                 ? `Backyard Conspiracies from ${backyardArticles[0].location}`
                 : 'Allow your location!'}
             </h2>
-            <BackyardForm />
+            {(subscriber && backyardArticles[0]) && <BackyardForm />}
           </Segment>
           <Table celled padded inverted style={{ overflowY: 'scroll' }}>
             <Table.Header>
