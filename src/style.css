@@ -201,6 +201,58 @@ input {
   color: rgba(218, 217, 216, 0.863) !important;
 }
 
+.subscription-plan {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  color: white;
+  margin: 0 25px;
+  width: 250px;
+  transition: 0.3s;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.subscription-special {
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  color: white;
+  margin: 0 25px;
+  width: 250px;
+  transition: 0.3s;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.subscription-plan:hover {
+  transform: scale(1.05);
+}
+.subscription-special:hover {
+  transform: scale(1.05);
+}
+
+.subscription-header {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: tomato;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.subscription-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.subscription-button {
+  background-color: tomato;
+}
 .backyard-container {
   color: white;
   margin: 20px 30%;

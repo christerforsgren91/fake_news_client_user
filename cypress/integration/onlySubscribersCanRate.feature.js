@@ -39,10 +39,10 @@ describe('Only subscribers can use rating functionality', () => {
 
     it('is expected to allow subscribers to rate', () => {
       cy.get('[data-cy=login-button]').click();
-      cy.url('/registration');
       cy.get('[data-cy=login-form]').within(() => {
         cy.get('[data-cy=registration-button]').click();
       });
+      cy.get('[data-cy=subscription-plan]').first().click();
       cy.get('[data-cy=registration-form]').within(() => {
         cy.get('[data-cy=registration-first-name]').type('Bob');
         cy.get('[data-cy=registration-last-name]').type('Kramer');

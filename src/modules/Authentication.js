@@ -10,12 +10,9 @@ const Authentication = {
     };
     axios
       .post('auth/sign_in', params)
-      .then((createResponse) => {
-        let name = createResponse.data.data.first_name;
-        localStorage.setItem(
-          'user_headers',
-          JSON.stringify(createResponse.headers)
-        );
+      .then((response) => {
+        let name = response.data.data.first_name;
+        setUserAuthToken(response.headers);
         store.dispatch({
           type: 'AUTHENTICATE',
           payload: `Welcome back, ${name}!`,
@@ -41,34 +38,23 @@ const Authentication = {
       });
   },
 
-  async subscribe(event, result, setLoading) {
-    if (result.token) {
-      axios
-        .post('/auth', createParams(event))
-        .then((createResponse) => {
-          let name = createResponse.data.data.first_name;
-          let headers = createResponse.headers;
-          axios
-            .post(
-              '/subscriptions/',
-              { stripeToken: result.token.id },
-              { headers: headers }
-            )
-            .then((subscriptionResponse) => {
-              localStorage.setItem('user_headers', JSON.stringify(headers));
-              store.dispatch({
-                type: 'AUTHENTICATE',
-                payload: `${subscriptionResponse.data.message}, ${name}!`,
-              });
-            })
-            .catch((error) => {
-              errorHandler(error);
-            });
-        })
-        .catch((error) => {
-          errorHandler(error);
+  async subscribe(event, stripeDetails, setLoading, subscriptionPlan) {
+    if (stripeDetails) {
+      try {
+        const response = await axios.post(
+          '/auth/',
+          createParams(event, subscriptionPlan, stripeDetails)
+        );
+        setUserAuthToken(response.headers);
+        store.dispatch({
+          type: 'AUTHENTICATE',
+          payload: `Thank you for subscribing, ${response.data.data.first_name}!`,
         });
+      } catch (error) {
+        errorHandler(error);
+      }
     }
+
     setLoading(false);
   },
 
@@ -76,7 +62,7 @@ const Authentication = {
     axios
       .get('/auth/validate_token', { headers: getUserAuthToken() })
       .then((response) => {
-        localStorage.setItem('user_headers', JSON.stringify(response.headers));
+        setUserAuthToken(response.headers);
         store.dispatch({ type: 'AUTHENTICATE' });
       })
       .catch(() => {});
@@ -85,15 +71,22 @@ const Authentication = {
 
 export default Authentication;
 
-const createParams = (event) => {
+const createParams = (event, subscriptionPlan, stripeDetails) => {
   return {
     first_name: event.target.firstName.value,
     last_name: event.target.lastName.value,
     email: event.target.email.value,
     password: event.target.password.value,
     password_confirmation: event.target.passwordConfirmation.value,
+    role: 'subscriber',
+    plan: subscriptionPlan,
+    stripe_details: stripeDetails,
   };
 };
 const getUserAuthToken = () => {
   return JSON.parse(localStorage.getItem('user_headers'));
+};
+
+const setUserAuthToken = (headers) => {
+  localStorage.setItem('user_headers', JSON.stringify(headers));
 };
