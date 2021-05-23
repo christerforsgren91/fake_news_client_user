@@ -5,7 +5,7 @@ import Articles, { setRating } from '../modules/Articles';
 import { Popup, Rating } from 'semantic-ui-react';
 
 const Article = () => {
-  const { article, popupSuccess, subscriber } = useSelector((state) => state);
+  const { article, successfulRating, subscriber } = useSelector((state) => state);
   const { id } = useParams();
 
   const articleRating = (event, { rating, maxRating }) => {
@@ -33,7 +33,7 @@ const Article = () => {
           </p>
           <Popup
             content={
-              popupSuccess
+              successfulRating
                 ? 'Thank you for your opinion!'
                 : subscriber
                 ? 'Sorry your vote was not registered'

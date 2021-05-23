@@ -37,7 +37,7 @@ const Articles = {
     try {
       await axios.post('/ratings', params, { headers: getUserAuthToken() });
       store.dispatch({
-        type: 'SUCCESS_MESSAGE',
+        type: 'SUCCESSFUL_RATING',
       });
     } catch (error) {
       errorHandler(error);

@@ -37,24 +37,38 @@ const rootReducer = (state, action) => {
     case 'SET_BACKYARD_ARTICLES':
       return {
         ...state,
-        backyardArticles: action.payload,
+        backyardArticles: action.payload.articles,
+        location: action.payload.location,
       };
     case 'SHOW_ARTICLE':
       return {
         ...state,
         article: action.payload,
       };
-    case 'SUCCESS_MESSAGE':
+    case 'SUCCESSFUL_RATING':
       return {
         ...state,
-        popupSuccess: true,
+        successfulRating: true,
       };
     case 'SHOW_BACKYARD_ARTICLE':
       return {
         ...state,
         backyardArticle: action.payload,
       };
-
+    case 'SUCCESS_MESSAGE':
+      return {
+        ...state,
+        open: true,
+        message: action.payload,
+      };
+      case 'NO_BACKYARD_ARTICLES':
+      return {
+        ...state,
+        error: true,
+        open: true,
+        message: action.payload.message,
+        location: action.payload.location,
+      };
     default:
       return state;
   }

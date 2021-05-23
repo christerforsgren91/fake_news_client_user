@@ -48,6 +48,10 @@ input {
   padding: 0 100px 20px;
 }
 
+#new-backyard-input {
+  color: black !important;
+}
+
 .italic {
   font-style: italic;
 }
