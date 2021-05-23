@@ -34,6 +34,11 @@ const rootReducer = (state, action) => {
         ...state,
         articles: action.payload,
       };
+    case 'SET_BACKYARD_ARTICLES':
+      return {
+        ...state,
+        backyardArticles: action.payload,
+      };
     case 'SHOW_ARTICLE':
       return {
         ...state,
@@ -43,6 +48,11 @@ const rootReducer = (state, action) => {
       return {
         ...state,
         popupSuccess: true,
+      };
+    case 'SHOW_BACKYARD_ARTICLE':
+      return {
+        ...state,
+        backyardArticle: action.payload,
       };
 
     default:
