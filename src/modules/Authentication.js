@@ -43,10 +43,10 @@ const Authentication = {
 
   async subscribe(event, stripeToken, setLoading, subscriptionPlan) {
     debugger;
-    if (stripeToken.token) {
+    if (stripeToken) {
       try {
         const response = await axios.post(
-          '/auth',
+          '/auth/',
           createParams(event, subscriptionPlan, stripeToken)
         );
         debugger;
@@ -84,7 +84,7 @@ const createParams = (event, subscriptionPlan, stripeToken) => {
     password_confirmation: event.target.passwordConfirmation.value,
     role: 'subscriber',
     plan: subscriptionPlan,
-    stripeToken: stripeToken,
+    stripeToken: stripeToken
   };
 };
 const getUserAuthToken = () => {
