@@ -5,7 +5,7 @@ const initialState = {
   article: {},
   subscriber: false,
   open: false,
-  backyardArticle: [],
+  backyardArticle: {},
 };
 
 export default initialState;
