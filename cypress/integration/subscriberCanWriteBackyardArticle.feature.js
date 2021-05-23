@@ -3,11 +3,6 @@ describe('subscriber can write backyard articles', () => {
     cy.intercept('POST', 'https://fakest-newzz.herokuapp.com/api/backyards', {
       statusCode: 200,
     });
-    cy.window().its('store').invoke('dispatch', {
-      type: 'AUTHENTICATE',
-      payload: 'Welcome back Bob!',
-    });
-
     cy.intercept(
       'GET',
       'https://fakest-newzz.herokuapp.com/api/backyards/?lat=55.7842&lon=12.4518',
@@ -15,9 +10,6 @@ describe('subscriber can write backyard articles', () => {
         fixture: 'backyard_articles.json',
       }
     );
-    cy.get('[data-cy=navbar]').within(() => {
-      cy.get('[data-cy=backyard-tab]').click();
-    });
   });
 
   describe('successfully', () => {
@@ -30,12 +22,20 @@ describe('subscriber can write backyard articles', () => {
               longitude: 12.4518,
             },
           };
+
           cy.stub(window.navigator.geolocation, 'getCurrentPosition').callsFake(
             (callback) => {
               return callback(stubLocation);
             }
           );
         },
+      });
+      cy.get('[data-cy=navbar]').within(() => {
+        cy.get('[data-cy=backyard-tab]').click();
+      });
+      cy.window().its('store').invoke('dispatch', {
+        type: 'AUTHENTICATE',
+        payload: 'Welcome back Bob!',
       });
     });
 

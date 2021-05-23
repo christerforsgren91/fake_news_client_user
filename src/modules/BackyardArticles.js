@@ -12,7 +12,7 @@ const BackyardArticles = {
         );
         store.dispatch({
           type: 'SET_BACKYARD_ARTICLES',
-          payload: response.data.backyardArticles,
+          payload: response.data.backyard_articles,
         });
       } catch (error) {
         errorHandler(error);
@@ -29,7 +29,7 @@ const BackyardArticles = {
       const response = await axios.get(`/backyards/${id}`);
       store.dispatch({
         type: 'SHOW_BACKYARD_ARTICLE',
-        payload: response.data.backyardArticle,
+        payload: response.data.backyard_article,
       });
     } catch (error) {
       errorHandler(error);
