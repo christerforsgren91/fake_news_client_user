@@ -59,7 +59,7 @@ const BackyardDashboard = () => {
                 ? `Backyard Conspiracies from ${backyardArticles[0].location}`
                 : 'Allow your location!'}
             </h2>
-            {(subscriber && backyardArticles[0]) && <BackyardForm />}
+            {(subscriber && backyardArticles[0]) && <BackyardForm location={backyardArticles[0].location} />}
           </Segment>
           <Table celled padded inverted style={{ overflowY: 'scroll' }}>
             <Table.Header>

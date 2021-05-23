@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'semantic-ui-react';
-import BackyardArticles from '../modules/BackyardArticles'
+import BackyardArticles from '../modules/BackyardArticles';
 
-const BackyardForm = () => {
+const BackyardForm = (props) => {
   const [open, setOpen] = useState(false);
 
   const submitBackyard = (event) => {
-    const backyardArticle = {}
+    const backyardArticle = {
+      title: event.target.title.value,
+      theme: event.target.theme.value,
+      body: event.target.body.value,
+      location: props.location
+    };
     setOpen(false);
-    BackyardArticles.create(backyardArticle)
+    BackyardArticles.create(backyardArticle);
   };
 
   return (
@@ -22,6 +27,7 @@ const BackyardForm = () => {
         <Modal.Header data-cy='header'>Create Backyard Article</Modal.Header>
         <Form size='medium' onSubmit={(event) => submitBackyard(event)}>
           <Form.Input
+            name='title'
             id='new-backyard-input'
             fluid
             required
@@ -30,6 +36,7 @@ const BackyardForm = () => {
             data-cy='title'
           />
           <Form.Input
+            name='theme'
             id='new-backyard-input'
             fluid
             required
@@ -38,6 +45,7 @@ const BackyardForm = () => {
             placeholder='Theme'
           />
           <Form.TextArea
+            name='body'
             required
             label='Story'
             data-cy='body'
