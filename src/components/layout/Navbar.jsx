@@ -2,7 +2,7 @@ import React from 'react';
 import i18n from '../../i18n';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Segment, Menu, Button } from 'semantic-ui-react';
+import { Segment, Menu, Dropdown } from 'semantic-ui-react';
 import Authentication from '../../modules/Authentication';
 import store from '../../state/store/configureStore';
 import { useTranslation } from 'react-i18next';
@@ -10,6 +10,16 @@ import { useTranslation } from 'react-i18next';
 const Navbar = () => {
   const { subscriber } = useSelector((state) => state);
   const { t } = useTranslation();
+
+  const languges = [
+    { key: 1, text: 'en', value: 'en', default: true },
+    { key: 2, text: 'se', value: 'se'}
+  ]
+
+  const changeLanguage = (event) => {
+    i18n.changeLanguage(event.target.textContent)
+  }
+  
   return (
     <>
       <Segment data-cy='navbar' id='navbar' inverted size='tiny'>
@@ -37,16 +47,10 @@ const Navbar = () => {
             to='/backyard'
             onClick={() => store.dispatch({ type: 'ERROR_RESET' })}
           />
-          <Button
-            style={styles.item}
-            name='Language'
-            
-            to='/backyard'
-            onClick={() => {
-              i18n.changeLanguage('se');
-            }}
-          />
           <Menu.Menu position='right'>
+          <Dropdown name='language' text='en' options={languges} onChange={(event) => {
+              changeLanguage(event)
+            }}/>
             {subscriber ? (
               <Menu.Item
                 style={styles.item}
