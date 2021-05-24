@@ -21,7 +21,7 @@ const Navbar = () => {
           style={{ margin: '0 15%' }}>
           <Menu.Item
             style={styles.item}
-            name={t('homeTab')}
+            name={t('navBarHomeTab')}
             data-cy='home-tab'
             active
             as={Link}
@@ -30,7 +30,7 @@ const Navbar = () => {
           />
           <Menu.Item
             style={styles.item}
-            name={t('backyardTab')}
+            name={t('navBarBackyardTab')}
             data-cy='backyard-tab'
             active
             as={Link}
@@ -40,7 +40,7 @@ const Navbar = () => {
           <Button
             style={styles.item}
             name='Language'
-            active
+            
             to='/backyard'
             onClick={() => {
               i18n.changeLanguage('se');

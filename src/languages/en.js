@@ -1,1 +1,8 @@
-const se = { translation: {homeTab: 'Home', backyardTab: 'Backyard'}}
+const en = {
+  translation: {
+    navBarHomeTab: 'Home',
+    navBarBackyardTab: 'Backyard',
+  },
+};
+
+export default en;
