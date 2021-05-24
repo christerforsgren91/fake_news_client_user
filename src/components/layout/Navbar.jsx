@@ -1,13 +1,15 @@
 import React from 'react';
+import i18n from '../../i18n';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Segment, Menu } from 'semantic-ui-react';
+import { Segment, Menu, Button } from 'semantic-ui-react';
 import Authentication from '../../modules/Authentication';
 import store from '../../state/store/configureStore';
+import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
   const { subscriber } = useSelector((state) => state);
-
+  const { t } = useTranslation();
   return (
     <>
       <Segment data-cy='navbar' id='navbar' inverted size='tiny'>
@@ -19,21 +21,30 @@ const Navbar = () => {
           style={{ margin: '0 15%' }}>
           <Menu.Item
             style={styles.item}
-            name='home'
+            name={t('homeTab')}
             data-cy='home-tab'
             active
             as={Link}
             to='/'
             onClick={() => store.dispatch({ type: 'ERROR_RESET' })}
           />
-           <Menu.Item
+          <Menu.Item
             style={styles.item}
-            name='backyard'
+            name={t('backyardTab')}
             data-cy='backyard-tab'
             active
             as={Link}
             to='/backyard'
             onClick={() => store.dispatch({ type: 'ERROR_RESET' })}
+          />
+          <Button
+            style={styles.item}
+            name='Language'
+            active
+            to='/backyard'
+            onClick={() => {
+              i18n.changeLanguage('se');
+            }}
           />
           <Menu.Menu position='right'>
             {subscriber ? (

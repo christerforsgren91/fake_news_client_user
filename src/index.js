@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css';
 import axios from 'axios';
 import './style.css';
+import './i18n';
 import { Provider } from 'react-redux';
 import store from './state/store/configureStore';
 import { BrowserRouter as Router } from 'react-router-dom';
