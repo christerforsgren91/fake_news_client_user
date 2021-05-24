@@ -7,9 +7,11 @@ import CategoryMenu from './layout/CategoryMenu';
 import CustomDivider from './CustomDivider';
 import PremiumSection from './PremiumSection';
 import ArticleRow from './ArticleRow';
+import { useTranslation } from 'react-i18next';
 
 const MainPage = () => {
   const { articles } = useSelector((state) => state);
+  const { t } = useTranslation();
 
   useEffect(() => {
     Articles.index();
@@ -27,13 +29,13 @@ const MainPage = () => {
     <>
       <CategoryMenu />
       <BreakingNews firstArticle={articles[0]} />
-      <CustomDivider title='New Top Conspiracies' />
+      <CustomDivider title={t('dividerTopConspiracies')} />
       <div id='articles-container' data-cy='articles-container'>
         {articleList}
       </div>
-      <CustomDivider title='Premium Articles' />
+      <CustomDivider title={t('dividerPremiumArticles')} />
       <PremiumSection />
-      <CustomDivider title='Other News' />
+      <CustomDivider title={t('dividerOtherNews')} />
       <div id='category-container'>{articleRows}</div>
     </>
   );

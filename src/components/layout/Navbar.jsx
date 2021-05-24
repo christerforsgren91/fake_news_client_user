@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import i18n from '../../i18n';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -10,16 +10,19 @@ import { useTranslation } from 'react-i18next';
 const Navbar = () => {
   const { subscriber } = useSelector((state) => state);
   const { t } = useTranslation();
+  const [language, setLanguage] = useState('en');
 
   const languges = [
     { key: 1, text: 'en', value: 'en', default: true },
-    { key: 2, text: 'se', value: 'se'}
-  ]
+    { key: 2, text: 'se', value: 'se' },
+  ];
 
   const changeLanguage = (event) => {
-    i18n.changeLanguage(event.target.textContent)
-  }
-  
+    let lang = event.target.textContent;
+    i18n.changeLanguage(lang);
+    setLanguage(lang);
+  };
+
   return (
     <>
       <Segment data-cy='navbar' id='navbar' inverted size='tiny'>
@@ -48,13 +51,19 @@ const Navbar = () => {
             onClick={() => store.dispatch({ type: 'ERROR_RESET' })}
           />
           <Menu.Menu position='right'>
-          <Dropdown name='language' text='en' options={languges} onChange={(event) => {
-              changeLanguage(event)
-            }}/>
+            <Dropdown
+              id='language'
+              name='language'
+              text={language}
+              options={languges}
+              onChange={(event) => {
+                changeLanguage(event);
+              }}
+            />
             {subscriber ? (
               <Menu.Item
                 style={styles.item}
-                name='Logout'
+                name={t('navBarLogoutTab')}
                 data-cy='logout-button'
                 active
                 as={Link}
@@ -64,7 +73,7 @@ const Navbar = () => {
             ) : (
               <Menu.Item
                 style={styles.item}
-                name='Login'
+                name={t('navBarLoginTab')}
                 data-cy='login-button'
                 active
                 as={Link}
