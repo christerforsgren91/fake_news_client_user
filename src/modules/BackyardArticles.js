@@ -13,12 +13,18 @@ const BackyardArticles = {
         if (response.data.backyard_articles[0]) {
           store.dispatch({
             type: 'SET_BACKYARD_ARTICLES',
-            payload: {articles: response.data.backyard_articles, location: response.data.location},
+            payload: {
+              articles: response.data.backyard_articles,
+              location: response.data.location,
+            },
           });
         } else {
           store.dispatch({
             type: 'NO_BACKYARD_ARTICLES',
-            payload: {message: 'There are no articles available in your area', location: response.data.location},
+            payload: {
+              message: 'There are no articles available in your area',
+              location: response.data.location,
+            },
           });
         }
       } catch (error) {
@@ -44,7 +50,12 @@ const BackyardArticles = {
   },
   async create(backyardArticle) {
     try {
-      const params = { backyardArticle: backyardArticle };
+      const params = {
+        backyardArticle: {
+          ...backyardArticle,
+          body: backyardArticle.body.split('\n\n'),
+        },
+      };
       await axios.post('/backyards', params, {
         headers: getUserAuthToken(),
       });

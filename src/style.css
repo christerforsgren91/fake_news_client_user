@@ -197,6 +197,10 @@ input {
   color: rgba(141, 141, 141, 0.863);
 }
 
+.article-body {
+  font-size: 19px;
+}
+
 .category-header {
   color: rgba(255, 255, 255, 0.9);
   text-align: center;

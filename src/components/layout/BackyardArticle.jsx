@@ -17,18 +17,24 @@ const BackyardArticle = () => {
       <h1 data-cy='title' className='article-title'>
         {backyardArticle.title}
       </h1>
-      <h2 data-cy='theme' className='article-author' >
+      <h2 data-cy='theme' className='article-author'>
         {backyardArticle.theme}
       </h2>
-      <p data-cy='author' className='article-category' >
+      <p data-cy='author' className='article-category'>
         Written By: {backyardArticle.written_by}
       </p>
       <p data-cy='date' className='article-date'>
         {backyardArticle.date}
       </p>
-      <p data-cy='body' className='article-body'>
-        {backyardArticle.body}
-      </p>
+      {backyardArticle.body &&
+        backyardArticle.body.map((paragraph) => (
+          <>
+            <p data-cy='body' className='article-body'>
+              {paragraph}
+            </p>
+            <br />
+          </>
+        ))}
     </div>
   );
 };

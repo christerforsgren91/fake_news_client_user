@@ -5,7 +5,9 @@ import Articles, { setRating } from '../modules/Articles';
 import { Popup, Rating } from 'semantic-ui-react';
 
 const Article = () => {
-  const { article, successfulRating, subscriber } = useSelector((state) => state);
+  const { article, successfulRating, subscriber } = useSelector(
+    (state) => state
+  );
   const { id } = useParams();
 
   const articleRating = (event, { rating, maxRating }) => {
@@ -78,10 +80,15 @@ const Article = () => {
               objectFit: 'cover',
             }}
           />
-
-          <p data-cy='article-body' className='article-body'>
-            {article.body}
-          </p>
+          {article.body &&
+            article.body.map((paragraph) => (
+              <>
+                <p data-cy='article-body' className='article-body'>
+                  {paragraph}
+                </p>
+                <br />
+              </>
+            ))}
         </>
       )}
     </div>

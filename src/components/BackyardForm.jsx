@@ -34,7 +34,7 @@ const BackyardForm = ({ location }) => {
           Create Backyard Article
         </Modal.Header>
         <Form
-          size='medium'
+          size='large'
           onSubmit={(event) => submitBackyard(event)}
           className='backyard-form'>
           <Form.Input
