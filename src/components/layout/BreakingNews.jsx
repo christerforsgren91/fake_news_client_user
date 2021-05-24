@@ -20,7 +20,7 @@ const BreakingNews = ({ firstArticle: article }) => {
           <h2 className='breaking-title' data-cy='breaking-title'>
             {article.title}
           </h2>
-          <h4 data-cy='breaking-teaser'>{article.teaser}</h4>
+          <p data-cy='breaking-teaser'>{article.teaser}</p>
           <Rating
             data-cy='breaking-rating'
             defaultRating={setRating(article.rating)}

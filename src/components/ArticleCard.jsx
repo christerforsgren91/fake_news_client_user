@@ -21,12 +21,13 @@ const ArticleCard = ({ article, index }) => {
         <div data-cy='article' className='card-content-wrapper'>
           {article.premium && (
             <Label data-cy='premium-label' style={styles.label}>
-              <Icon name='star' color='yellow' /> Premium
+              <Icon name='star' color='black' /> Premium
             </Label>
           )}
           <img
             data-cy='image'
             className='card-image'
+            style={{marginTop: article.premium && -25}}
             src={article.image}
             alt='Article Card attachment'
           />
@@ -61,8 +62,8 @@ export default ArticleCard;
 
 const styles = {
   label: {
-    backgroundColor: '#333',
-    color: 'white',
+    backgroundColor: '#ffb74d',
+    color: 'black',
     position: 'relative',
     top: 0,
     zIndex: 2000,

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import Articles from '../modules/Articles';
-import ArticleCard from './ArticleCard';
 import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
 import CategoryMenu from './layout/CategoryMenu';
+import ArticleRow from './ArticleRow';
 
 const Category = () => {
   const { articles } = useSelector((state) => state);
@@ -15,7 +15,7 @@ const Category = () => {
   }, [category]);
 
   let categoryList = articles.map((article, index) => {
-    return <ArticleCard article={article} index={index} key={index} />;
+    return <ArticleRow article={article} index={index} key={index} />;
   });
 
   return (
@@ -25,7 +25,7 @@ const Category = () => {
         {category}
       </h1>
       {articles[0] ? (
-        <div id='articles-container'>{categoryList}</div>
+        <div id='category-container'>{categoryList}</div>
       ) : (
         <p
           data-cy='error-message'

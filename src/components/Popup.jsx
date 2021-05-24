@@ -7,11 +7,12 @@ const Popup = () => {
   const { error, message, open } = useSelector((state) => state);
 
   useEffect(() => {
-    !error && setTimeout(() => {
-      store.dispatch({
-        type: 'ERROR_RESET',
-      });
-    }, 1000)
+    !error &&
+      setTimeout(() => {
+        store.dispatch({
+          type: 'ERROR_RESET',
+        });
+      }, 3000);
   });
 
   return (

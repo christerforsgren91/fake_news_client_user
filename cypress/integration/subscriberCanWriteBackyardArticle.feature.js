@@ -115,7 +115,6 @@ describe('subscriber can write backyard articles', () => {
           );
           cy.get('[data-cy=submit]').click();
         });
-        cy.wait(2000)
         cy.get('[data-cy=popup-message]').should(
           'contain',
           'Server is unable to process your request, please try again.'
