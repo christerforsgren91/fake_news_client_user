@@ -1,7 +1,9 @@
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import store from '../state/store/configureStore';
 import errorHandler from './ErrorHandler';
 
+const { t } = useTranslation;
 const BackyardArticles = {
   async index(coords) {
     if (coords) {
@@ -22,7 +24,7 @@ const BackyardArticles = {
           store.dispatch({
             type: 'NO_BACKYARD_ARTICLES',
             payload: {
-              message: 'There are no articles available in your area',
+              message: t('popupMessageNoBackyardArticles'),
               location: response.data.location,
             },
           });
@@ -33,7 +35,7 @@ const BackyardArticles = {
     } else {
       store.dispatch({
         type: 'ERROR_MESSAGE',
-        payload: 'Please allow your location to see the backyard articles.',
+        payload: t('popupMessageAllowYourLocation'),
       });
     }
   },
@@ -61,7 +63,7 @@ const BackyardArticles = {
       });
       store.dispatch({
         type: 'SUCCESS_MESSAGE',
-        payload: 'Your backyard article was published!',
+        payload: t('popupMessageBackyarArticlePublished'),
       });
     } catch (error) {
       errorHandler(error);

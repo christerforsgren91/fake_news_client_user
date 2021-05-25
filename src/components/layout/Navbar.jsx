@@ -13,14 +13,18 @@ const Navbar = () => {
   const [language, setLanguage] = useState('en');
 
   const languges = [
-    { key: 1, text: 'en', value: 'en', default: true },
+    { key: 1, text: 'en', value: 'en' },
     { key: 2, text: 'se', value: 'se' },
   ];
 
-  const changeLanguage = (event) => {
-    let lang = event.target.textContent;
+  const changeLanguage = (lang) => {
     i18n.changeLanguage(lang);
     setLanguage(lang);
+  };
+
+  const handleChange = (event) => {
+    let lang = event.target.textContent;
+    ['en', 'se'].includes(lang) && changeLanguage(lang);
   };
 
   return (
@@ -57,7 +61,7 @@ const Navbar = () => {
               text={language}
               options={languges}
               onChange={(event) => {
-                changeLanguage(event);
+                handleChange(event);
               }}
             />
             {subscriber ? (

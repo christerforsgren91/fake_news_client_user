@@ -1,4 +1,7 @@
+import { useTranslation } from 'react-i18next';
 import store from '../state/store/configureStore';
+
+const { t } = useTranslation;
 
 const errorHandler = (error) => {
   if (error.message !== 'Network Error') {
@@ -6,27 +9,25 @@ const errorHandler = (error) => {
       case 500:
         store.dispatch({
           type: 'ERROR_MESSAGE',
-          payload:
-            'Servers are currently not responding, Please try again later',
+          payload: t('error500'),
         });
         break;
       case 400:
         store.dispatch({
           type: 'ERROR_MESSAGE',
-          payload: "Payment didn't go through, please try again.",
+          payload: t('error400'),
         });
         break;
       case 401:
         store.dispatch({
           type: 'ERROR_MESSAGE',
-          payload: 'Please register an account to do this.',
+          payload: t('error401'),
         });
         break;
       case 422:
         store.dispatch({
           type: 'ERROR_MESSAGE',
-          payload:
-            'Server is unable to process your request, please try again.',
+          payload: t('error422'),
         });
         break;
       case 404:
