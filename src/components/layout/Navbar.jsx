@@ -10,21 +10,21 @@ import { useTranslation } from 'react-i18next';
 const Navbar = () => {
   const { subscriber } = useSelector((state) => state);
   const { t } = useTranslation();
-  const [language, setLanguage] = useState('en');
+  const [appLanguage, setAppLanguage] = useState('en');
 
   const languges = [
     { key: 1, text: 'en', value: 'en' },
     { key: 2, text: 'se', value: 'se' },
   ];
 
-  const changeLanguage = (lang) => {
-    i18n.changeLanguage(lang);
-    setLanguage(lang);
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+    setAppLanguage(language);
   };
 
   const handleChange = (event) => {
-    let lang = event.target.textContent;
-    ['en', 'se'].includes(lang) && changeLanguage(lang);
+    let language = event.target.textContent;
+    ['en', 'se'].includes(language) && changeLanguage(language);
   };
 
   return (
@@ -56,9 +56,10 @@ const Navbar = () => {
           />
           <Menu.Menu position='right'>
             <Dropdown
+              data-cy='language-dropdown'
               id='language'
               name='language'
-              text={language}
+              text={appLanguage}
               options={languges}
               onChange={(event) => {
                 handleChange(event);
