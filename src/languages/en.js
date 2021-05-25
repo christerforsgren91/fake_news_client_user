@@ -31,9 +31,10 @@ const en = {
     loginOrDivider: 'or',
     //----REGISTRATION----
     registrationChooseMessage: 'Choose a subscription:',
+    registrationFillDetailsMessage: 'Fill in your details',
     registrationMonthlyHeader: 'MONTHLY SUBSCRIPTION',
     registrationMonthlyPrice: '130 SEK / month',
-    registrationMonthlyDescription: 'Gain access tp premium content and more...',
+    registrationMonthlyDescription: 'Gain access to premium content and more...',
     registrationHalfYearHeader: 'HALF YEAR SUBSCRIPTION',
     registrationHalfYearPrice: '110 SEK / month',
     registrationHalfYearDescription: 'Save 15% by purchasing 6 month subscription',

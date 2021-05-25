@@ -86,7 +86,7 @@ const Register = () => {
       {subscriber && <AuthenticationMessage time={5000} />}
       <h1 style={{ color: 'white', textAlign: 'center' }}>
         {subscriptionPlan
-          ? 'Fill in your details'
+          ? t('registrationFillDetailsMessage')
           : t('registrationChooseMessage')}
       </h1>
       <Segment
@@ -120,7 +120,7 @@ const Register = () => {
               <input
                 name='firstName'
                 type='text'
-                placeholder='First Name'
+                placeholder={t('registrationFirstNameInput')}
                 required
                 data-cy='registration-first-name'
               />
@@ -129,7 +129,7 @@ const Register = () => {
               <input
                 name='lastName'
                 type='text'
-                placeholder='Last Name'
+                placeholder={t('registrationLastNameInput')}
                 required
                 data-cy='registration-last-name'
               />
@@ -138,7 +138,7 @@ const Register = () => {
               <input
                 name='email'
                 type='email'
-                placeholder='Email'
+                placeholder={t('registrationEmailInput')}
                 required
                 data-cy='registration-email'
               />
@@ -148,7 +148,7 @@ const Register = () => {
                 name='password'
                 type='password'
                 data-cy='registration-password'
-                placeholder='Password'
+                placeholder={t('registrationPasswordInput')}
                 required
               />
             </div>
@@ -157,7 +157,7 @@ const Register = () => {
                 name='passwordConfirmation'
                 type='password'
                 data-cy='registration-confirmation-password'
-                placeholder='Confirm Password'
+                placeholder={t('registrationConfirmPasswordInput')}
                 required
               />
             </div>
@@ -178,7 +178,7 @@ const Register = () => {
                 onClick={() => setSubscriptionPlan('')}
                 data-cy='registration-back'
                 style={{ margin: '15px 10px 0 10px' }}>
-                Back?
+                {t('registrationBackButton')}
               </Button>
 
               <Button
@@ -186,7 +186,7 @@ const Register = () => {
                 loading={loading ? true : false}
                 data-cy='registration-submit'
                 style={styles.button}>
-                Register
+                {t('registrationRegisterButton')}
               </Button>
             </div>
           </Form>
