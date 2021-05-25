@@ -4,11 +4,13 @@ import { useSelector } from 'react-redux';
 import { Button, Table, Segment } from 'semantic-ui-react';
 import BackyardArticles from '../modules/BackyardArticles';
 import BackyardForm from './BackyardForm';
+import { useTranslation } from 'react-i18next';
 
 const BackyardDashboard = () => {
   const { location, backyardArticles, subscriber } = useSelector(
     (state) => state
   );
+  const { t } = useTranslation();
 
   const getArticlesBasedOnPosition = () => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -45,7 +47,7 @@ const BackyardDashboard = () => {
         <Link
           data-cy='view-backyard-article-btn'
           to={`/backyards/${backyardArticle.id}`}>
-          <Button>View</Button>
+          <Button>{t('backyardDashboardView')}</Button>
         </Link>
       </Table.Cell>
     </Table.Row>
@@ -58,19 +60,19 @@ const BackyardDashboard = () => {
           <Segment inverted attached='top' style={styles.header}>
             <h2 data-cy='backyard-header'>
               {location
-                ? `Backyard Conspiracies from ${location}`
-                : 'Allow your location!'}
+                ? `${t('backyardDashboardHeaderLocationOn')} ${location}`
+                : t('backyardDashboardeaderLocationOff')}
             </h2>
             {subscriber && location && <BackyardForm location={location} />}
           </Segment>
           <Table celled padded inverted style={{ overflowY: 'scroll' }}>
             <Table.Header>
               <Table.Row textAlign='center'>
-                <Table.HeaderCell singleLine>Title</Table.HeaderCell>
-                <Table.HeaderCell>Theme</Table.HeaderCell>
-                <Table.HeaderCell>Written by</Table.HeaderCell>
-                <Table.HeaderCell>Created On</Table.HeaderCell>
-                <Table.HeaderCell>Action</Table.HeaderCell>
+                <Table.HeaderCell singleLine>{t('backyardDashboardTitle')}</Table.HeaderCell>
+                <Table.HeaderCell>{t('backyardDashboardTheme')}</Table.HeaderCell>
+                <Table.HeaderCell>{t('backyardDashboardWrittenBy')}</Table.HeaderCell>
+                <Table.HeaderCell>{t('backyardDashboardCreatedOn')}</Table.HeaderCell>
+                <Table.HeaderCell>{t('backyardDashboardAction')}</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             {backyardArticles[0] && (

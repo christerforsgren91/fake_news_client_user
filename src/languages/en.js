@@ -1,5 +1,6 @@
 const en = {
   translation: {
+    //----MAIN PAGE----
     navBarHomeTab: 'Home',
     navBarBackyardTab: 'Backyard',
     navBarLogoutTab: 'Logout',
@@ -13,6 +14,32 @@ const en = {
     dividerTopConspiracies: 'New Top Conspiracies',
     dividerPremiumArticles: 'Premium Articles',
     dividerOtherNews: 'Other News',
+    //----BACKYARD DASHBOARD----
+    backyardDashboardHeaderLocationOn: 'Backyard Conspiracies from',
+    backyardDashboardHeaderLocationOff: 'Allow your location!',
+    backyardDashboardTitle: 'Title',
+    backyardDashboardTheme: 'Theme',
+    backyardDashboardWrittenBy: 'Written By',
+    backyardDashboardCreatedOn: 'Created On',
+    backyardDashboardAction: 'Action',
+    backyardDashboardView: 'View',
+    //----LOGIN----
+    loginEmailInput: 'Email',
+    loginPasswordInput: 'Password',
+    loginLoginButton: 'Login',
+    loginRegisterButton: 'Register',
+    loginOrDivider: 'or',
+    //----REGISTRATION----
+    registrationChooseMessage: 'Choose a subscription:',
+    registrationMonthlyHeader: 'MONTHLY SUBSCRIPTION',
+    registrationMonthlyPrice: '130 SEK / month',
+    registrationMonthlyDescription: 'Gain access tp premium content and more...',
+    registrationHalfYearHeader: 'HALF YEAR SUBSCRIPTION',
+    registrationHalfYearPrice: '110 SEK / month',
+    registrationHalfYearDescription: 'Save 15% by purchasing 6 month subscription',
+    registrationYearlyHeader: 'YEARLY SUBSCRIPTION',
+    registrationYearlyPrice: '100 SEK / month',
+    registrationYearlyDescription: 'Save another 10% by purchasing 12 month subscription',
   },
 };
 
