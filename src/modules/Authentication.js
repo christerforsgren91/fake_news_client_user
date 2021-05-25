@@ -1,9 +1,8 @@
+
 import axios from 'axios';
-import { useTranslation } from 'react-i18next';
+import i18n from '../i18n'
 import store from '../state/store/configureStore';
 import errorHandler from './ErrorHandler';
-
-const {t} = useTranslation
 
 const Authentication = {
   async login(event) {
@@ -18,7 +17,7 @@ const Authentication = {
         setUserAuthToken(response.headers);
         store.dispatch({
           type: 'AUTHENTICATE',
-          payload: `${t('popupMessageWelcomeBack')}, ${name}!`,
+          payload: `${i18n.t('popupMessageWelcomeBack')}, ${name}!`,
         });
       })
       .catch((error) => {
@@ -32,7 +31,7 @@ const Authentication = {
       .then(() => {
         store.dispatch({
           type: 'LOG_OUT',
-          payload: t('popupMessageSeeYouSoon'),
+          payload: i18n.t('popupMessageSeeYouSoon'),
         });
         localStorage.clear();
       })
@@ -51,7 +50,7 @@ const Authentication = {
         setUserAuthToken(response.headers);
         store.dispatch({
           type: 'AUTHENTICATE',
-          payload: `${t('popupMessageThankYouForSubscribing')}, ${response.data.data.first_name}!`,
+          payload: `${i18n.t('popupMessageThankYouForSubscribing')}, ${response.data.data.first_name}!`,
         });
       } catch (error) {
         errorHandler(error);

@@ -1,7 +1,5 @@
-import { useTranslation } from 'react-i18next';
+import i18n from '../i18n'
 import store from '../state/store/configureStore';
-
-const { t } = useTranslation;
 
 const errorHandler = (error) => {
   if (error.message !== 'Network Error') {
@@ -9,25 +7,25 @@ const errorHandler = (error) => {
       case 500:
         store.dispatch({
           type: 'ERROR_MESSAGE',
-          payload: t('error500'),
+          payload: i18n.t('error500'),
         });
         break;
       case 400:
         store.dispatch({
           type: 'ERROR_MESSAGE',
-          payload: t('error400'),
+          payload: i18n.t('error400'),
         });
         break;
       case 401:
         store.dispatch({
           type: 'ERROR_MESSAGE',
-          payload: t('error401'),
+          payload: i18n.t('error401'),
         });
         break;
       case 422:
         store.dispatch({
           type: 'ERROR_MESSAGE',
-          payload: t('error422'),
+          payload: i18n.t('error422'),
         });
         break;
       case 404:

@@ -1,9 +1,8 @@
 import axios from 'axios';
-import { useTranslation } from 'react-i18next';
+import i18n from '../i18n'
 import store from '../state/store/configureStore';
 import errorHandler from './ErrorHandler';
 
-const { t } = useTranslation;
 const BackyardArticles = {
   async index(coords) {
     if (coords) {
@@ -24,7 +23,7 @@ const BackyardArticles = {
           store.dispatch({
             type: 'NO_BACKYARD_ARTICLES',
             payload: {
-              message: t('popupMessageNoBackyardArticles'),
+              message: i18n.t('popupMessageNoBackyardArticles'),
               location: response.data.location,
             },
           });
@@ -35,7 +34,7 @@ const BackyardArticles = {
     } else {
       store.dispatch({
         type: 'ERROR_MESSAGE',
-        payload: t('popupMessageAllowYourLocation'),
+        payload: i18n.t('popupMessageAllowYourLocation'),
       });
     }
   },
@@ -63,9 +62,10 @@ const BackyardArticles = {
       });
       store.dispatch({
         type: 'SUCCESS_MESSAGE',
-        payload: t('popupMessageBackyarArticlePublished'),
+        payload: i18n.t('popupMessageBackyarArticlePublished'),
       });
     } catch (error) {
+      debugger
       errorHandler(error);
     }
   },
