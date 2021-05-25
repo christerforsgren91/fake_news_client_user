@@ -23,6 +23,10 @@ input {
   height: auto;
 }
 
+#language {
+  margin-top: 15px;
+}
+
 #fakenews {
   font-size: 5rem;
   color: rgba(252, 251, 250, 1);

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import i18n from '../i18n'
 import store from '../state/store/configureStore';
 import errorHandler from './ErrorHandler';
 
@@ -22,7 +23,7 @@ const BackyardArticles = {
           store.dispatch({
             type: 'NO_BACKYARD_ARTICLES',
             payload: {
-              message: 'There are no articles available in your area',
+              message: i18n.t('popupMessageNoBackyardArticles'),
               location: response.data.location,
             },
           });
@@ -33,7 +34,7 @@ const BackyardArticles = {
     } else {
       store.dispatch({
         type: 'ERROR_MESSAGE',
-        payload: 'Please allow your location to see the backyard articles.',
+        payload: i18n.t('popupMessageAllowYourLocation'),
       });
     }
   },
@@ -61,9 +62,10 @@ const BackyardArticles = {
       });
       store.dispatch({
         type: 'SUCCESS_MESSAGE',
-        payload: 'Your backyard article was published!',
+        payload: i18n.t('popupMessageBackyarArticlePublished'),
       });
     } catch (error) {
+      debugger
       errorHandler(error);
     }
   },

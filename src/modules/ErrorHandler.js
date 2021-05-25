@@ -1,3 +1,4 @@
+import i18n from '../i18n'
 import store from '../state/store/configureStore';
 
 const errorHandler = (error) => {
@@ -6,27 +7,25 @@ const errorHandler = (error) => {
       case 500:
         store.dispatch({
           type: 'ERROR_MESSAGE',
-          payload:
-            'Servers are currently not responding, Please try again later',
+          payload: i18n.t('error500'),
         });
         break;
       case 400:
         store.dispatch({
           type: 'ERROR_MESSAGE',
-          payload: "Payment didn't go through, please try again.",
+          payload: i18n.t('error400'),
         });
         break;
       case 401:
         store.dispatch({
           type: 'ERROR_MESSAGE',
-          payload: 'Please register an account to do this.',
+          payload: i18n.t('error401'),
         });
         break;
       case 422:
         store.dispatch({
           type: 'ERROR_MESSAGE',
-          payload:
-            'Server is unable to process your request, please try again.',
+          payload: i18n.t('error422'),
         });
         break;
       case 404:

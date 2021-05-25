@@ -4,10 +4,11 @@ import { useSelector } from 'react-redux';
 import { Button, Form, Segment } from 'semantic-ui-react';
 import Authentication from '../modules/Authentication';
 import AuthenticationMessage from './AuthenticationMessage';
+import { useTranslation } from 'react-i18next';
 
 const Login = () => {
   const { subscriber } = useSelector((state) => state);
-
+  const { t } = useTranslation();
   const handleSubmit = (event) => {
     event.preventDefault();
     Authentication.login(event);
@@ -31,7 +32,7 @@ const Login = () => {
               type='email'
               data-cy='login-email'
               className='box-shadow'
-              placeholder='Email'
+              placeholder={t('loginEmailInput')}
               required
             />
           </div>
@@ -41,22 +42,22 @@ const Login = () => {
               type='password'
               data-cy='login-password'
               className='box-shadow'
-              placeholder='Password'
+              placeholder={t('loginPasswordInput')}
               required
             />
           </div>
           <Button.Group>
             <Button type='submit' data-cy='login-submit'>
-              Login
+            {t('loginLoginButton')}
             </Button>
-            <Button.Or />
+            <Button.Or text={t('loginOrDivider').toLowerCase()} />
             <Button
               style={{ backgroundColor: '#fce42d' }}
               size='medium'
               data-cy='registration-button'
               as={Link}
               to='/registration'>
-              Register
+              {t('loginRegisterButton')}
             </Button>
           </Button.Group>
         </Form>

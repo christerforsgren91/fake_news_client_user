@@ -1,4 +1,6 @@
+
 import axios from 'axios';
+import i18n from '../i18n'
 import store from '../state/store/configureStore';
 import errorHandler from './ErrorHandler';
 
@@ -15,7 +17,7 @@ const Authentication = {
         setUserAuthToken(response.headers);
         store.dispatch({
           type: 'AUTHENTICATE',
-          payload: `Welcome back, ${name}!`,
+          payload: `${i18n.t('popupMessageWelcomeBack')}, ${name}!`,
         });
       })
       .catch((error) => {
@@ -29,7 +31,7 @@ const Authentication = {
       .then(() => {
         store.dispatch({
           type: 'LOG_OUT',
-          payload: 'See you again soon!',
+          payload: i18n.t('popupMessageSeeYouSoon'),
         });
         localStorage.clear();
       })
@@ -48,7 +50,7 @@ const Authentication = {
         setUserAuthToken(response.headers);
         store.dispatch({
           type: 'AUTHENTICATE',
-          payload: `Thank you for subscribing, ${response.data.data.first_name}!`,
+          payload: `${i18n.t('popupMessageThankYouForSubscribing')}, ${response.data.data.first_name}!`,
         });
       } catch (error) {
         errorHandler(error);

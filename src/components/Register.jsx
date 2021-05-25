@@ -5,12 +5,14 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import AuthenticationMessage from './AuthenticationMessage';
+import { useTranslation } from 'react-i18next';
 
 const Register = () => {
   const { subscriber } = useSelector((state) => state);
   const [loading, setLoading] = useState(false);
   const [subscriptionPlan, setSubscriptionPlan] = useState('');
   const location = useLocation();
+  const { t } = useTranslation();
 
   const stripe = useStripe();
   const elements = useElements();
@@ -37,21 +39,21 @@ const Register = () => {
   const subscriptionPlans = [
     {
       id: 'monthly_subscription',
-      title: 'MONTHLY SUBSCRIPTION',
-      price: '130 SEK / month',
-      info: 'Gain access to premium content and more...',
+      title: t('registrationMonthlyHeader'),
+      price: t('registrationMonthlyPrice'),
+      info: t('registrationMonthlyDescription'),
     },
     {
       id: 'half_year_subscription',
-      title: 'HALF YEAR SUBSCRIPTION',
-      price: '110 SEK / month',
-      info: 'Save 15% by purchasing 6 month subscription',
+      title: t('registrationHalfYearHeader'),
+      price: t('registrationHalfYearPrice'),
+      info: t('registrationHalfYearDescription'),
     },
     {
       id: 'yearly_subscription',
-      title: 'YEARLY SUBSCRIPTION',
-      price: '100 SEK / month',
-      info: 'Save another 10% by purchasing 12 month subscription',
+      title: t('registrationYearlyHeader'),
+      price: t('registrationYearlyPrice'),
+      info: t('registrationYearlyDescription'),
     },
   ];
 
@@ -83,7 +85,9 @@ const Register = () => {
     <>
       {subscriber && <AuthenticationMessage time={5000} />}
       <h1 style={{ color: 'white', textAlign: 'center' }}>
-        {subscriptionPlan ? 'Fill in your details' : 'Choose a subscription:'}
+        {subscriptionPlan
+          ? t('registrationFillDetailsMessage')
+          : t('registrationChooseMessage')}
       </h1>
       <Segment
         placeholder
@@ -116,7 +120,7 @@ const Register = () => {
               <input
                 name='firstName'
                 type='text'
-                placeholder='First Name'
+                placeholder={t('registrationFirstNameInput')}
                 required
                 data-cy='registration-first-name'
               />
@@ -125,7 +129,7 @@ const Register = () => {
               <input
                 name='lastName'
                 type='text'
-                placeholder='Last Name'
+                placeholder={t('registrationLastNameInput')}
                 required
                 data-cy='registration-last-name'
               />
@@ -134,7 +138,7 @@ const Register = () => {
               <input
                 name='email'
                 type='email'
-                placeholder='Email'
+                placeholder={t('registrationEmailInput')}
                 required
                 data-cy='registration-email'
               />
@@ -144,7 +148,7 @@ const Register = () => {
                 name='password'
                 type='password'
                 data-cy='registration-password'
-                placeholder='Password'
+                placeholder={t('registrationPasswordInput')}
                 required
               />
             </div>
@@ -153,7 +157,7 @@ const Register = () => {
                 name='passwordConfirmation'
                 type='password'
                 data-cy='registration-confirmation-password'
-                placeholder='Confirm Password'
+                placeholder={t('registrationConfirmPasswordInput')}
                 required
               />
             </div>
@@ -174,7 +178,7 @@ const Register = () => {
                 onClick={() => setSubscriptionPlan('')}
                 data-cy='registration-back'
                 style={{ margin: '15px 10px 0 10px' }}>
-                Back?
+                {t('registrationBackButton')}
               </Button>
 
               <Button
@@ -182,7 +186,7 @@ const Register = () => {
                 loading={loading ? true : false}
                 data-cy='registration-submit'
                 style={styles.button}>
-                Register
+                {t('registrationRegisterButton')}
               </Button>
             </div>
           </Form>

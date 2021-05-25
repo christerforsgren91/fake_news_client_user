@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
+import i18n from '../../i18n';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Segment, Menu } from 'semantic-ui-react';
+import { Segment, Menu, Dropdown } from 'semantic-ui-react';
 import Authentication from '../../modules/Authentication';
 import store from '../../state/store/configureStore';
+import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
   const { subscriber } = useSelector((state) => state);
+  const { t } = useTranslation();
+  const [appLanguage, setAppLanguage] = useState('en');
+
+  const languges = [
+    { key: 1, text: 'en', value: 'en' },
+    { key: 2, text: 'se', value: 'se' },
+  ];
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+    setAppLanguage(language);
+  };
+
+  const handleChange = (event) => {
+    let language = event.target.textContent;
+    ['en', 'se'].includes(language) && changeLanguage(language);
+  };
 
   return (
     <>
@@ -19,16 +38,16 @@ const Navbar = () => {
           style={{ margin: '0 15%' }}>
           <Menu.Item
             style={styles.item}
-            name='home'
+            name={t('navBarHomeTab')}
             data-cy='home-tab'
             active
             as={Link}
             to='/'
             onClick={() => store.dispatch({ type: 'ERROR_RESET' })}
           />
-           <Menu.Item
+          <Menu.Item
             style={styles.item}
-            name='backyard'
+            name={t('navBarBackyardTab')}
             data-cy='backyard-tab'
             active
             as={Link}
@@ -36,10 +55,20 @@ const Navbar = () => {
             onClick={() => store.dispatch({ type: 'ERROR_RESET' })}
           />
           <Menu.Menu position='right'>
+            <Dropdown
+              data-cy='language-dropdown'
+              id='language'
+              name='language'
+              text={appLanguage}
+              options={languges}
+              onChange={(event) => {
+                handleChange(event);
+              }}
+            />
             {subscriber ? (
               <Menu.Item
                 style={styles.item}
-                name='Logout'
+                name={t('navBarLogoutTab')}
                 data-cy='logout-button'
                 active
                 as={Link}
@@ -49,7 +78,7 @@ const Navbar = () => {
             ) : (
               <Menu.Item
                 style={styles.item}
-                name='Login'
+                name={t('navBarLoginTab')}
                 data-cy='login-button'
                 active
                 as={Link}
