@@ -48,6 +48,7 @@ const Navbar = () => {
           <Menu.Item
             style={styles.item}
             name={t('navBarBackyardTab')}
+            content={t('navBarBackyardTab')}
             data-cy='backyard-tab'
             active
             as={Link}
