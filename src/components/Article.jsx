@@ -81,14 +81,14 @@ const Article = () => {
               objectFit: 'cover',
             }}
           />
-          {article.body && (
-            <p data-cy='article-body' className='article-body'>
-              {article.body}
-            </p>
-          )}
-          {article.comments && <CommentsSection comments={article.comments} />}
         </>
       )}
+      {article.body && (
+        <p data-cy='article-body' className='article-body'>
+          {article.body}
+        </p>
+      )}
+      {article.comments && <CommentsSection comments={article.comments} />}
     </div>
   );
 };
