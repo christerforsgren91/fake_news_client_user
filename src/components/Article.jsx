@@ -10,7 +10,7 @@ const Article = () => {
   );
   const { id } = useParams();
 
-  const articleRating = (event, { rating, maxRating }) => {
+  const articleRating = (event, { rating }) => {
     if (subscriber) {
       Articles.ratings(rating, id);
     } else {
@@ -49,7 +49,7 @@ const Article = () => {
               <Rating
                 onRate={articleRating}
                 data-cy='article-rating-button'
-                defaultRating={setRating(article.rating)}
+                rating={setRating(article.rating)}
                 maxRating={5}
                 icon='star'
                 size='tiny'
@@ -58,7 +58,7 @@ const Article = () => {
           />
           {article.rating && (
             <span data-cy='article-rating' style={{ fontSize: '1rem' }}>
-              {` ${article.rating}`}
+              {` avg. ${article.rating}`}
             </span>
           )}
 
@@ -80,15 +80,11 @@ const Article = () => {
               objectFit: 'cover',
             }}
           />
-          {article.body &&
-            article.body.map((paragraph) => (
-              <>
-                <p data-cy='article-body' className='article-body'>
-                  {paragraph}
-                </p>
-                <br />
-              </>
-            ))}
+          {article.body && (
+            <p data-cy='article-body' className='article-body'>
+              {article.body}
+            </p>
+          )}
         </>
       )}
     </div>

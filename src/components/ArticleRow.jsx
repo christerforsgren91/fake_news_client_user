@@ -35,7 +35,7 @@ const ArticleRow = ({ article }) => {
           <div>
             <Rating
               data-cy='rating'
-              defaultRating={setRating(article.rating)}
+              rating={setRating(article.rating)}
               maxRating={5}
               disabled
               icon='star'

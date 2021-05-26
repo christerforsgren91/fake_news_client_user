@@ -52,9 +52,5 @@ const getUserAuthToken = () => {
 };
 
 export const setRating = (rating) => {
-  if (rating > 4.8) {
-    return 5;
-  } else {
-    return Math.floor(rating);
-  }
+  return Math.round(rating)
 };
