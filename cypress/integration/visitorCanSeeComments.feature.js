@@ -4,7 +4,7 @@ describe('visitor can see a list of comments under article', () => {
       fixture: 'articles.json',
     });
   });
-  describe.only('Successfully', () => {
+  describe('Successfully', () => {
     beforeEach(() => {
       cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles/3', {
         fixture: 'specificArticleWithComments.json',
