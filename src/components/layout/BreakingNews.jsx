@@ -23,7 +23,7 @@ const BreakingNews = ({ firstArticle: article }) => {
           <p data-cy='breaking-teaser'>{article.teaser}</p>
           <Rating
             data-cy='breaking-rating'
-            defaultRating={setRating(article.rating)}
+            rating={setRating(article.rating)}
             maxRating={5}
             disabled
             icon='star'
