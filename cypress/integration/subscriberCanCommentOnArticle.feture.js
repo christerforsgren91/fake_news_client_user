@@ -17,6 +17,7 @@ describe('Subscriber can comment on article', () => {
   describe('Successfully', () => {
     it('writes a comment', () => {
       cy.get('[data-cy=comment-input]').type('Börje bre käft äter en get');
+      cy.get('[data-cy=clear-btn]').should('exist')
       cy.get('[data-cy=comment-btn]').click();
     });
     it('is expected to show comment in comment section under the article', () => {
