@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import Articles, { setRating } from '../modules/Articles';
 import { Popup, Rating } from 'semantic-ui-react';
-import CommentsSection from './layout/CommentsSection';
+import Comments from './layout/Comments';
 
 const Article = () => {
   const { article, successfulRating, subscriber } = useSelector(
@@ -88,7 +88,7 @@ const Article = () => {
           {article.body}
         </p>
       )}
-      {article.comments && <CommentsSection comments={article.comments} />}
+      {article.comments && <Comments comments={article.comments} />}
     </div>
   );
 };

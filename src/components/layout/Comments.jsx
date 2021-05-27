@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CommentsSection = ({ comments }) => {
+const Comments = ({ comments }) => {
   const noCommentMessage = (
     <p data-cy='no-comments-message'>No comments yet.</p>
   );
@@ -31,4 +31,4 @@ const CommentsSection = ({ comments }) => {
   );
 };
 
-export default CommentsSection;
+export default Comments;
