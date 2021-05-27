@@ -22,7 +22,6 @@ describe('Subscriber can comment on article', () => {
     });
 
     it('writes a comment', () => {
-      cy.get('[data-cy=comment-input]').click();
       cy.get('[data-cy=comment-input]').type('jabba jabba booo');
       cy.get('[data-cy=clear-btn]').click();
       cy.get('[data-cy=comment-input]').type('STFU U BLOODY ROUND EARTHER');
@@ -43,7 +42,8 @@ describe('Subscriber can comment on article', () => {
 
     describe('must be a subscriber to comment', () => {
       it('is expected to show message', () => {
-        cy.get('[data-cy=comment-input]').click();
+        cy.get('[data-cy=comment-input]').type('Oh what i hate sites that i need to sign in to, to be able to write comments');
+        cy.get('[data-cy=comment-btn]').click();
         cy.get('[data-cy=message]').should(
           'contain',
           'Please subscribe to comment'
