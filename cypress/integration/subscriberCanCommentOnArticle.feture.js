@@ -19,9 +19,15 @@ describe('Subscriber can comment on article', () => {
 
   describe('Successfully', () => {
     it('writes a comment', () => {
-      cy.get('[data-cy=comment-input]').type('Börje bre käft äter en get');
+      cy.get('[data-cy=comment-input]').click();
+      cy.get('[data-cy=comment-input]').type('STFU U BLOODY ROUND EARTHER');
       cy.get('[data-cy=clear-btn]').should('exist')
       cy.get('[data-cy=comment-btn]').click();
+      cy.get('[data-cy=popup-message]').should(
+        'contain',
+        'Your comment has been published'
+      );
+      cy.wait(1000);
     });
     it('is expected to show comment in comment section under the article', () => {
       cy.get('[data-cy=comment-section]').within(() => {
@@ -33,7 +39,7 @@ describe('Subscriber can comment on article', () => {
             cy.get('[data-cy=date]').should('contain', '2021-05-27');
             cy.get('[data-cy=body]').should(
               'contain',
-              'Börje bre käft äter en get'
+              'STFU U BLOODY ROUND EARTHER'
             );
           });
       });

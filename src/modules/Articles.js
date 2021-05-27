@@ -44,21 +44,22 @@ const Articles = {
     }
   },
 
-  async comment(comment, id) {
-    let params = {
-      comment: comment,
-      article_id: id,
-    };
+  async create(comments) {
     try {
-      await axios.post('/comments', params, { headers: getUserAuthToken() });
+      const params = {
+          ...comments
+      };
+      await axios.post('/comments', params, {
+        headers: getUserAuthToken(),
+      });
       store.dispatch({
         type: 'SUCCESS_MESSAGE',
-        payload: 'Your comment was added'
+        payload: 'Your comment has been published',
       });
     } catch (error) {
       errorHandler(error);
     }
-  }
+  },
 };
 
 export default Articles;

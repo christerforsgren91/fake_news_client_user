@@ -1,21 +1,28 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import Articles from '../../modules/Articles'
 
 const CommentInput = () => {
-  const { article } = useSelector((state) => state.state);
+
+  const submitComment = (event) => {
+    const comments = {
+      body: event.target.body.value,
+    };
+    Articles.create(comments);
+  };
 
   return (
     <div>
-        <form>
-          <textarea name='' placeholder='Add comment here'></textarea>
+        <form 
+        onSubmit={(event) => submitComment(event)}
+        >
+          <textarea data-cy='comment-input' name='body' placeholder='Add comment here'></textarea>
           <div className='comment-buttons'>
             <input
+              data-cy='comment-btn'
               name='comment'
-              data-cy='comment-input'
               type='submit'
-              value='Comment'
             />
-            <button data-cy='clear-btn' herf='#'>
+            <button data-cy='clear-btn' href='#'>
               Clear
             </button>
           </div>
