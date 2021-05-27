@@ -15,6 +15,38 @@
     },
     "category": "Illuminati",
     "rating": 3.7,
-    "comments": []
+    "comments": [
+      {
+        "id": 1,
+        "user": "Bobo",
+        "date": "2021-05-26 15:13",
+        "body": "Cannot belive that is happening"
+      },
+      {
+        "id": 2,
+        "user": "Jack Nicholson",
+        "date": "2021-05-25 06:20",
+        "body": "Here is Johnny!"
+      },
+
+      {
+        "id": 3,
+        "user": "Borat",
+        "date": "2021-05-24 12:19",
+        "body": "Success"
+      },
+      {
+        "id": 4,
+        "user": "CryptoBoi2000",
+        "date": "2031-02-30 09:00",
+        "body": "Why choose bitnovo to buy bitcoin and cryptocurrencies? Because we offer you the first platform to buy bitcoins easily, quickly and safely, with support and assistance in all countries. If this is your first bitcoin purchase, do not worry! We will advise you during the entire purchase process!"
+      },
+      {
+        "id": 5,
+        "user": "Krasniy Borsch",
+        "date": "1917-10-21 13:13",
+        "body": "I have completely irrefutable proof that the October Revolution was made by people who had been eating certain mushrooms for many years. And in the process of being eaten by those people, the mushrooms supplanted their personalities, and the people became mushrooms. In other words, I am simply stating that Lenin was a mushroom. A mushroom. And furthermore, he wasn’t just a mushroom, he was also a radio wave."
+      }
+    ]
   }
 }

@@ -311,3 +311,26 @@ textarea {
 .background-hover:hover {
   transform: translateY(-10px);
 }
+
+.comment-section {
+  padding: 70px;
+  color: #cec269;
+}
+
+.comment {
+  padding: 20px;
+  border-top: 1px solid rgb(71, 70, 70);
+  color: rgb(253, 253, 253);
+}
+
+.user-comment {
+  display: inline-block;
+  color: #cec269;
+  text-align: left;
+}
+
+.date-comment {
+  font-size: 12px;
+  margin-left: 15px;
+  display: inline-block;
+}

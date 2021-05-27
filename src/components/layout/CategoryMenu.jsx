@@ -9,6 +9,14 @@ const CategoryMenu = () => {
   const { t } = useTranslation();
   const [activeItem, setActiveItem] = useState(category);
   const menuItems = [
+    'Science',
+    'Aliens',
+    'Illuminati',
+    'Politics',
+    'Covid',
+    'Hollywood'
+  ]
+  const categories = [
     t('categoryScience'),
     t('categoryAliens'),
     t('categoryIlluminati'),
@@ -18,7 +26,7 @@ const CategoryMenu = () => {
   ];
 
   const renderMenuItems = () => {
-    return menuItems.map((item) => {
+    return menuItems.map((item, index) => {
       return (
         <div key={item}>
           <Menu.Item
@@ -28,6 +36,7 @@ const CategoryMenu = () => {
             style={{ fontSize: 17 }}
             data-cy='category-button'
             name={item}
+            content={categories[index]}
             active={activeItem === item}
             as={Link}
             to={`/category/${item}`}

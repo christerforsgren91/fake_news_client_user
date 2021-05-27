@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import Articles, { setRating } from '../modules/Articles';
 import { Popup, Rating } from 'semantic-ui-react';
+import Comments from './layout/Comments';
 
 const Article = () => {
   const { article, successfulRating, subscriber } = useSelector(
@@ -80,13 +81,14 @@ const Article = () => {
               objectFit: 'cover',
             }}
           />
-          {article.body && (
-            <p data-cy='article-body' className='article-body'>
-              {article.body}
-            </p>
-          )}
         </>
       )}
+      {article.body && (
+        <p data-cy='article-body' className='article-body'>
+          {article.body}
+        </p>
+      )}
+      {article.comments && <Comments comments={article.comments} />}
     </div>
   );
 };
