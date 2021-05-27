@@ -21,6 +21,7 @@ const CommentInput = () => {
           name='body'
           placeholder='Add comment here'
           value={input}
+          required
           onChange={(event) => setInput(event.target.value)}
         />
         <div className='comment-buttons'>
