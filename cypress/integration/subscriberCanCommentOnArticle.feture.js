@@ -27,22 +27,6 @@ describe('Subscriber can comment on article', () => {
         'contain',
         'Your comment has been published'
       );
-      cy.wait(1000);
-    });
-    it('is expected to show comment in comment section under the article', () => {
-      cy.get('[data-cy=comment-section]').within(() => {
-        cy.get('[data-cy=comment]').should('have.length', 6);
-        cy.get('[data-cy=comment]')
-          .first()
-          .within(() => {
-            cy.get('[data-cy=user]').should('contain', 'Bob');
-            cy.get('[data-cy=date]').should('contain', '2021-05-27');
-            cy.get('[data-cy=body]').should(
-              'contain',
-              'STFU U BLOODY ROUND EARTHER'
-            );
-          });
-      });
     });
   });
 });

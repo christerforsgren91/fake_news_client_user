@@ -45,10 +45,9 @@ const Articles = {
   },
 
   async create(comments) {
+    debugger
     try {
-      const params = {
-          ...comments
-      };
+      const params = comments   
       await axios.post('/comments', params, {
         headers: getUserAuthToken(),
       });
