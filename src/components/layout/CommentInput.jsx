@@ -1,41 +1,40 @@
 import React, { useState } from 'react';
-import Articles from '../../modules/Articles'
+import Articles from '../../modules/Articles';
 
 const CommentInput = () => {
-  const [input, setInput] = useState('')
+  const [input, setInput] = useState('');
 
   const submitComment = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const comments = {
       body: event.target.body.value,
     };
     Articles.create(comments);
-    setInput('')
+    setInput('');
   };
 
   return (
     <div>
-        <form 
-        onSubmit={(event) => submitComment(event)}
-        >
-          <textarea 
-          data-cy='comment-input' 
-          name='body' 
+      <form onSubmit={(event) => submitComment(event)}>
+        <textarea
+          data-cy='comment-input'
+          name='body'
           placeholder='Add comment here'
           value={input}
           onChange={(event) => setInput(event.target.value)}
-          />
-          <div className='comment-buttons'>
-            <input
-              data-cy='comment-btn'
-              name='comment'
-              type='submit'
-            />
-            <button data-cy='clear-btn' type='reset' href='#'>
-              Clear
-            </button>
-          </div>
-        </form>
+        />
+        <div className='comment-buttons'>
+          <input data-cy='comment-btn' name='comment' type='submit' />
+          <button 
+          data-cy='clear-btn' 
+          href='#'
+          type='reset'
+          onClick={() => setInput('')}
+          >
+            Clear
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
