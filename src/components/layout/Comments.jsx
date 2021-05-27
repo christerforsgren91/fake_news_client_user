@@ -1,4 +1,5 @@
 import React from 'react';
+import CommentInput from './CommentInput';
 
 const Comments = ({ comments }) => {
   const noCommentMessage = (
@@ -26,6 +27,7 @@ const Comments = ({ comments }) => {
   return (
     <div className='comment-section' data-cy='comment-section'>
       <h2>Comments</h2>
+      <CommentInput />
       {commentList[0] ? commentList : noCommentMessage}
     </div>
   );

@@ -65,7 +65,6 @@ const BackyardArticles = {
         payload: i18n.t('popupMessageBackyarArticlePublished'),
       });
     } catch (error) {
-      debugger
       errorHandler(error);
     }
   },

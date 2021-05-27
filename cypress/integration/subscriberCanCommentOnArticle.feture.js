@@ -6,6 +6,9 @@ describe('Subscriber can comment on article', () => {
     cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles/3', {
       fixture: 'specificArticleWithComments.json',
     });
+    cy.intercept('POST', 'https://fakest-newzz.herokuapp.com/api/comments', {
+      statusCode: 200,
+    });
     cy.visit('/');
     cy.window().its('store').invoke('dispatch', {
       type: 'AUTHENTICATE',
