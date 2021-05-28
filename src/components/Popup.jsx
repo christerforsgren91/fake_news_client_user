@@ -12,7 +12,7 @@ const Popup = () => {
         store.dispatch({
           type: 'ERROR_RESET',
         });
-      }, 3000);
+      }, 5000);
   });
 
   return (

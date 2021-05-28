@@ -1,5 +1,5 @@
 import axios from 'axios';
-import i18n from '../i18n'
+import i18n from '../i18n';
 import store from '../state/store/configureStore';
 import errorHandler from './ErrorHandler';
 
@@ -65,7 +65,6 @@ const BackyardArticles = {
         payload: i18n.t('popupMessageBackyarArticlePublished'),
       });
     } catch (error) {
-      debugger
       errorHandler(error);
     }
   },

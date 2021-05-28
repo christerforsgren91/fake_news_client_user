@@ -56,6 +56,7 @@ const BackyardForm = ({ location }) => {
             placeholder='Theme'
           />
           <Form.TextArea
+            id='textarea-backyard '
             name='body'
             required
             label='Story'

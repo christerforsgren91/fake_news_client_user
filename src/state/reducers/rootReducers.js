@@ -50,6 +50,11 @@ const rootReducer = (state, action) => {
         ...state,
         successfulRating: true,
       };
+    case 'SUCCESSFUL_COMMENT':
+      return {
+        ...state,
+        successfullComment: true,
+      };
     case 'SHOW_BACKYARD_ARTICLE':
       return {
         ...state,
@@ -61,7 +66,7 @@ const rootReducer = (state, action) => {
         open: true,
         message: action.payload,
       };
-      case 'NO_BACKYARD_ARTICLES':
+    case 'NO_BACKYARD_ARTICLES':
       return {
         ...state,
         error: true,

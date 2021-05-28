@@ -43,6 +43,21 @@ const Articles = {
       errorHandler(error);
     }
   },
+
+  async create(comments) {
+    try {
+      const params = comments   
+      await axios.post('/comments', params, {
+        headers: getUserAuthToken(),
+      });
+      store.dispatch({
+        type: 'SUCCESS_MESSAGE',
+        payload: 'Your comment has been published',
+      });
+    } catch (error) {
+      errorHandler(error);
+    }
+  },
 };
 
 export default Articles;
