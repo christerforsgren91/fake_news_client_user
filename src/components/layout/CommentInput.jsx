@@ -18,10 +18,17 @@ const CommentInput = () => {
       setInput('');
       setMessage('');
       setFocus(false);
+      refreshPage();
     } else {
       setMessage('Please subscribe to comment');
     }
   };
+
+  const refreshPage = () => {
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
+  }
 
   return (
     <div className='comment-outer-container'>
