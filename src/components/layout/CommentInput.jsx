@@ -44,13 +44,12 @@ const CommentInput = () => {
             onChange={(event) => setInput(event.target.value)}
           />
           {focus ? (
-            <div>
+            <div className='comment-button-container'>
               <button
                 className='submit-btn '
                 data-cy='comment-btn'
                 name='comment'
-                type='submit'
-                >
+                type='submit'>
                 Submit
               </button>
               <button
@@ -58,7 +57,10 @@ const CommentInput = () => {
                 data-cy='clear-btn'
                 href='#'
                 type='reset'
-                onClick={() => {setInput(''); setFocus(false)}}>
+                onClick={() => {
+                  setInput('');
+                  setFocus(false);
+                }}>
                 Clear
               </button>
             </div>

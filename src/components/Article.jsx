@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import Articles, { setRating } from '../modules/Articles';
 import { Popup, Rating } from 'semantic-ui-react';
 import Comments from './layout/Comments';
+import CommentInput from './layout/CommentInput';
 
 const Article = () => {
   const { article, successfulRating, subscriber } = useSelector(
@@ -88,7 +89,9 @@ const Article = () => {
           {article.body}
         </p>
       )}
-      {article.comments && <Comments comments={article.comments} />}
+      <h2 className='comment-header'>Comments</h2>
+      <CommentInput />
+      <Comments comments={article.comments} />
     </div>
   );
 };
