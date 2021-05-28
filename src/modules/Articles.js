@@ -44,10 +44,10 @@ const Articles = {
     }
   },
 
-  async create(comments) {
+  async createComment(comments, id) {
     try {
-      const params = comments   
-      await axios.post('/comments', params, {
+      const params = comments
+      await axios.post(`/articles/${id}/comments/`, params, {
         headers: getUserAuthToken(),
       });
       store.dispatch({

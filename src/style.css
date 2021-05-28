@@ -277,8 +277,8 @@ input {
 }
 
 .ui.form textarea {
-  background-color: transparent ;
-  color: white ;
+  background-color: transparent;
+  color: white;
 }
 
 .ui.form .field > label {
@@ -316,6 +316,11 @@ input {
   padding: 70px;
   color: #cec269;
 }
+.comment-header {
+  margin-top: 70px;
+  margin-left: 70px;
+  color: #cec269;
+}
 
 .comment {
   padding: 20px;
@@ -341,7 +346,6 @@ input {
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  padding-bottom: 20px;
 }
 
 .comment-inner-container {
@@ -352,6 +356,7 @@ input {
 .sign-up-message {
   text-align: center;
   margin-bottom: 15px;
+  color: #cec269;
 }
 
 .comment-textarea {
@@ -388,4 +393,8 @@ input {
   cursor: pointer;
   color: rgba(218, 217, 216, 0.863);
   background-color: transparent;
+}
+
+.comment-button-container {
+  position: absolute;
 }

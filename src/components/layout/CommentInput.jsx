@@ -3,7 +3,7 @@ import Articles from '../../modules/Articles';
 import { useSelector } from 'react-redux';
 
 const CommentInput = () => {
-  const { subscriber } = useSelector((state) => state);
+  const { subscriber, article } = useSelector((state) => state);
   const [input, setInput] = useState('');
   const [message, setMessage] = useState('');
   const [focus, setFocus] = useState(false);
@@ -14,7 +14,7 @@ const CommentInput = () => {
       const comments = {
         body: event.target.body.value,
       };
-      Articles.create(comments);
+      Articles.createComment(comments, article.id);
       setInput('');
       setMessage('');
       setFocus(false);
@@ -26,11 +26,9 @@ const CommentInput = () => {
   return (
     <div className='comment-outer-container'>
       <div className='comment-inner-container'>
-        {
-          <h2 className='sign-up-message' data-cy='message'>
-            {message}
-          </h2>
-        }
+        <h2 className='sign-up-message' data-cy='message'>
+          {message}
+        </h2>
         <form onSubmit={(event) => submitComment(event)}>
           <textarea
             className='comment-textarea'
@@ -39,18 +37,17 @@ const CommentInput = () => {
             name='body'
             placeholder='Add comment here'
             value={input}
-            onClick={() => setFocus(true)}
             required
+            onFocus={() => setFocus(true)}
             onChange={(event) => setInput(event.target.value)}
           />
           {focus ? (
-            <div>
+            <div className='comment-button-container'>
               <button
                 className='submit-btn '
                 data-cy='comment-btn'
                 name='comment'
-                type='submit'
-                >
+                type='submit'>
                 Submit
               </button>
               <button
@@ -58,7 +55,10 @@ const CommentInput = () => {
                 data-cy='clear-btn'
                 href='#'
                 type='reset'
-                onClick={() => {setInput(''); setFocus(false)}}>
+                onClick={() => {
+                  setInput('');
+                  setFocus(false);
+                }}>
                 Clear
               </button>
             </div>
