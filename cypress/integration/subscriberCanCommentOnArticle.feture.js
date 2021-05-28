@@ -12,7 +12,7 @@ describe('Subscriber can comment on article', () => {
 
   describe('Successfully', () => {
     beforeEach(() => {
-      cy.intercept('POST', 'https://fakest-newzz.herokuapp.com/api/comments', {
+      cy.intercept('POST', 'https://fakest-newzz.herokuapp.com/api/articles/3/comments', {
         statusCode: 200,
       });
       cy.window().its('store').invoke('dispatch', {
@@ -33,22 +33,22 @@ describe('Subscriber can comment on article', () => {
     });
   });
 
-  describe('Unsuccessfully', () => {
+  describe('Unsuccessfully as a Visitor', () => {
     beforeEach(() => {
       cy.intercept('POST', 'https://fakest-newzz.herokuapp.com/api/comments', {
         statusCode: 401,
       });
     });
 
-    describe('must be a subscriber to comment', () => {
-      it('is expected to show message', () => {
-        cy.get('[data-cy=comment-input]').type('Oh what i hate sites that i need to sign in to, to be able to write comments');
-        cy.get('[data-cy=comment-btn]').click();
-        cy.get('[data-cy=message]').should(
-          'contain',
-          'Please subscribe to comment'
-        );
-      });
+    it('is expected to show a message', () => {
+      cy.get('[data-cy=comment-input]').type(
+        'Oh what i hate sites that i need to sign in to, to be able to write comments'
+      );
+      cy.get('[data-cy=comment-btn]').click();
+      cy.get('[data-cy=message]').should(
+        'contain',
+        'Please subscribe to comment'
+      );
     });
   });
 });

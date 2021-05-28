@@ -356,6 +356,7 @@ input {
 .sign-up-message {
   text-align: center;
   margin-bottom: 15px;
+  color: #cec269;
 }
 
 .comment-textarea {
