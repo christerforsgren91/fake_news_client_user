@@ -13,10 +13,14 @@ const CommentInput = () => {
       const comments = {
         body: input,
       };
-      Articles.createComment(comments, article.id);
-      setInput('');
-      setMessage('');
-      setFocus(false);
+      if (input.trim().length !== 0) {
+        Articles.createComment(comments, article.id);
+        setInput('');
+        setMessage('');
+        setFocus(false);
+      } else {
+        setMessage("Comment field can't be empty");
+      }
     } else {
       setMessage('Please subscribe to comment');
     }
@@ -54,7 +58,7 @@ const CommentInput = () => {
                 className='submit-btn '
                 data-cy='comment-btn'
                 name='comment'
-                type='submit'>
+                type='button'>
                 Submit
               </button>
               <button

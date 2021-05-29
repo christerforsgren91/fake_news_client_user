@@ -31,6 +31,17 @@ describe('Subscriber can comment on article', () => {
       cy.get('[data-cy=comment-input]').type('STFU U BLOODY ROUND EARTHER');
       cy.get('[data-cy=comment-btn]').click();
     });
+
+    describe('Unsuccessful to send empty message', () => {
+      it('Writes an empty message', () => {
+        cy.get('[data-cy=comment-input]').type('  ');
+        cy.get('[data-cy=comment-btn]').click();
+        cy.get('[data-cy=message]').should(
+          'contain',
+          "Comment field can't be empty"
+        );
+      });
+    });
   });
 
   describe('Unsuccessfully as a Visitor', () => {

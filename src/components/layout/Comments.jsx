@@ -13,7 +13,7 @@ const Comments = ({ comments }) => {
     if (subscriber) {
       article.id && Articles.show(article.id);
     } else {
-      return;
+      return null;
     }
   };
 
