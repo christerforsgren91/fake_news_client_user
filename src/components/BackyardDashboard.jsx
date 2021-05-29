@@ -81,6 +81,7 @@ const BackyardDashboard = () => {
           </Table>
         </div>
       </div>
+        <p style={styles.disclaimer}>The views and opinions expressed in the Backyard are those of the users and do not necessarily reflect the official policy or position of Fake News. Any content provided by our patriots are of their opinion and are not intended to malign any religion, ethnic group, club, organization, company, individual or anyone or anything.</p>
     </>
   );
 };
@@ -114,4 +115,10 @@ const styles = {
     paddingRight: '2%',
     alignItems: 'center',
   },
+  disclaimer: {
+    color: '#cec269',
+    fontSize: '8px',
+    textAlign: 'center',
+    padding: '0 100px 25px 100px'
+  }
 };
