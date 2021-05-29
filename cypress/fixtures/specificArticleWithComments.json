@@ -17,18 +17,11 @@
     "rating": 3.7,
     "comments": [
       {
-        "id": 1,
-        "user": "Bobo",
-        "date": "2021-05-26 15:13",
-        "body": "Cannot belive that is happening"
-      },
-      {
         "id": 2,
         "user": "Jack Nicholson",
         "date": "2021-05-25 06:20",
         "body": "Here is Johnny!"
       },
-
       {
         "id": 3,
         "user": "Borat",
@@ -46,6 +39,12 @@
         "user": "Krasniy Borsch",
         "date": "1917-10-21 13:13",
         "body": "I have completely irrefutable proof that the October Revolution was made by people who had been eating certain mushrooms for many years. And in the process of being eaten by those people, the mushrooms supplanted their personalities, and the people became mushrooms. In other words, I am simply stating that Lenin was a mushroom. A mushroom. And furthermore, he wasn’t just a mushroom, he was also a radio wave."
+      },
+      {
+        "id": 1,
+        "user": "Bobo",
+        "date": "2021-05-26 15:13",
+        "body": "Cannot belive that is happening"
       }
     ]
   }
