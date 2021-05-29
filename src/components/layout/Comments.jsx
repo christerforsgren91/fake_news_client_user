@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import Articles from '../../modules/Articles';
 
 const Comments = ({ comments }) => {
+  const { update, article } = useSelector((state) => state);
+
   const noCommentMessage = (
     <p data-cy='no-comments-message'>No comments yet.</p>
   );
+
+  useEffect(() => {
+    article.id && Articles.show(article.id);
+  }, [update]);
 
   const commentList = comments
     ? comments.map((comment, index) => (
@@ -26,7 +34,7 @@ const Comments = ({ comments }) => {
     : [];
   return (
     <div className='comment-section' data-cy='comment-section'>
-      {commentList[0] ? commentList : noCommentMessage}
+      {commentList[0] ? commentList.reverse() : noCommentMessage}
     </div>
   );
 };
