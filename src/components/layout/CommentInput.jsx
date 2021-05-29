@@ -22,7 +22,7 @@ const CommentInput = () => {
     }
   };
 
-  const handler = (event) => {
+  const submitCommentHandler = (event) => {
     if (event.key === 'Enter') {
       submitComment();
     }
@@ -45,7 +45,7 @@ const CommentInput = () => {
             required
             onFocus={() => setFocus(true)}
             onChange={(event) => setInput(event.target.value)}
-            onKeyPress={handler}
+            onKeyPress={submitCommentHandler}
           />
           {focus ? (
             <div className='comment-button-container'>
