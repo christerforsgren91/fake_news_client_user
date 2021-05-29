@@ -12,7 +12,7 @@ const Navbar = () => {
   const { t } = useTranslation();
   const [appLanguage, setAppLanguage] = useState('en');
 
-  const languges = [
+  const languages = [
     { key: 1, text: 'en', value: 'en' },
     { key: 2, text: 'se', value: 'se' },
   ];
@@ -61,7 +61,7 @@ const Navbar = () => {
               id='language'
               name='language'
               text={appLanguage}
-              options={languges}
+              options={languages}
               onChange={(event) => {
                 handleChange(event);
               }}

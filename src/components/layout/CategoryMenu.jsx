@@ -22,7 +22,7 @@ const CategoryMenu = () => {
     t('categoryIlluminati'),
     t('categoryPolitics'),
     t('categoryCovid'),
-    t('categoryHolliwood'),
+    t('categoryHollywood'),
   ];
 
   const renderMenuItems = () => {

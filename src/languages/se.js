@@ -10,7 +10,7 @@ const se = {
     categoryIlluminati: 'Illuminati',
     categoryPolitics: 'Politik',
     categoryCovid: 'Covid',
-    categoryHolliwood: 'Hollywood',
+    categoryHollywood: 'Hollywood',
     dividerTopConspiracies: 'Nya toppkonspirationer',
     dividerPremiumArticles: 'Premium Artiklar',
     dividerOtherNews: 'Andra nyheter',

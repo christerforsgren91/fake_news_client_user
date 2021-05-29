@@ -26,7 +26,7 @@ const Comments = ({ comments }) => {
     : [];
   return (
     <div className='comment-section' data-cy='comment-section'>
-      {commentList[0] ? commentList : noCommentMessage}
+      {commentList[0] ? commentList.reverse() : noCommentMessage}
     </div>
   );
 };
