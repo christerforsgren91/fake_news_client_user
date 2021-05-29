@@ -11,6 +11,7 @@ const Comments = ({ comments }) => {
 
   useEffect(() => {
     article.id && Articles.show(article.id);
+    // eslint-disable-next-line
   }, [update]);
 
   const commentList = comments
