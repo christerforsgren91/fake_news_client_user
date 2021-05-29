@@ -97,6 +97,10 @@ input {
   color: rgba(200, 200, 200, 1);
 }
 
+.small-breaking-news:hover {
+  transform: scale(1.01);
+}
+
 .breaking-news:hover {
   transform: scale(1.01);
 }

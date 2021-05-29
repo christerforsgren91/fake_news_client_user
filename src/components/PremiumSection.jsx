@@ -1,9 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 const PremiumSection = () => {
   const { articles, subscriber } = useSelector((state) => state);
+  const isSmall = useMediaQuery({ query: '(max-width: 1250px)' });
 
   const premiumList = articles
     .filter((article) => article.premium === true)
@@ -26,12 +28,18 @@ const PremiumSection = () => {
             alt={article.title}
             style={styles.imageContainer}
           />
-          <h4 style={styles.title}>{article.title}</h4>
+          <h4 style={isSmall ? smallStyles.title : styles.title}>
+            {article.title}
+          </h4>
         </div>
       </Link>
     ));
 
-  return <div style={styles.container}>{premiumList}</div>;
+  return (
+    <div style={isSmall ? smallStyles.container : styles.container}>
+      {premiumList}
+    </div>
+  );
 };
 
 export default PremiumSection;
@@ -76,6 +84,24 @@ const styles = {
   },
   title: {
     fontSize: 40,
+    color: 'white',
+    fontWeight: 'bold',
+    fontFamily: 'Koho',
+    zIndex: 10,
+    position: 'absolute',
+    overflow: 'hidden',
+    padding: '0 10px',
+  },
+};
+
+const smallStyles = {
+  container: {
+    backgroundColor: '#ffb74d',
+    alignItems: 'center',
+    padding: '25px 15%',
+  },
+  title: {
+    fontSize: '4vw',
     color: 'white',
     fontWeight: 'bold',
     fontFamily: 'Koho',
