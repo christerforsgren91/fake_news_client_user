@@ -21,6 +21,7 @@ const Article = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     Articles.show(id);
     // eslint-disable-next-line
   }, []);
