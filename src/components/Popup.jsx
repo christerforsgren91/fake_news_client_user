@@ -13,7 +13,8 @@ const Popup = () => {
           type: 'ERROR_RESET',
         });
       }, 5000);
-  });
+      // eslint-disable-next-line
+  },[]);
 
   return (
     <Portal
