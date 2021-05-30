@@ -28,8 +28,10 @@ describe('Subscriber can comment on article', () => {
     it('writes a comment', () => {
       cy.get('[data-cy=comment-input]').type('jabba jabba booo');
       cy.get('[data-cy=clear-btn]').click();
+      cy.get('[data-cy=comment-input]').should('contain', '')
       cy.get('[data-cy=comment-input]').type('STFU U BLOODY ROUND EARTHER');
       cy.get('[data-cy=comment-btn]').click();
+      cy.get('[data-cy=comment-input]').should('contain', '')
     });
 
     describe('Unsuccessful to send empty message', () => {
@@ -60,6 +62,7 @@ describe('Subscriber can comment on article', () => {
         'contain',
         'Please subscribe to comment'
       );
+      cy.get('[data-cy=comment-input]').should('contain', 'Oh what i hate sites that i need to sign in to, to be able to write comments')
     });
   });
 });

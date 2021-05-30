@@ -56,15 +56,12 @@ const CommentInput = () => {
               onClick={() => submitComment()}
               className='submit-btn '
               data-cy='comment-btn'
-              name='comment'
-              type='button'>
+              name='comment'>
               Submit
             </button>
             <button
               className=' clear-btn'
               data-cy='clear-btn'
-              href='#'
-              type='reset'
               onClick={() => {
                 setInput('');
                 setFocus(false);
