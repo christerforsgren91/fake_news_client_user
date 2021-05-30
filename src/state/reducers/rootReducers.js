@@ -66,6 +66,11 @@ const rootReducer = (state, action) => {
         open: true,
         message: action.payload,
       };
+    case 'UPDATE':
+      return {
+        ...state,
+        update: !state.update,
+      };
     case 'NO_BACKYARD_ARTICLES':
       return {
         ...state,

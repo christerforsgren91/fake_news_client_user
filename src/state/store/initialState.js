@@ -7,6 +7,7 @@ const initialState = {
   backyardArticles: [],
   backyardArticle: {},
   backyardLocation: '',
+  update: false,
 };
 
 export default initialState;

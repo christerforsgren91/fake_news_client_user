@@ -8,18 +8,27 @@ const CommentInput = () => {
   const [message, setMessage] = useState('');
   const [focus, setFocus] = useState(false);
 
-  const submitComment = (event) => {
-    event.preventDefault();
+  const submitComment = () => {
     if (subscriber) {
       const comments = {
-        body: event.target.body.value,
+        body: input,
       };
-      Articles.createComment(comments, article.id);
-      setInput('');
-      setMessage('');
-      setFocus(false);
+      if (input.trim().length !== 0) {
+        Articles.createComment(comments, article.id);
+        setInput('');
+        setMessage('');
+        setFocus(false);
+      } else {
+        setMessage("Comment field can't be empty");
+      }
     } else {
       setMessage('Please subscribe to comment');
+    }
+  };
+
+  const submitCommentHandler = (event) => {
+    if (event.key === 'Enter') {
+      submitComment();
     }
   };
 
@@ -29,41 +38,38 @@ const CommentInput = () => {
         <h2 className='sign-up-message' data-cy='message'>
           {message}
         </h2>
-        <form onSubmit={(event) => submitComment(event)}>
-          <textarea
-            className='comment-textarea'
-            data-cy='comment-input'
-            type='text'
-            name='body'
-            placeholder='Add comment here'
-            value={input}
-            required
-            onFocus={() => setFocus(true)}
-            onChange={(event) => setInput(event.target.value)}
-          />
-          {focus ? (
-            <div className='comment-button-container'>
-              <button
-                className='submit-btn '
-                data-cy='comment-btn'
-                name='comment'
-                type='submit'>
-                Submit
-              </button>
-              <button
-                className=' clear-btn'
-                data-cy='clear-btn'
-                href='#'
-                type='reset'
-                onClick={() => {
-                  setInput('');
-                  setFocus(false);
-                }}>
-                Clear
-              </button>
-            </div>
-          ) : null}
-        </form>
+        <textarea
+          className='comment-textarea'
+          data-cy='comment-input'
+          type='text'
+          name='body'
+          placeholder='Add comment here'
+          value={input}
+          required
+          onFocus={() => setFocus(true)}
+          onChange={(event) => setInput(event.target.value)}
+          onKeyPress={submitCommentHandler}
+        />
+        {focus ? (
+          <div className='comment-button-container'>
+            <button
+              onClick={() => submitComment()}
+              className='submit-btn '
+              data-cy='comment-btn'
+              name='comment'>
+              Submit
+            </button>
+            <button
+              className=' clear-btn'
+              data-cy='clear-btn'
+              onClick={() => {
+                setInput('');
+                setFocus(false);
+              }}>
+              Clear
+            </button>
+          </div>
+        ) : null}
       </div>
     </div>
   );

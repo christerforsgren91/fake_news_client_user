@@ -63,6 +63,10 @@ input {
   background-color: #6e6e6e !important;
 }
 
+#textarea-backyard {
+  background-color: #6e6e6e;
+}
+
 .italic {
   font-style: italic;
 }

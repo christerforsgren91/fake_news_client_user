@@ -26,15 +26,9 @@ const BackyardArticle = () => {
       <p data-cy='date' className='article-date'>
         {backyardArticle.date}
       </p>
-      {backyardArticle.body &&
-        backyardArticle.body.map((paragraph) => (
-          <>
-            <p data-cy='body' className='article-body'>
-              {paragraph}
-            </p>
-            <br />
-          </>
-        ))}
+      <p data-cy='body' className='article-body'>
+        {backyardArticle.body}
+      </p>
     </div>
   );
 };

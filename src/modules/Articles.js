@@ -46,13 +46,12 @@ const Articles = {
 
   async createComment(comments, id) {
     try {
-      const params = comments
+      const params = comments;
       await axios.post(`/articles/${id}/comments/`, params, {
         headers: getUserAuthToken(),
       });
       store.dispatch({
-        type: 'SUCCESS_MESSAGE',
-        payload: 'Your comment has been published',
+        type: 'UPDATE',
       });
     } catch (error) {
       errorHandler(error);
@@ -67,5 +66,5 @@ const getUserAuthToken = () => {
 };
 
 export const setRating = (rating) => {
-  return Math.round(rating)
+  return Math.round(rating);
 };
