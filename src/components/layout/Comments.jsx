@@ -1,17 +1,20 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Articles from '../../modules/Articles';
+import { useParams } from 'react-router-dom';
 
 const Comments = ({ comments }) => {
-  const { update, article, subscriber } = useSelector((state) => state);
+  const { update, subscriber } = useSelector((state) => state);
 
   const noCommentMessage = (
     <p data-cy='no-comments-message'>No comments yet.</p>
   );
 
+  const { id } = useParams();
+
   const updateComments = () => {
     if (subscriber) {
-      article.id && Articles.show(article.id);
+      Articles.show(id);
     } else {
       return null;
     }

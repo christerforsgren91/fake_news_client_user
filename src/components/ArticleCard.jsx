@@ -8,6 +8,7 @@ import { useMediaQuery } from 'react-responsive';
 const ArticleCard = ({ article, index }) => {
   const { subscriber } = useSelector((state) => state);
   const isSmall = useMediaQuery({ query: '(max-width: 1170px)' });
+
   return (
     <div
       className={
