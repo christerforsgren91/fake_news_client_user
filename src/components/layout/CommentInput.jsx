@@ -38,43 +38,41 @@ const CommentInput = () => {
         <h2 className='sign-up-message' data-cy='message'>
           {message}
         </h2>
-        <form>
-          <textarea
-            className='comment-textarea'
-            data-cy='comment-input'
-            type='text'
-            name='body'
-            placeholder='Add comment here'
-            value={input}
-            required
-            onFocus={() => setFocus(true)}
-            onChange={(event) => setInput(event.target.value)}
-            onKeyPress={submitCommentHandler}
-          />
-          {focus ? (
-            <div className='comment-button-container'>
-              <button
-                onClick={() => submitComment()}
-                className='submit-btn '
-                data-cy='comment-btn'
-                name='comment'
-                type='button'>
-                Submit
-              </button>
-              <button
-                className=' clear-btn'
-                data-cy='clear-btn'
-                href='#'
-                type='reset'
-                onClick={() => {
-                  setInput('');
-                  setFocus(false);
-                }}>
-                Clear
-              </button>
-            </div>
-          ) : null}
-        </form>
+        <textarea
+          className='comment-textarea'
+          data-cy='comment-input'
+          type='text'
+          name='body'
+          placeholder='Add comment here'
+          value={input}
+          required
+          onFocus={() => setFocus(true)}
+          onChange={(event) => setInput(event.target.value)}
+          onKeyPress={submitCommentHandler}
+        />
+        {focus ? (
+          <div className='comment-button-container'>
+            <button
+              onClick={() => submitComment()}
+              className='submit-btn '
+              data-cy='comment-btn'
+              name='comment'
+              type='button'>
+              Submit
+            </button>
+            <button
+              className=' clear-btn'
+              data-cy='clear-btn'
+              href='#'
+              type='reset'
+              onClick={() => {
+                setInput('');
+                setFocus(false);
+              }}>
+              Clear
+            </button>
+          </div>
+        ) : null}
       </div>
     </div>
   );
