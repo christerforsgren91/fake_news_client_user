@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 import store from './state/store/configureStore';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-axios.defaults.baseURL = 'http://localhost:3000/api';
+axios.defaults.baseURL = 'https://fakest-newzz.herokuapp.com/api';
 
 ReactDOM.render(
   <Router>

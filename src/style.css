@@ -115,6 +115,7 @@ input {
 }
 
 .small-breaking-content {
+  width: 100%;
   padding: 40px;
   background: transparent;
   z-index: 2;
@@ -234,14 +235,22 @@ input {
   background-color: #202325;
   align-content: center;
   padding: 25px;
-  margin: 5% 15%;
+  max-width: 800px;
   color: rgba(218, 217, 216, 0.863);
   font-size: 1.5rem;
+  margin: 50px auto;
+}
+
+.article-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
 }
 
 .article-title {
-  font-size: 50px;
+  font-size: 40px;
   color: #cec269;
+  text-align: center;
 }
 
 .article-category {
@@ -343,7 +352,8 @@ input {
 
 .backyard-container {
   color: white;
-  margin: 20px 30%;
+  margin: 30px auto;
+  max-width: 600px;
   background-color: #202325;
   padding: 25px;
   border-radius: 3;

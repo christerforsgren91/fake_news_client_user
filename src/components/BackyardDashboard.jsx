@@ -68,11 +68,21 @@ const BackyardDashboard = () => {
           <Table celled padded inverted style={{ overflowY: 'scroll' }}>
             <Table.Header>
               <Table.Row textAlign='center'>
-                <Table.HeaderCell singleLine>{t('backyardDashboardTitle')}</Table.HeaderCell>
-                <Table.HeaderCell>{t('backyardDashboardTheme')}</Table.HeaderCell>
-                <Table.HeaderCell>{t('backyardDashboardWrittenBy')}</Table.HeaderCell>
-                <Table.HeaderCell>{t('backyardDashboardCreatedOn')}</Table.HeaderCell>
-                <Table.HeaderCell>{t('backyardDashboardAction')}</Table.HeaderCell>
+                <Table.HeaderCell singleLine>
+                  {t('backyardDashboardTitle')}
+                </Table.HeaderCell>
+                <Table.HeaderCell>
+                  {t('backyardDashboardTheme')}
+                </Table.HeaderCell>
+                <Table.HeaderCell>
+                  {t('backyardDashboardWrittenBy')}
+                </Table.HeaderCell>
+                <Table.HeaderCell>
+                  {t('backyardDashboardCreatedOn')}
+                </Table.HeaderCell>
+                <Table.HeaderCell>
+                  {t('backyardDashboardAction')}
+                </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             {backyardArticles[0] && (
@@ -81,7 +91,13 @@ const BackyardDashboard = () => {
           </Table>
         </div>
       </div>
-        <p style={styles.disclaimer}>The views and opinions expressed in the Backyard are those of the users and do not necessarily reflect the official policy or position of Fake News. Any content provided by our patriots are of their opinion and are not intended to malign any religion, ethnic group, club, organization, company, individual or anyone or anything.</p>
+      <p style={styles.disclaimer}>
+        The views and opinions expressed in the Backyard are those of the users
+        and do not necessarily reflect the official policy or position of Fake
+        News. Any content provided by our patriots are of their opinion and are
+        not intended to malign any religion, ethnic group, club, organization,
+        company, individual or anyone or anything.
+      </p>
     </>
   );
 };
@@ -117,8 +133,9 @@ const styles = {
   },
   disclaimer: {
     color: '#cec269',
-    fontSize: '8px',
+    fontSize: '10px',
     textAlign: 'center',
-    padding: '0 100px 25px 100px'
-  }
+    width: '50%',
+    margin: 'auto',
+  },
 };
