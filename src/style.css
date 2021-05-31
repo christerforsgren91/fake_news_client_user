@@ -67,6 +67,11 @@ input {
   background-color: #6e6e6e;
 }
 
+/* #premiumList {
+background-color: #ffb74d;
+display: flex;
+} */
+
 .italic {
   font-style: italic;
 }
