@@ -10,8 +10,8 @@ const Article = () => {
   const { article, successfulRating, subscriber } = useSelector(
     (state) => state
   );
-  const { id } = useParams();
-
+  const {id} = useParams();
+ 
   const articleRating = (event, { rating }) => {
     if (subscriber) {
       Articles.ratings(rating, id);
@@ -21,8 +21,10 @@ const Article = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     Articles.show(id);
-  }, [id]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div data-cy='article-container' className='article-container box-shadow'>

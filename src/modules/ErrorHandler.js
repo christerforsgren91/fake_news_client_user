@@ -1,8 +1,8 @@
-import i18n from '../i18n'
+import i18n from '../i18n';
 import store from '../state/store/configureStore';
 
 const errorHandler = (error) => {
-  if (error.message !== 'Network Error') {
+  if (error.response) {
     switch (error.response.status) {
       case 500:
         store.dispatch({
