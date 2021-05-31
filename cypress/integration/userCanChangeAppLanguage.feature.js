@@ -1,5 +1,11 @@
-describe('user can change UI language', () => {
+describe('user can change App language', () => {
   beforeEach(() => {
+    cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles', {
+      fixture: 'articles.json',
+    });
+    cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles/?language=se', {
+      fixture: 'articles_in_swedish.json',
+    });
     cy.visit('/');
   });
 
@@ -14,5 +20,11 @@ describe('user can change UI language', () => {
         .first()
         .should('contain', 'Vetenskap');
     });
+
+    it('is expected to show swedish articles', () => {
+      cy.get('[data-cy=article]').first().within(() => {
+        cy.get('[data-cy=title]').should('contain', 'Vaccinnationalism: en kapitalistisk sjukdom')
+      })
+    })
   });
 });
