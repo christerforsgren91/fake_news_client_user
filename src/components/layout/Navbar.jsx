@@ -9,8 +9,8 @@ import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
   const { subscriber } = useSelector((state) => state);
+  const { appLanguage } = useSelector((state) => state);
   const { t } = useTranslation();
-  const [appLanguage, setAppLanguage] = useState('en');
 
   const languges = [
     { key: 1, text: 'en', value: 'en' },
@@ -19,7 +19,7 @@ const Navbar = () => {
 
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
-    setAppLanguage(language);
+    store.dispatch({ type: 'SET_LANGUAGE', payload: language });
   };
 
   const handleChange = (event) => {
