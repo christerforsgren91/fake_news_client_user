@@ -281,6 +281,11 @@ input {
   color: rgba(218, 217, 216, 0.863) !important;
 }
 
+.choose-sub {
+  color: white;
+  text-align: center;
+}
+
 .subscription-plan {
   display: flex;
   flex-direction: column;
@@ -464,4 +469,50 @@ input {
 
 .comment-button-container {
   position: absolute;
+}
+
+/* smaller that desktop style  */
+@media (max-width: 920px) {
+  .subscription-plan {
+    display: flex;
+    flex-direction: column;
+    height: 30%;
+    width: 100%;
+    color: white;
+    margin: 50px;
+    transition: 0.3s;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .subscription-special {
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    width: 100%;
+    color: white;
+    margin: 0 25px;
+    transition: 0.3s;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .ui.cards{
+    padding: 2rem 0;
+    display: flex;
+  }
+
+  .choose-sub {
+    color: white;
+    text-align: center;
+    margin: 3rem 0;
+    padding-bottom: 10rem;
+  }
+
+  .subscription-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 80%;
+  }
 }
