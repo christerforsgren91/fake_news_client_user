@@ -66,6 +66,7 @@ input {
 
 #textarea-backyard {
   background-color: #6e6e6e;
+  color: white;
 }
 
 .italic {
@@ -348,7 +349,14 @@ input {
   color: white !important;
   text-align: center;
   padding: 25px;
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0;
+}
+.backyard-form-second {
+  background-color: #3f3f3f !important;
+  color: white !important;
+  text-align: center;
+  padding: 25px;
+  border-radius: 0 0 5px 5px;
 }
 
 .ui.form textarea {
