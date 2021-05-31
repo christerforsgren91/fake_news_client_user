@@ -271,6 +271,10 @@ input {
   white-space: pre-wrap;
   font-size: 19px;
 }
+.category-bar{
+  width: fit-content;
+  margin: auto;
+}
 
 .category-header {
   color: rgba(255, 255, 255, 0.9);
@@ -514,5 +518,21 @@ input {
     flex-direction: column;
     justify-content: space-evenly;
     height: 80%;
+  }
+  .category-bar{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .ui.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+}
+
+@media only screen and (max-width: 766px) {
+  #tr-head {
+    display: none!important;
   }
 }

@@ -14,8 +14,8 @@ const CategoryMenu = () => {
     'Illuminati',
     'Politics',
     'Covid',
-    'Hollywood'
-  ]
+    'Hollywood',
+  ];
   const categories = [
     t('categoryScience'),
     t('categoryAliens'),
@@ -47,9 +47,7 @@ const CategoryMenu = () => {
   };
 
   return (
-    <div
-      data-cy='category-bar'
-      style={{ width: 'fit-content', margin: 'auto' }}>
+    <div className='category-bar' data-cy='category-bar'>
       <Menu inverted secondary>
         {renderMenuItems()}
       </Menu>

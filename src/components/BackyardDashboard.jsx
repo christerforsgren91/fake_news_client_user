@@ -29,7 +29,7 @@ const BackyardDashboard = () => {
       data-cy='backyard-article'>
       <Table.Cell
         data-cy='title'
-        textAlign='left'
+        textAlign='center'
         width={5}
         style={{ fontWeight: 'bold' }}>
         {backyardArticle.title}
@@ -67,7 +67,7 @@ const BackyardDashboard = () => {
           </Segment>
           <Table celled padded inverted style={{ overflowY: 'scroll' }}>
             <Table.Header>
-              <Table.Row textAlign='center'>
+              <Table.Row id='tr-head' textAlign='center'>
                 <Table.HeaderCell singleLine>
                   {t('backyardDashboardTitle')}
                 </Table.HeaderCell>
