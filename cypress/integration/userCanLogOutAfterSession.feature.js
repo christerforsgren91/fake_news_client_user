@@ -14,7 +14,7 @@ describe('User is able to logout after being logged in', () => {
         statusCode: 200,
       }
     );
-    cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles/', {
+    cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles/?**', {
       fixture: 'articles.json',
     });
     cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles/3', {

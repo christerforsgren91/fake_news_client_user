@@ -1,6 +1,6 @@
 describe('user can see which articles that are premium', () => {
   beforeEach(() => {
-    cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles', {
+    cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles/?**', {
       fixture: 'articles.json',
     });
     cy.intercept(

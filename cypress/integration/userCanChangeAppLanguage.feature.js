@@ -1,6 +1,6 @@
 describe('user can change App language', () => {
   beforeEach(() => {
-    cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles', {
+    cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles/?language=en', {
       fixture: 'articles.json',
     });
     cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles/?language=se', {
