@@ -6,6 +6,7 @@ import { Segment, Menu, Dropdown } from 'semantic-ui-react';
 import Authentication from '../../modules/Authentication';
 import store from '../../state/store/configureStore';
 import { useTranslation } from 'react-i18next';
+import Articles from '../../modules/Articles';
 
 const Navbar = () => {
   const { subscriber } = useSelector((state) => state);
@@ -20,6 +21,7 @@ const Navbar = () => {
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
     store.dispatch({ type: 'SET_LANGUAGE', payload: language });
+    Articles.index()
   };
 
   const handleChange = (event) => {

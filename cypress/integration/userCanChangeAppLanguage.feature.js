@@ -25,7 +25,7 @@ describe('user can change App language', () => {
       cy.get('[data-cy=language-dropdown]').click();
       cy.get('.visible.menu.transition').contains('se').click();
       cy.get('[data-cy=article]').first().within(() => {
-        cy.get('[data-cy=title]').should('contain', 'Vaccinnationalism: en kapitalistisk sjukdom')
+        cy.get('[data-cy=title]').should('contain', 'Svensk vapenexport till diktaturer fortsätter')
       })
     })
   });
