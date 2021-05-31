@@ -17,15 +17,13 @@ const PremiumSection = ({ article }) => {
     }
   };
 
-  //
-
   return (
     <>
       <Link
         key={article.id}
         to={redirectionRoute}
         style={isSmall ? smallStyles.articleContainer : styles.articleContainer}>
-        <div className='background-hover box-shadow' style={styles.wrapper}>
+        <div className='background-hover box-shadow' style={isSmall ? smallStyles.wrapper : styles.wrapper}>
           <div style={styles.overlay}></div>
           <img
             src={article.image}
@@ -107,5 +105,14 @@ const smallStyles = {
     position: 'absolute',
     overflow: 'hidden',
     padding: '0 10px',
+  },
+  wrapper: {
+    height: '250px',
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    textAlign: 'center',
+    borderRadius: 5,
+    position: 'relative',
   },
 };

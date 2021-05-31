@@ -10,8 +10,8 @@ const Category = () => {
   const { category } = useParams();
 
   useEffect(() => {
-    // eslint-disable-next-line
     Articles.index(category);
+    // eslint-disable-next-line
   }, [category]);
 
   let categoryList = articles.map((article, index) => {

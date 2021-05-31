@@ -81,6 +81,7 @@ const styles = {
     display: 'flex',
     marginBottom: 50,
     flexDirection: 'column',
+    width: '100%'
   },
   image: {
     height: 240,
