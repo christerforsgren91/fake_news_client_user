@@ -4,12 +4,13 @@ import errorHandler from './ErrorHandler';
 
 const Articles = {
   async index(category) {
+    let {appLanguage} = store.getState()
     try {
       let response;
       if (category) {
-        response = await axios.get(`/articles/?category=${category}`);
+        response = await axios.get(`/articles/?category=${category}&language=${appLanguage}`);
       } else {
-        response = await axios.get('/articles/');
+        response = await axios.get(`/articles/?language=${appLanguage}`);
       }
       store.dispatch({ type: 'SET_ARTICLES', payload: response.data.articles });
     } catch (error) {

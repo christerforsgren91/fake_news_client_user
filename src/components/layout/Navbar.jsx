@@ -6,11 +6,12 @@ import { Segment, Menu, Dropdown } from 'semantic-ui-react';
 import Authentication from '../../modules/Authentication';
 import store from '../../state/store/configureStore';
 import { useTranslation } from 'react-i18next';
+import Articles from '../../modules/Articles';
 
 const Navbar = () => {
   const { subscriber } = useSelector((state) => state);
+  const { appLanguage } = useSelector((state) => state);
   const { t } = useTranslation();
-  const [appLanguage, setAppLanguage] = useState('en');
 
   const languges = [
     { key: 1, text: 'en', value: 'en' },
@@ -19,7 +20,8 @@ const Navbar = () => {
 
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
-    setAppLanguage(language);
+    store.dispatch({ type: 'SET_LANGUAGE', payload: language });
+    Articles.index()
   };
 
   const handleChange = (event) => {

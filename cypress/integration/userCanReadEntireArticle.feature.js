@@ -1,7 +1,7 @@
 describe('User is able to read full article on article card', () => {
   describe('Successfully', () => {
     beforeEach(() => {
-      cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles/', {
+      cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles/?**', {
         fixture: 'articles.json',
       });
       cy.intercept(

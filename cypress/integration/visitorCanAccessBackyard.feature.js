@@ -1,6 +1,6 @@
 describe('visitor can access Backyard site', () => {
   beforeEach(() => {
-    cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles', {
+    cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles/?**', {
       fixture: 'articles.json',
     });
   });

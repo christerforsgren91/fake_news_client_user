@@ -8,6 +8,7 @@ const initialState = {
   backyardArticle: {},
   backyardLocation: '',
   update: false,
+  appLanguage: 'en',
 };
 
 export default initialState;

@@ -1,6 +1,6 @@
 describe('Only subscribers can use rating functionality', () => {
   beforeEach(() => {
-    cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles', {
+    cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles/?**', {
       fixture: 'articles.json',
     });
     cy.intercept('GET', 'https://fakest-newzz.herokuapp.com/api/articles/4', {

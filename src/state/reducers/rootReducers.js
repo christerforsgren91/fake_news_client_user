@@ -79,6 +79,11 @@ const rootReducer = (state, action) => {
         message: action.payload.message,
         location: action.payload.location,
       };
+    case 'SET_LANGUAGE':
+      return {
+        ...state,
+        appLanguage: action.payload,
+      };
     default:
       return state;
   }
