@@ -9,6 +9,16 @@ const ArticleCard = ({ article, index }) => {
   const { subscriber } = useSelector((state) => state);
   const isSmall = useMediaQuery({ query: '(max-width: 1170px)' });
 
+  const redirectionRoute = () => {
+    if (subscriber) {
+      return `/articles/${article.id}`;
+    } else if (article.premium) {
+      return { pathname: '/registration', state: { redirected: true } };
+    } else {
+      return `/articles/${article.id}`;
+    }
+  };
+
   return (
     <div
       className={
@@ -17,14 +27,7 @@ const ArticleCard = ({ article, index }) => {
           : 'card-container box-shadow'
       }
       data-cy={`article-card-${index}`}>
-      <Link
-        to={
-          subscriber
-            ? `/articles/${article.id}`
-            : article.premium
-            ? { pathname: '/registration', state: { redirected: true } }
-            : `/articles/${article.id}`
-        }>
+      <Link to={redirectionRoute()}>
         <div data-cy='article' className='card-content-wrapper'>
           {article.premium && (
             <Label data-cy='premium-label' style={styles.label}>

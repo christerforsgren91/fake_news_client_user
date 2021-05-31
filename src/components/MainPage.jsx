@@ -25,6 +25,10 @@ const MainPage = () => {
     return <ArticleRow article={article} index={index} key={index} />;
   });
 
+  let premiumList = articles.filter((article) => article.premium === true).slice(0, 3).map((article, index) => {
+    return <PremiumSection article={article} key={index} />
+  })
+
   return (
     <>
       <CategoryMenu />
@@ -34,7 +38,7 @@ const MainPage = () => {
         {articleList}
       </div>
       <CustomDivider title={t('dividerPremiumArticles')} />
-      <PremiumSection />
+      <div >{premiumList}</div>
       <CustomDivider title={t('dividerOtherNews')} />
       <div id='category-container'>{articleRows}</div>
     </>

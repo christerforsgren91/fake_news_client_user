@@ -3,23 +3,25 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
-const PremiumSection = () => {
-  const { articles, subscriber } = useSelector((state) => state);
+const PremiumSection = ({ article, index }) => {
+  const { subscriber } = useSelector((state) => state);
   const isSmall = useMediaQuery({ query: '(max-width: 1250px)' });
 
-  const premiumList = articles
-    .filter((article) => article.premium === true)
-    .slice(0, 3)
-    .map((article) => (
+  const redirectionRoute = () => {
+    if (subscriber) {
+      return `/articles/${article.id}`;
+    } else if (article.premium) {
+      return { pathname: '/registration', state: { redirected: true } };
+    } else {
+      return `/articles/${article.id}`;
+    }
+  };
+
+  return (
+    <div style={isSmall ? smallStyles.container : styles.container}>
       <Link
         key={article.id}
-        to={
-          subscriber
-            ? `/articles/${article.id}`
-            : article.premium
-            ? { pathname: '/registration', state: { redirected: true } }
-            : `/articles/${article.id}`
-        }
+        to={redirectionRoute}
         style={styles.articleContainer}>
         <div className='background-hover box-shadow' style={styles.wrapper}>
           <div style={styles.overlay}></div>
@@ -33,11 +35,6 @@ const PremiumSection = () => {
           </h4>
         </div>
       </Link>
-    ));
-
-  return (
-    <div style={isSmall ? smallStyles.container : styles.container}>
-      {premiumList}
     </div>
   );
 };
