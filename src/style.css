@@ -23,6 +23,10 @@ input {
   height: auto;
 }
 
+#navbar-pt2 {
+  margin: 0 15%;
+}
+
 #language {
   margin-top: 15px;
 }
@@ -483,6 +487,10 @@ input {
   position: absolute;
 }
 
+.burger{
+  display: none;
+}
+
 /* smaller that desktop style  */
 @media (max-width: 920px) {
   .subscription-plan {
@@ -539,8 +547,27 @@ input {
   }
 }
 
-@media only screen and (max-width: 766px) {
+@media (max-width: 766px) {
   #tr-head {
     display: none!important;
+  }
+
+  #navbar {
+    display: flex;
+    justify-content: center;
+    margin: 0 -20px;
+  }
+
+  #navbar-pt2 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+  }
+
+  #navbar-pt3 {
+    display: flex;
+    /* flex-direction: column-reverse; */
+    text-align: right;
   }
 }

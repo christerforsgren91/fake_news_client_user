@@ -30,12 +30,7 @@ const Navbar = () => {
   return (
     <>
       <Segment data-cy='navbar' id='navbar' inverted size='tiny'>
-        <Menu
-          pointing
-          secondary
-          stackable
-          size='massive'
-          style={{ margin: '0 15%' }}>
+        <Menu pointing secondary id='navbar-pt2' size='massive'>
           <Menu.Item
             style={styles.item}
             name={t('navBarHomeTab')}
@@ -55,7 +50,7 @@ const Navbar = () => {
             to='/backyard'
             onClick={() => store.dispatch({ type: 'ERROR_RESET' })}
           />
-          <Menu.Menu position='right'>
+          <Menu.Menu id='navbar-pt3' position='right'>
             <Dropdown
               data-cy='language-dropdown'
               id='language'
@@ -66,6 +61,7 @@ const Navbar = () => {
                 handleChange(event);
               }}
             />
+
             {subscriber ? (
               <Menu.Item
                 style={styles.item}
