@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
-const PremiumSection = ({ article, index }) => {
+const PremiumSection = ({ article }) => {
   const { subscriber } = useSelector((state) => state);
   const isSmall = useMediaQuery({ query: '(max-width: 1250px)' });
 
@@ -17,12 +17,14 @@ const PremiumSection = ({ article, index }) => {
     }
   };
 
+  //
+
   return (
-    <div style={isSmall ? smallStyles.container : styles.container}>
+    <>
       <Link
         key={article.id}
         to={redirectionRoute}
-        style={styles.articleContainer}>
+        style={isSmall ? smallStyles.articleContainer : styles.articleContainer}>
         <div className='background-hover box-shadow' style={styles.wrapper}>
           <div style={styles.overlay}></div>
           <img
@@ -35,23 +37,19 @@ const PremiumSection = ({ article, index }) => {
           </h4>
         </div>
       </Link>
-    </div>
+    </>
   );
 };
 
 export default PremiumSection;
 
 const styles = {
-  container: {
-    backgroundColor: '#ffb74d',
-    height: 600,
+  articleContainer: {
     display: 'flex',
     alignItems: 'center',
-    padding: '0 15%',
-  },
-  articleContainer: {
     margin: '0 10px',
     height: '80%',
+    width: '80px',
     flex: 1,
   },
   wrapper: {
@@ -92,10 +90,13 @@ const styles = {
 };
 
 const smallStyles = {
-  container: {
-    backgroundColor: '#ffb74d',
+  articleContainer: {
+    display: 'flex',
     alignItems: 'center',
-    padding: '25px 15%',
+    margin: '25px 10px',
+    minHeight: '80%',
+    minWidth: '100%',
+    flex: 1,
   },
   title: {
     fontSize: '4vw',
