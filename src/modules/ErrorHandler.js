@@ -28,6 +28,12 @@ const errorHandler = (error) => {
           payload: i18n.t('error422'),
         })
         break
+      case 406:
+        store.dispatch({
+          type: 'ERROR_MESSAGE',
+          payload: error.response.data.errors,
+        })
+        break
       case 404:
         window.location.replace('/404')
         break

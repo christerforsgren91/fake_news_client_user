@@ -1,26 +1,26 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { Button, Table, Segment } from 'semantic-ui-react';
-import BackyardArticles from '../modules/BackyardArticles';
-import BackyardForm from './BackyardForm';
-import { useTranslation } from 'react-i18next';
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { Button, Table, Segment } from 'semantic-ui-react'
+import BackyardArticles from '../modules/BackyardArticles'
+import BackyardForm from './BackyardForm'
+import { useTranslation } from 'react-i18next'
 
 const BackyardDashboard = () => {
-  const { location, backyardArticles, subscriber } = useSelector(
+  const { location, backyardArticles, subscriber, update } = useSelector(
     (state) => state
-  );
-  const { t } = useTranslation();
+  )
+  const { t } = useTranslation()
 
   const getArticlesBasedOnPosition = () => {
     navigator.geolocation.getCurrentPosition((position) => {
-      BackyardArticles.index(position.coords);
-    });
-  };
+      BackyardArticles.index(position.coords)
+    })
+  }
 
   useEffect(() => {
-    getArticlesBasedOnPosition();
-  }, []);
+    getArticlesBasedOnPosition()
+  }, [update])
 
   const listOfBackyardArticles = backyardArticles.map((backyardArticle) => (
     <Table.Row
@@ -51,7 +51,7 @@ const BackyardDashboard = () => {
         </Link>
       </Table.Cell>
     </Table.Row>
-  ));
+  ))
 
   return (
     <>
@@ -99,10 +99,10 @@ const BackyardDashboard = () => {
         company, individual or anyone or anything.
       </p>
     </>
-  );
-};
+  )
+}
 
-export default BackyardDashboard;
+export default BackyardDashboard
 
 const styles = {
   container: {
@@ -138,4 +138,4 @@ const styles = {
     width: '50%',
     margin: 'auto',
   },
-};
+}
