@@ -13,7 +13,7 @@ import BackyardDashboard from './components/BackyardDashboard';
 import Popup from './components/Popup';
 import Authentication from './modules/Authentication';
 import BackyardArticle from './components/layout/BackyardArticle';
-import PageNotFound from './components/PageNotFound'
+import PageNotFound from './components/PageNotFound';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY);
 
@@ -49,7 +49,7 @@ const App = () => {
             <Registration />
           </Elements>
         </Route>
-        <Route path='*' component={PageNotFound} /> 
+        <Route path='/404' component={PageNotFound} />
       </Switch>
       <Popup />
     </>
