@@ -3,9 +3,28 @@ import { Link } from 'react-router-dom';
 import { setRating } from '../modules/Articles';
 import { Rating, Label, Icon } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 
 const ArticleRow = ({ article }) => {
   const { subscriber } = useSelector((state) => state);
+  const isSmall = useMediaQuery({ query: '(max-width: 1050px)' });
+
+  const responsiveStyles = {
+    container: {
+      display: 'flex',
+      flexDirection: isSmall ? 'column' : 'row',
+    },
+    contentContainer: {
+      color: 'white',
+      padding: isSmall ? '25px 0' : 25,
+    },
+    image: {
+      height: isSmall ? 'auto' : 240,
+      width: isSmall ? '100%' : 300,
+      objectFit: 'cover',
+    },
+  };
+
   return (
     <Link
       style={styles.container}
@@ -25,9 +44,13 @@ const ArticleRow = ({ article }) => {
           </Label>
         )}
       </div>
-      <div style={{ display: 'flex' }}>
-        <img style={styles.image} src={article.image} alt={article.title} />
-        <div style={styles.contentContainer}>
+      <div style={responsiveStyles.container}>
+        <img
+          style={responsiveStyles.image}
+          src={article.image}
+          alt={article.title}
+        />
+        <div style={responsiveStyles.contentContainer}>
           <h1 data-cy='title'>{article.title}</h1>
           <p className='card-teaser' data-cy='teaser'>
             {article.teaser}
@@ -58,15 +81,12 @@ const styles = {
     display: 'flex',
     marginBottom: 50,
     flexDirection: 'column',
+    width: '100%'
   },
   image: {
     height: 240,
     width: 300,
     objectFit: 'cover',
-  },
-  contentContainer: {
-    color: 'white',
-    padding: 25,
   },
   label: {
     backgroundColor: '#ffb74d',

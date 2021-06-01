@@ -84,7 +84,7 @@ const Register = () => {
   return (
     <>
       {subscriber && <AuthenticationMessage time={5000} />}
-      <h1 style={{ color: 'white', textAlign: 'center' }}>
+      <h1 className='choose-sub'>
         {subscriptionPlan
           ? t('registrationFillDetailsMessage')
           : t('registrationChooseMessage')}

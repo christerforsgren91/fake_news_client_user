@@ -8,10 +8,12 @@ import CustomDivider from './CustomDivider';
 import PremiumSection from './PremiumSection';
 import ArticleRow from './ArticleRow';
 import { useTranslation } from 'react-i18next';
+import { useMediaQuery } from 'react-responsive';
 
 const MainPage = () => {
   const { articles } = useSelector((state) => state);
   const { t } = useTranslation();
+  const isSmall = useMediaQuery({ query: '(max-width: 1250px)' });
 
   useEffect(() => {
     Articles.index();
@@ -25,6 +27,10 @@ const MainPage = () => {
     return <ArticleRow article={article} index={index} key={index} />;
   });
 
+  let premiumList = articles.filter((article) => article.premium === true).slice(0, 3).map((article, index) => {
+    return <PremiumSection article={article} key={index} />
+  })
+
   return (
     <>
       <CategoryMenu />
@@ -34,7 +40,7 @@ const MainPage = () => {
         {articleList}
       </div>
       <CustomDivider title={t('dividerPremiumArticles')} />
-      <PremiumSection />
+      <div style={isSmall ? smallStyles.container : styles.container}  >{premiumList}</div>
       <CustomDivider title={t('dividerOtherNews')} />
       <div id='category-container'>{articleRows}</div>
     </>
@@ -42,3 +48,25 @@ const MainPage = () => {
 };
 
 export default MainPage;
+
+
+const styles = {
+  container: {
+    backgroundColor: '#ffb74d',
+    height: 600,
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0 15% 3% 15%',
+  },
+}
+
+const smallStyles = {
+  container: {
+    backgroundColor: '#ffb74d',
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '25px 15%',
+    width: '100%',
+  },
+}

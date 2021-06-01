@@ -30,13 +30,13 @@ const BackyardForm = ({ location }) => {
             Write an article
           </Button>
         }>
-        <Modal.Header className='backyard-form' data-cy='header'>
+        <Modal.Header className='backyard-form' data-cy='header' >
           Create Backyard Article
         </Modal.Header>
         <Form
           size='large'
           onSubmit={(event) => submitBackyard(event)}
-          className='backyard-form'>
+          className='backyard-form-second'>
           <Form.Input
             name='title'
             id='new-backyard-input'

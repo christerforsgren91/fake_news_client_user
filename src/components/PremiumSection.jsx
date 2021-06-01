@@ -1,52 +1,53 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
-const PremiumSection = () => {
-  const { articles, subscriber } = useSelector((state) => state);
+const PremiumSection = ({ article }) => {
+  const { subscriber } = useSelector((state) => state);
+  const isSmall = useMediaQuery({ query: '(max-width: 1250px)' });
 
-  const premiumList = articles
-    .filter((article) => article.premium === true)
-    .slice(0, 3)
-    .map((article) => (
+  const redirectionRoute = () => {
+    if (subscriber) {
+      return `/articles/${article.id}`;
+    } else if (article.premium) {
+      return { pathname: '/registration', state: { redirected: true } };
+    } else {
+      return `/articles/${article.id}`;
+    }
+  };
+
+  return (
+    <>
       <Link
         key={article.id}
-        to={
-          subscriber
-            ? `/articles/${article.id}`
-            : article.premium
-            ? { pathname: '/registration', state: { redirected: true } }
-            : `/articles/${article.id}`
-        }
-        style={styles.articleContainer}>
-        <div className='background-hover box-shadow' style={styles.wrapper}>
+        to={redirectionRoute}
+        style={isSmall ? smallStyles.articleContainer : styles.articleContainer}>
+        <div className='background-hover box-shadow' style={isSmall ? smallStyles.wrapper : styles.wrapper}>
           <div style={styles.overlay}></div>
           <img
             src={article.image}
             alt={article.title}
             style={styles.imageContainer}
           />
-          <h4 style={styles.title}>{article.title}</h4>
+          <h4 style={isSmall ? smallStyles.title : styles.title}>
+            {article.title}
+          </h4>
         </div>
       </Link>
-    ));
-
-  return <div style={styles.container}>{premiumList}</div>;
+    </>
+  );
 };
 
 export default PremiumSection;
 
 const styles = {
-  container: {
-    backgroundColor: '#ffb74d',
-    height: 600,
+  articleContainer: {
     display: 'flex',
     alignItems: 'center',
-    padding: '0 15%',
-  },
-  articleContainer: {
     margin: '0 10px',
     height: '80%',
+    width: '80px',
     flex: 1,
   },
   wrapper: {
@@ -83,5 +84,35 @@ const styles = {
     position: 'absolute',
     overflow: 'hidden',
     padding: '0 10px',
+  },
+};
+
+const smallStyles = {
+  articleContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    margin: '25px 10px',
+    minHeight: '80%',
+    minWidth: '100%',
+    flex: 1,
+  },
+  title: {
+    fontSize: '4vw',
+    color: 'white',
+    fontWeight: 'bold',
+    fontFamily: 'Koho',
+    zIndex: 10,
+    position: 'absolute',
+    overflow: 'hidden',
+    padding: '0 10px',
+  },
+  wrapper: {
+    height: '250px',
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    textAlign: 'center',
+    borderRadius: 5,
+    position: 'relative',
   },
 };

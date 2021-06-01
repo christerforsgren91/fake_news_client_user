@@ -13,7 +13,7 @@ const Navbar = () => {
   const { appLanguage } = useSelector((state) => state);
   const { t } = useTranslation();
 
-  const languges = [
+  const languages = [
     { key: 1, text: 'en', value: 'en' },
     { key: 2, text: 'se', value: 'se' },
   ];
@@ -32,12 +32,7 @@ const Navbar = () => {
   return (
     <>
       <Segment data-cy='navbar' id='navbar' inverted size='tiny'>
-        <Menu
-          pointing
-          secondary
-          stackable
-          size='massive'
-          style={{ margin: '0 15%' }}>
+        <Menu pointing secondary id='navbar-pt2' size='massive'>
           <Menu.Item
             style={styles.item}
             name={t('navBarHomeTab')}
@@ -57,17 +52,18 @@ const Navbar = () => {
             to='/backyard'
             onClick={() => store.dispatch({ type: 'ERROR_RESET' })}
           />
-          <Menu.Menu position='right'>
+          <Menu.Menu id='navbar-pt3' position='right'>
             <Dropdown
               data-cy='language-dropdown'
               id='language'
               name='language'
               text={appLanguage}
-              options={languges}
+              options={languages}
               onChange={(event) => {
                 handleChange(event);
               }}
             />
+
             {subscriber ? (
               <Menu.Item
                 style={styles.item}
