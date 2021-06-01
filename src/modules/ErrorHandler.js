@@ -1,5 +1,5 @@
-import i18n from '../i18n';
-import store from '../state/store/configureStore';
+import i18n from '../i18n'
+import store from '../state/store/configureStore'
 
 const errorHandler = (error) => {
   if (error.response) {
@@ -8,44 +8,47 @@ const errorHandler = (error) => {
         store.dispatch({
           type: 'ERROR_MESSAGE',
           payload: i18n.t('error500'),
-        });
-        break;
+        })
+        break
       case 400:
         store.dispatch({
           type: 'ERROR_MESSAGE',
           payload: i18n.t('error400'),
-        });
-        break;
+        })
+        break
       case 401:
         store.dispatch({
           type: 'ERROR_MESSAGE',
           payload: i18n.t('error401'),
-        });
-        break;
+        })
+        break
       case 422:
         store.dispatch({
           type: 'ERROR_MESSAGE',
           payload: i18n.t('error422'),
-        });
-        break;
-      case 404:
+        })
+        break
+      case 406:
         store.dispatch({
           type: 'ERROR_MESSAGE',
-          payload: error.response.data.error_message,
-        });
-        break;
+          payload: error.response.data.errors,
+        })
+        break
+      case 404:
+        window.location.replace('/404')
+        break
       default:
         store.dispatch({
           type: 'ERROR_MESSAGE',
           payload: error.message,
-        });
-        break;
+        })
+        break
     }
   } else {
     store.dispatch({
       type: 'ERROR_MESSAGE',
       payload: error.message,
-    });
+    })
   }
-};
-export default errorHandler;
+}
+export default errorHandler

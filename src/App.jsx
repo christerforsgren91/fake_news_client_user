@@ -1,25 +1,26 @@
-import React, { useEffect } from 'react';
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
-import { Switch, Route } from 'react-router';
+import React, { useEffect } from 'react'
+import { Elements } from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
+import { Switch, Route } from 'react-router'
 
-import Navbar from './components/layout/Navbar';
-import MainPage from './components/MainPage';
-import Article from './components/Article';
-import Category from './components/Category';
-import Login from './components/Login';
-import Registration from './components/Register';
-import BackyardDashboard from './components/BackyardDashboard';
-import Popup from './components/Popup';
-import Authentication from './modules/Authentication';
-import BackyardArticle from './components/layout/BackyardArticle';
+import Navbar from './components/layout/Navbar'
+import MainPage from './components/MainPage'
+import Article from './components/Article'
+import Category from './components/Category'
+import Login from './components/Login'
+import Registration from './components/Register'
+import BackyardDashboard from './components/BackyardDashboard'
+import Popup from './components/Popup'
+import Authentication from './modules/Authentication'
+import BackyardArticle from './components/layout/BackyardArticle'
+import PageNotFound from './components/PageNotFound'
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY);
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY)
 
 const App = () => {
   useEffect(() => {
-    Authentication.validateToken();
-  }, []);
+    Authentication.validateToken()
+  }, [])
 
   return (
     <>
@@ -48,10 +49,11 @@ const App = () => {
             <Registration />
           </Elements>
         </Route>
+        <Route path='*' component={PageNotFound} />
       </Switch>
       <Popup />
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App

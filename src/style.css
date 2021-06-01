@@ -38,7 +38,8 @@ input {
   margin-bottom: 50px;
   text-align: center;
   font-family: 'KoHo';
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 #question {
@@ -276,7 +277,7 @@ input {
   white-space: pre-wrap;
   font-size: 19px;
 }
-.category-bar{
+.category-bar {
   width: fit-content;
   margin: auto;
 }
@@ -487,8 +488,13 @@ input {
   position: absolute;
 }
 
-.burger{
-  display: none;
+.error-image {
+  text-align: center;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 70%;
 }
 
 /* smaller that desktop style  */
@@ -517,7 +523,7 @@ input {
     cursor: pointer;
   }
 
-  .ui.cards{
+  .ui.cards {
     padding: 2rem 0;
     display: flex;
   }
@@ -535,7 +541,7 @@ input {
     justify-content: space-evenly;
     height: 80%;
   }
-  .category-bar{
+  .category-bar {
     display: flex;
     flex-wrap: wrap;
   }
@@ -549,7 +555,7 @@ input {
 
 @media (max-width: 766px) {
   #tr-head {
-    display: none!important;
+    display: none !important;
   }
 
   #navbar {
@@ -562,7 +568,6 @@ input {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-
   }
 
   #navbar-pt3 {
